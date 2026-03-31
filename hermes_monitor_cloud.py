@@ -338,7 +338,7 @@ def get_price_comparison(product: dict) -> str:
     if highest > 0 and current_price < highest:
         diff = highest - current_price
         pct = round(diff / highest * 100)
-        return f"📉 比歷史價便宜 {pct}%（歷史 NT$ {int(highest):,}）"
+        return f"📉 降價{pct}% (原NT${int(highest):,})"
 
     return ""
 
@@ -454,6 +454,7 @@ def build_flex_message(product: dict, is_wishlist: bool) -> dict:
             "color": "#E5004F",
             "weight": "bold",
             "margin": "sm",
+            "wrap": True,
         })
 
     return bubble
