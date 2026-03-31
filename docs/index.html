@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>愛馬仕新品上架追蹤 | Hermès Restock Tracker</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            background: #FF6B00;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header p { opacity: 0.9; font-size: 16px; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: #FF6B00;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: #fff8f0;
+            border-radius: 10px;
+            border: 1px solid #ffe0c0;
+        }
+        .stat-box .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #FF6B00;
+        }
+        .stat-box .label {
+            font-size: 13px;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .bar-chart { margin-top: 12px; }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+        }
+        .bar-label {
+            width: 50px;
+            font-size: 13px;
+            color: #666;
+            text-align: right;
+            padding-right: 10px;
+        }
+        .bar-track {
+            flex: 1;
+            height: 24px;
+            background: #f0f0f0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B00, #FF9B50);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 11px;
+            color: white;
+            font-weight: bold;
+            min-width: 30px;
+        }
+
+        .product-list { list-style: none; }
+        .product-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .product-item:last-child { border-bottom: none; }
+        .product-time {
+            font-size: 12px;
+            color: #999;
+            width: 100px;
+        }
+        .product-name {
+            flex: 1;
+            font-weight: 500;
+        }
+        .product-price {
+            color: #FF6B00;
+            font-weight: bold;
+        }
+
+        .line-cta {
+            text-align: center;
+            padding: 30px 20px;
+            background: #06C755;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .line-cta h2 { color: white; margin-bottom: 10px; }
+        .line-cta p { color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+        .line-cta a {
+            display: inline-block;
+            background: white;
+            color: #06C755;
+            padding: 12px 32px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .tips { font-size: 14px; color: #666; }
+        .tips li { margin: 8px 0; padding-left: 8px; }
+        .tips .highlight { color: #FF6B00; font-weight: bold; }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        .loading { text-align: center; padding: 40px; color: #999; }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 22px; }
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Hermes 愛馬仕新品追蹤</h1>
+        <p>即時監控台灣官網上架動態，新品第一時間通知</p>
+    </div>
+
+    <div class="container">
+        <!-- 統計概覽 -->
+        <div class="card">
+            <h2>上架統計</h2>
+            <div class="stat-grid" id="stats">
+                <div class="loading">載入中...</div>
+            </div>
+        </div>
+
+        <!-- 最佳搶購時段 -->
+        <div class="card">
+            <h2>最常上架時段</h2>
+            <p style="font-size:14px; color:#888; margin-bottom:12px;">根據歷史資料分析，以下時段最常出現新品：</p>
+            <div class="bar-chart" id="hourChart">
+                <div class="loading">載入中...</div>
+            </div>
+        </div>
+
+        <!-- 星期分佈 -->
+        <div class="card">
+            <h2>星期幾最常上架</h2>
+            <div class="bar-chart" id="weekdayChart">
+                <div class="loading">載入中...</div>
+            </div>
+        </div>
+
+        <!-- 最近上架紀錄 -->
+        <div class="card">
+            <h2>最近上架紀錄</h2>
+            <ul class="product-list" id="recentList">
+                <li class="loading">載入中...</li>
+            </ul>
+        </div>
+
+        <!-- 搶購技巧 -->
+        <div class="card">
+            <h2>搶購小技巧</h2>
+            <ul class="tips">
+                <li><span class="highlight">Birkin 和 Kelly 不會在官網上架</span>，只在實體店販售</li>
+                <li>線上常見款式：Picotin、Lindy、Evelyne、Bolide、Garden Party</li>
+                <li>官網補貨後通常 <span class="highlight">幾分鐘內就售罄</span>，收到通知請立即行動</li>
+                <li>建議先登入愛馬仕帳號，綁好付款方式，縮短結帳時間</li>
+                <li>多關注<span class="highlight">平日上午</span>，補貨機率最高</li>
+            </ul>
+        </div>
+
+        <!-- LINE CTA -->
+        <div class="line-cta">
+            <h2>加入 LINE 即時通知</h2>
+            <p>新品上架第一時間推送，附圖片、價格、一鍵購買</p>
+            <a href="https://line.me/R/ti/p/@810eierv">加入好友 @810eierv</a>
+        </div>
+
+        <div class="footer">
+            <p>資料每小時自動更新 | 蕭key來買喔～</p>
+        </div>
+    </div>
+
+    <script>
+        const DATA_URL = 'https://raw.githubusercontent.com/abnerzxy-commits/hermes-monitor/main/data/restock_history.json';
+        const PRODUCTS_URL = 'https://raw.githubusercontent.com/abnerzxy-commits/hermes-monitor/main/data/products.json';
+
+        const WEEKDAY_ZH = {
+            'Monday': '週一', 'Tuesday': '週二', 'Wednesday': '週三',
+            'Thursday': '週四', 'Friday': '週五', 'Saturday': '週六', 'Sunday': '週日'
+        };
+
+        async function init() {
+            let history = [];
+            let products = {};
+
+            try {
+                const [histRes, prodRes] = await Promise.all([
+                    fetch(DATA_URL).then(r => r.ok ? r.json() : []),
+                    fetch(PRODUCTS_URL).then(r => r.ok ? r.json() : {}),
+                ]);
+                history = histRes;
+                products = prodRes;
+            } catch(e) {
+                console.error(e);
+            }
+
+            const productCount = Object.keys(products).length;
+            const totalRestocks = history.length;
+
+            // 統計概覽
+            const statsEl = document.getElementById('stats');
+            if (totalRestocks === 0 && productCount === 0) {
+                statsEl.innerHTML = '<p style="color:#999; text-align:center;">尚未收集到足夠資料，系統每小時自動監控中...</p>';
+            } else {
+                // 找最常補貨的時段
+                const hourCounts = {};
+                const weekdayCounts = {};
+                history.forEach(h => {
+                    hourCounts[h.hour] = (hourCounts[h.hour] || 0) + 1;
+                    weekdayCounts[h.weekday] = (weekdayCounts[h.weekday] || 0) + 1;
+                });
+                const topHour = Object.entries(hourCounts).sort((a,b) => b[1]-a[1])[0];
+                const topDay = Object.entries(weekdayCounts).sort((a,b) => b[1]-a[1])[0];
+
+                statsEl.innerHTML = `
+                    <div class="stat-box">
+                        <div class="number">${productCount}</div>
+                        <div class="label">目前在售款式</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">${totalRestocks}</div>
+                        <div class="label">累計上架次數</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">${topHour ? topHour[0] + ':00' : '-'}</div>
+                        <div class="label">最常上架時間</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">${topDay ? (WEEKDAY_ZH[topDay[0]] || topDay[0]) : '-'}</div>
+                        <div class="label">最常上架星期</div>
+                    </div>
+                `;
+            }
+
+            // 時段分佈圖
+            const hourChart = document.getElementById('hourChart');
+            if (totalRestocks > 0) {
+                const hourCounts = {};
+                history.forEach(h => { hourCounts[h.hour] = (hourCounts[h.hour] || 0) + 1; });
+                const maxHour = Math.max(...Object.values(hourCounts));
+                let hourHTML = '';
+                for (let i = 0; i < 24; i++) {
+                    const count = hourCounts[i] || 0;
+                    if (count === 0) continue;
+                    const pct = Math.round(count / maxHour * 100);
+                    hourHTML += `
+                        <div class="bar-row">
+                            <div class="bar-label">${i}:00</div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width:${pct}%">${count}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                hourChart.innerHTML = hourHTML || '<p style="color:#999">資料不足</p>';
+            } else {
+                hourChart.innerHTML = '<p style="color:#999">尚未收集到上架時段資料，持續監控中...</p>';
+            }
+
+            // 星期分佈
+            const weekdayChart = document.getElementById('weekdayChart');
+            if (totalRestocks > 0) {
+                const weekdayCounts = {};
+                history.forEach(h => { weekdayCounts[h.weekday] = (weekdayCounts[h.weekday] || 0) + 1; });
+                const maxDay = Math.max(...Object.values(weekdayCounts));
+                const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+                let dayHTML = '';
+                days.forEach(d => {
+                    const count = weekdayCounts[d] || 0;
+                    const pct = maxDay > 0 ? Math.round(count / maxDay * 100) : 0;
+                    dayHTML += `
+                        <div class="bar-row">
+                            <div class="bar-label">${WEEKDAY_ZH[d]}</div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width:${Math.max(pct, 5)}%">${count}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                weekdayChart.innerHTML = dayHTML;
+            } else {
+                weekdayChart.innerHTML = '<p style="color:#999">尚未收集到資料...</p>';
+            }
+
+            // 最近上架紀錄
+            const recentList = document.getElementById('recentList');
+            if (totalRestocks > 0) {
+                const recent = history.slice(-10).reverse();
+                recentList.innerHTML = recent.map(h => {
+                    const date = new Date(h.timestamp);
+                    const timeStr = `${date.getMonth()+1}/${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2,'0')}`;
+                    return `
+                        <li class="product-item">
+                            <span class="product-time">${timeStr}</span>
+                            <span class="product-name">${h.name}</span>
+                            <span class="product-price">${h.price || ''}</span>
+                        </li>
+                    `;
+                }).join('');
+            } else if (productCount > 0) {
+                const items = Object.values(products);
+                recentList.innerHTML = items.map(p => `
+                    <li class="product-item">
+                        <span class="product-time">目前在售</span>
+                        <span class="product-name">${p.name}</span>
+                        <span class="product-price">${p.price || ''}</span>
+                    </li>
+                `).join('');
+            } else {
+                recentList.innerHTML = '<li style="color:#999; padding:20px; text-align:center;">系統剛啟動，資料收集中...</li>';
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
