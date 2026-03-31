@@ -125,12 +125,18 @@ def solve_datadome(page, page_url: str) -> bool:
         else:
             proxy_for_2captcha = f"{parsed_proxy.hostname}:{parsed_proxy.port}"
 
-        # 4. 直接呼叫 2Captcha API（SDK 有 bug，改用 HTTP）
+        # 4. 取得現有的 datadome cookie
+        dd_cookie = ""
+        for c in page.context.cookies():
+            if c["name"] == "datadome":
+                dd_cookie = c["value"]
+                break
+
+        # 5. 直接呼叫 2Captcha API
         import requests as req
         import time as t
 
-        # 送出解題請求
-        submit_resp = req.post("https://2captcha.com/in.php", data={
+        submit_params = {
             "key": api_key,
             "method": "datadome",
             "captcha_url": captcha_url,
@@ -139,8 +145,13 @@ def solve_datadome(page, page_url: str) -> bool:
             "proxy": proxy_for_2captcha,
             "proxytype": "HTTP",
             "json": 1,
-        }, timeout=30)
+        }
+        if dd_cookie:
+            submit_params["dmd_cookie"] = f"datadome={dd_cookie}"
 
+        logger.info(f"2Captcha 送出: pageurl={page_url}, proxy={proxy_for_2captcha[:30]}..., captcha_url={captcha_url[:80]}...")
+
+        submit_resp = req.post("https://2captcha.com/in.php", data=submit_params, timeout=30)
         submit_data = submit_resp.json()
         logger.info(f"2Captcha submit: {submit_data}")
 
