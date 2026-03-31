@@ -127,8 +127,15 @@ def solve_datadome(page, page_url: str) -> bool:
             proxytype="http",
         )
 
-        if result and (result.get("code") or result.get("cookie")):
-            datadome_cookie = result.get("cookie") or result.get("code")
+        # 2Captcha 回傳可能是 dict 或 string
+        logger.info(f"2Captcha 回傳: type={type(result).__name__}, value={str(result)[:200]}")
+        datadome_cookie = None
+        if isinstance(result, dict):
+            datadome_cookie = result.get("cookie") or result.get("code") or result.get("datadome")
+        elif isinstance(result, str):
+            datadome_cookie = result
+
+        if datadome_cookie:
             logger.info("2Captcha 解題成功！")
 
             # 4. 設定新的 datadome cookie
