@@ -117,45 +117,75 @@ def solve_datadome(page, page_url: str) -> bool:
             logger.error("CAPTCHA_PROXY 未設定（DataDome 需要 proxy）")
             return False
 
-        # 4. 送給 2Captcha 解題
-        solver = TwoCaptcha(api_key)
-        result = solver.datadome(
-            captcha_url=captcha_url,
-            pageurl=page_url,
-            userAgent=user_agent,
-            proxy=proxy,
-            proxytype="http",
-        )
-
-        # 2Captcha 回傳可能是 dict 或 string
-        logger.info(f"2Captcha 回傳: type={type(result).__name__}, value={str(result)[:200]}")
-        datadome_cookie = None
-        if isinstance(result, dict):
-            datadome_cookie = result.get("cookie") or result.get("code") or result.get("datadome")
-        elif isinstance(result, str):
-            datadome_cookie = result
-
-        if datadome_cookie:
-            logger.info("2Captcha 解題成功！")
-
-            # 4. 設定新的 datadome cookie
-            # 從 URL 取得 domain
-            from urllib.parse import urlparse
-            domain = urlparse(page_url).hostname
-            if domain:
-                domain = "." + domain.lstrip(".")
-
-            page.context.add_cookies([{
-                "name": "datadome",
-                "value": datadome_cookie,
-                "domain": domain or ".hermes.com",
-                "path": "/",
-            }])
-
-            return True
+        # 解析 proxy：http://user:pass@host:port → user:pass@host:port
+        from urllib.parse import urlparse
+        parsed_proxy = urlparse(proxy)
+        if parsed_proxy.username:
+            proxy_for_2captcha = f"{parsed_proxy.username}:{parsed_proxy.password}@{parsed_proxy.hostname}:{parsed_proxy.port}"
         else:
-            logger.error(f"2Captcha 回傳失敗: {result}")
+            proxy_for_2captcha = f"{parsed_proxy.hostname}:{parsed_proxy.port}"
+
+        # 4. 直接呼叫 2Captcha API（SDK 有 bug，改用 HTTP）
+        import requests as req
+        import time as t
+
+        # 送出解題請求
+        submit_resp = req.post("https://2captcha.com/in.php", data={
+            "key": api_key,
+            "method": "datadome",
+            "captcha_url": captcha_url,
+            "pageurl": page_url,
+            "userAgent": user_agent,
+            "proxy": proxy_for_2captcha,
+            "proxytype": "HTTP",
+            "json": 1,
+        }, timeout=30)
+
+        submit_data = submit_resp.json()
+        logger.info(f"2Captcha submit: {submit_data}")
+
+        if submit_data.get("status") != 1:
+            logger.error(f"2Captcha 提交失敗: {submit_data.get('request', 'unknown')}")
             return False
+
+        task_id = submit_data["request"]
+
+        # 輪詢結果（最多等 120 秒）
+        for _ in range(24):
+            t.sleep(5)
+            result_resp = req.get("https://2captcha.com/res.php", params={
+                "key": api_key,
+                "action": "get",
+                "id": task_id,
+                "json": 1,
+            }, timeout=15)
+            result_data = result_resp.json()
+
+            if result_data.get("status") == 1:
+                datadome_cookie = result_data.get("request", "")
+                logger.info(f"2Captcha 解題成功！cookie: {datadome_cookie[:50]}...")
+
+                # 設定新的 datadome cookie
+                domain = urlparse(page_url).hostname
+                if domain:
+                    domain = "." + domain.lstrip(".")
+
+                page.context.add_cookies([{
+                    "name": "datadome",
+                    "value": datadome_cookie,
+                    "domain": domain or ".hermes.com",
+                    "path": "/",
+                }])
+                return True
+
+            elif result_data.get("request") == "CAPCHA_NOT_READY":
+                continue
+            else:
+                logger.error(f"2Captcha 失敗: {result_data.get('request', 'unknown')}")
+                return False
+
+        logger.error("2Captcha 解題逾時（120s）")
+        return False
 
     except Exception as e:
         logger.error(f"2Captcha 解題例外: {e}")
