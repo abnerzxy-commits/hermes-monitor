@@ -219,6 +219,9 @@ def _scrape_hermes_once(attempt: int) -> list[dict]:
                     except Exception as e:
                         log(f"  產品頁爬取失敗: {e}")
 
+            except Exception as e:
+                log(f"  分類頁爬取失敗: {e}")
+
         # === 3. 更新已知產品 URL 清單 ===
         known_urls = load_known_product_urls()
         current_urls = list(set(
