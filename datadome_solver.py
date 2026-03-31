@@ -149,11 +149,16 @@ def solve_datadome(page, page_url: str) -> bool:
         if dd_cookie:
             submit_params["dmd_cookie"] = f"datadome={dd_cookie}"
 
-        logger.info(f"2Captcha 送出: pageurl={page_url}, proxy={proxy_for_2captcha[:30]}..., captcha_url={captcha_url[:80]}...")
+        print(f"[2Captcha] 送出: pageurl={page_url}")
+        print(f"[2Captcha] proxy={proxy_for_2captcha}")
+        print(f"[2Captcha] captcha_url={captcha_url[:120]}")
+        print(f"[2Captcha] userAgent={user_agent[:60]}")
+        if dd_cookie:
+            print(f"[2Captcha] dmd_cookie=datadome={dd_cookie[:30]}...")
 
         submit_resp = req.post("https://2captcha.com/in.php", data=submit_params, timeout=30)
         submit_data = submit_resp.json()
-        logger.info(f"2Captcha submit: {submit_data}")
+        print(f"[2Captcha] submit response: {submit_data}")
 
         if submit_data.get("status") != 1:
             logger.error(f"2Captcha 提交失敗: {submit_data.get('request', 'unknown')}")
