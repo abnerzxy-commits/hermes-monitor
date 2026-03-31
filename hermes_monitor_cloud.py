@@ -456,12 +456,14 @@ def send_line_notification(new_products: list[dict]):
             },
         })
 
-    # 補貨統計
+    # 補貨統計 + 簽名
+    footer = "蕭key來買喔～"
     stats = get_restock_stats()
     if stats:
-        messages.append({"type": "text", "text": stats})
+        footer = f"{stats}\n\n蕭key來買喔～"
+    messages.append({"type": "text", "text": footer})
 
-    if not messages:
+    if len(messages) <= 1:
         return False
 
     # LINE 每次最多 5 則訊息
