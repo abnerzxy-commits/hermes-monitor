@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 愛馬仕新品包包監控（雲端版 v2）
-功能：圖片預覽、許願清單、產品頁掃描、一鍵購買、補貨歷史
+功能：圖片預覽、熱門款式、產品頁掃描、一鍵購買、補貨歷史
 """
 
 import json
@@ -39,7 +39,7 @@ HERMES_CATEGORY_URLS = [
 # 系統會自動從分類頁學到的產品 URL 加進來
 HERMES_PRODUCT_URLS_FILE = Path(__file__).parent / "data" / "known_product_urls.json"
 
-# 許願清單（包含這些關鍵字的產品會特別標記）
+# 熱門款式（包含這些關鍵字的產品會特別標記）
 WISHLIST_FILE = Path(__file__).parent / "data" / "wishlist.json"
 DEFAULT_WISHLIST = [
     "Birkin", "Kelly", "Constance", "Picotin", "Lindy",
@@ -62,11 +62,11 @@ def log(msg: str):
 
 
 def load_wishlist() -> list[str]:
-    """載入許願清單"""
+    """載入熱門款式"""
     if WISHLIST_FILE.exists():
         with open(WISHLIST_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
-    # 首次執行建立預設許願清單
+    # 首次執行建立預設熱門款式
     DATA_DIR.mkdir(exist_ok=True)
     with open(WISHLIST_FILE, "w", encoding="utf-8") as f:
         json.dump(DEFAULT_WISHLIST, f, ensure_ascii=False, indent=2)
@@ -74,7 +74,7 @@ def load_wishlist() -> list[str]:
 
 
 def is_wishlist_match(product: dict, wishlist: list[str]) -> bool:
-    """檢查產品是否符合許願清單"""
+    """檢查產品是否符合熱門款式"""
     name = product.get("name", "").lower()
     url = product.get("url", "").lower()
     text = f"{name} {url}"
@@ -324,8 +324,8 @@ def build_flex_message(product: dict, is_wishlist: bool) -> dict:
     image = product.get("image", "")
     price = product.get("price", "")
 
-    # 許願清單標記
-    tag = "⭐ 許願清單命中！" if is_wishlist else "🆕 新品上架"
+    # 熱門款式標記
+    tag = "🔥 熱門款式！" if is_wishlist else "🆕 新品上架"
     tag_color = "#FF0000" if is_wishlist else "#FF6B00"
 
     bubble = {
@@ -406,13 +406,13 @@ def send_line_notification(new_products: list[dict]):
 
     wishlist = load_wishlist()
 
-    # 分類：許願清單 vs 一般新品
+    # 分類：熱門款式 vs 一般新品
     wishlist_products = [p for p in new_products if is_wishlist_match(p, wishlist)]
     normal_products = [p for p in new_products if not is_wishlist_match(p, wishlist)]
 
     messages = []
 
-    # 許願清單命中 → 特別通知（排最前面）
+    # 熱門款式命中 → 特別通知（排最前面）
     if wishlist_products:
         bubbles = []
         for p in wishlist_products[:5]:
@@ -420,7 +420,7 @@ def send_line_notification(new_products: list[dict]):
 
         messages.append({
             "type": "flex",
-            "altText": f"⭐ 許願清單命中！{len(wishlist_products)} 件",
+            "altText": f"🔥 熱門款式！{len(wishlist_products)} 件",
             "contents": {
                 "type": "carousel",
                 "contents": bubbles,
@@ -465,7 +465,7 @@ def send_line_notification(new_products: list[dict]):
             timeout=10,
         )
         if resp.status_code == 200:
-            log(f"✅ LINE 通知成功（許願清單 {len(wishlist_products)} 件 + 一般 {len(normal_products)} 件）")
+            log(f"✅ LINE 通知成功（熱門款式 {len(wishlist_products)} 件 + 一般 {len(normal_products)} 件）")
             return True
         else:
             log(f"❌ LINE 通知失敗: {resp.status_code} {resp.text}")
@@ -511,19 +511,19 @@ def main():
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "--test":
-        log("測試模式：發送測試通知（含圖片 + 許願清單）")
+        log("測試模式：發送測試通知（含圖片 + 熱門款式）")
         test_products = [
             {
                 "name": "Picotin Lock 18 手提包",
                 "url": "https://www.hermes.com/tw/zh/product/picotin-lock-18%E6%89%8B%E6%8F%90%E5%8C%85-H056289CK18/",
                 "image": "https://assets.hermes.com/is/image/hermesproduct/picotin-lock-18-bag--073055CK18-worn-1-0-0-800-800_g.jpg",
-                "price": "NT$ 128,300",
+                "price": "NT$ 172,500",
             },
             {
                 "name": "En Piste手拿包",
                 "url": "https://www.hermes.com/tw/zh/product/en-piste%E6%89%8B%E6%8B%BF%E5%8C%85-H084948CP89/",
-                "image": "https://assets.hermes.com/is/image/hermesproduct/en-piste-clutch--H084948CP89-worn-1-0-0-800-800_g.jpg",
-                "price": "NT$ 95,700",
+                "image": "https://assets.hermes.com/is/image/hermesproduct/en-piste%E6%89%8B%E6%8B%BF%E5%8C%85--084948CP89-front-wm-1-0-0-800-800_g.jpg",
+                "price": "NT$ 252,300",
             },
         ]
         send_line_notification(test_products)
