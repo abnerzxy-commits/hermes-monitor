@@ -16,6 +16,12 @@ import requests
 from playwright.sync_api import sync_playwright
 
 try:
+    from playwright_stealth import Stealth
+    HAS_STEALTH = True
+except ImportError:
+    HAS_STEALTH = False
+
+try:
     from dotenv import load_dotenv
     load_dotenv(Path(__file__).parent / ".env")
 except ImportError:
@@ -91,13 +97,30 @@ def save_known_product_urls(urls: list[str]):
 
 
 def scrape_hermes() -> list[dict]:
-    """用 Playwright 爬愛馬仕（分類頁 + 個別產品頁）"""
+    """用 Playwright + stealth 爬愛馬仕（分類頁 + 個別產品頁），自動重試"""
+    # 最多重試 3 次
+    for attempt in range(3):
+        result = _scrape_hermes_once(attempt)
+        if result:
+            return result
+        log(f"  第 {attempt + 1} 次嘗試失敗，重試中...")
+        time.sleep(3)
+    log("⚠️ 3 次嘗試都失敗")
+    return []
+
+
+def _scrape_hermes_once(attempt: int) -> list[dict]:
+    """單次爬取嘗試"""
     all_products = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
             headless=True,
-            args=["--no-sandbox", "--disable-dev-shm-usage"],
+            args=[
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-blink-features=AutomationControlled",
+            ],
         )
         context = browser.new_context(
             user_agent=(
@@ -109,11 +132,18 @@ def scrape_hermes() -> list[dict]:
             viewport={"width": 1920, "height": 1080},
         )
 
+        # 套用 stealth（如果有安裝）
+        stealth = None
+        if HAS_STEALTH:
+            stealth = Stealth()
+
         # === 1. 爬分類頁 ===
         for url in HERMES_CATEGORY_URLS:
             log(f"正在爬取分類頁: {url}")
             try:
                 page = context.new_page()
+                if stealth:
+                    stealth.apply_stealth_sync(page)
                 resp = page.goto(url, wait_until="networkidle", timeout=60000)
                 status = resp.status if resp else 0
                 log(f"  HTTP 狀態: {status}")
@@ -121,7 +151,8 @@ def scrape_hermes() -> list[dict]:
                 if status == 403:
                     log("  ⚠️ 被 DataDome 擋住 (403)")
                     page.close()
-                    continue
+                    browser.close()
+                    return []  # 觸發重試
 
                 page.wait_for_timeout(5000)
                 for _ in range(3):
@@ -168,6 +199,8 @@ def scrape_hermes() -> list[dict]:
             for product_url in known_urls:
                 try:
                     page = context.new_page()
+                    if stealth:
+                        stealth.apply_stealth_sync(page)
                     resp = page.goto(product_url, wait_until="networkidle", timeout=30000)
                     status = resp.status if resp else 0
 
