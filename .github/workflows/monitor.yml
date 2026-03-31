@@ -2,9 +2,8 @@ name: Hermès Monitor
 
 on:
   schedule:
-    # 每小時整點執行
     - cron: '0 * * * *'
-  workflow_dispatch: # 手動觸發
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -20,14 +19,10 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
-
       - name: Install dependencies
         run: |
-          pip install setuptools undetected-chromedriver selenium requests python-dotenv certifi
+          pip install playwright requests python-dotenv
+          playwright install chromium --with-deps
 
       - name: Run monitor
         env:

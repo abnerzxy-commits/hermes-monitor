@@ -1,33 +1,25 @@
 #!/usr/bin/env python3
 """
 愛馬仕新品包包監控（雲端版）
-使用 undetected-chromedriver，不依賴本機 Chrome session
+使用 Playwright，適合 GitHub Actions
 """
 
 import json
 import os
-import ssl
 import sys
 import hashlib
 import time
 from datetime import datetime
 from pathlib import Path
 
-import certifi
-os.environ["SSL_CERT_FILE"] = certifi.where()
-os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
-ssl._create_default_https_context = ssl._create_unverified_context
-
 import requests
-import undetected_chromedriver as uc
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from playwright.sync_api import sync_playwright
+
 try:
     from dotenv import load_dotenv
     load_dotenv(Path(__file__).parent / ".env")
 except ImportError:
-    pass  # GitHub Actions 用環境變數，不需要 dotenv
+    pass
 
 LINE_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
 LINE_USER_ID = os.getenv("LINE_USER_ID")
@@ -51,75 +43,87 @@ def log(msg: str):
 
 
 def scrape_hermes() -> list[dict]:
-    """用 undetected-chromedriver 爬愛馬仕"""
+    """用 Playwright 爬愛馬仕"""
     all_products = []
 
-    options = uc.ChromeOptions()
-    options.add_argument("--headless=new")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--window-size=1920,1080")
-    options.add_argument("--lang=zh-TW")
-
-    driver = None
-    try:
-        driver = uc.Chrome(options=options)
+    with sync_playwright() as p:
+        browser = p.chromium.launch(
+            headless=True,
+            args=["--no-sandbox", "--disable-dev-shm-usage"],
+        )
+        context = browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            ),
+            locale="zh-TW",
+            viewport={"width": 1920, "height": 1080},
+        )
 
         for url in HERMES_URLS:
             log(f"正在爬取: {url}")
-            driver.get(url)
+            try:
+                page = context.new_page()
+                resp = page.goto(url, wait_until="networkidle", timeout=60000)
 
-            # 等待頁面載入
-            time.sleep(10)
+                status = resp.status if resp else 0
+                log(f"  HTTP 狀態: {status}")
 
-            # 檢查是否被擋
-            page_source = driver.page_source
-            if "被禁止" in page_source or "captcha" in page_source.lower():
-                log("⚠️ 被 DataDome 擋住，可能需要換 IP")
-                continue
-
-            # 滾動載入更多
-            for _ in range(3):
-                driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-                time.sleep(2)
-
-            # 抓取產品連結
-            product_links = driver.find_elements(By.CSS_SELECTOR, 'a[href*="/product/"]')
-            log(f"  找到 {len(product_links)} 個產品連結")
-
-            seen = set()
-            for link in product_links:
-                try:
-                    href = link.get_attribute("href")
-                    if not href or href in seen:
-                        continue
-                    seen.add(href)
-
-                    name = link.text.strip().replace("\n", " ")[:200]
-                    img = ""
-                    try:
-                        img_el = link.find_element(By.CSS_SELECTOR, "img")
-                        img = img_el.get_attribute("src") or ""
-                    except Exception:
-                        pass
-
-                    product_id = hashlib.md5(href.encode()).hexdigest()[:12]
-                    all_products.append({
-                        "id": product_id,
-                        "name": name,
-                        "url": href,
-                        "image": img,
-                        "first_seen": datetime.now().isoformat(),
-                    })
-                except Exception:
+                if status == 403:
+                    log("  ⚠️ 被 DataDome 擋住 (403)")
+                    page.close()
                     continue
 
-    except Exception as e:
-        log(f"爬蟲錯誤: {e}")
-    finally:
-        if driver:
-            driver.quit()
+                # 等待頁面載入
+                page.wait_for_timeout(5000)
+
+                # 滾動載入更多
+                for _ in range(3):
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                    page.wait_for_timeout(2000)
+
+                # 抓取產品
+                products_data = page.evaluate("""
+                    () => {
+                        const links = document.querySelectorAll('a[href*="/product/"]');
+                        const products = [];
+                        const seen = {};
+                        for (const a of links) {
+                            const href = a.href;
+                            if (seen[href]) continue;
+                            seen[href] = true;
+                            const name = a.textContent.trim().replace(/\\s+/g, ' ').substring(0, 200);
+                            let img = '';
+                            const imgEl = a.querySelector('img');
+                            if (imgEl) img = imgEl.src || imgEl.dataset?.src || '';
+                            products.push({name, url: href, image: img});
+                        }
+                        return products;
+                    }
+                """)
+
+                log(f"  找到 {len(products_data)} 個產品")
+
+                for pd in products_data:
+                    product_id = hashlib.md5(pd["url"].encode()).hexdigest()[:12]
+                    product = {
+                        "id": product_id,
+                        "name": pd.get("name", ""),
+                        "url": pd.get("url", ""),
+                        "image": pd.get("image", ""),
+                        "first_seen": datetime.now().isoformat(),
+                    }
+                    if not any(ep["id"] == product_id for ep in all_products):
+                        all_products.append(product)
+
+                page.close()
+
+            except Exception as e:
+                log(f"  爬取失敗: {e}")
+                continue
+
+        browser.close()
 
     log(f"總共找到 {len(all_products)} 個產品")
     return all_products
@@ -193,7 +197,7 @@ def main():
     current_products = scrape_hermes()
 
     if not current_products:
-        log("⚠️ 未爬到任何產品")
+        log("⚠️ 未爬到任何產品（可能被 DataDome 擋住）")
         return
 
     previous = load_previous_products()
