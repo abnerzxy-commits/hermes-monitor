@@ -184,78 +184,54 @@ def _scrape_hermes_once(attempt: int) -> list[dict]:
                     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                     page.wait_for_timeout(2000)
 
+                # 從分類頁一次抓齊：名稱、價格、圖片、連結
                 products_data = page.evaluate("""
                     () => {
                         const links = document.querySelectorAll('a[href*="/product/"]');
+                        const imgs = document.querySelectorAll('img[src*="hermesproduct"]');
                         const products = [];
                         const seen = {};
+
+                        // 收集所有產品圖片
+                        const imgList = Array.from(imgs).map(i => i.src || '');
+
+                        // 從 script 裡找價格
+                        const prices = [];
+                        const scripts = document.querySelectorAll('script');
+                        for (const s of scripts) {
+                            const t = s.textContent || '';
+                            const m = t.match(/"name":"([\d.]+)","selected"/g);
+                            if (m) {
+                                for (const match of m) {
+                                    const p = match.match(/"name":"([\d.]+)"/);
+                                    if (p) prices.push(parseFloat(p[1]));
+                                }
+                            }
+                        }
+
+                        let idx = 0;
                         for (const a of links) {
                             const href = a.href;
                             if (seen[href]) continue;
                             seen[href] = true;
                             const name = a.textContent.trim().replace(/\\s+/g, ' ').substring(0, 200);
-                            let img = '';
-                            let imgEl = a.querySelector('img');
-                            if (!imgEl) {
-                                const parent = a.closest('[class*=grid], [class*=product], li');
-                                if (parent) imgEl = parent.querySelector('img');
-                            }
-                            if (imgEl) img = imgEl.src || imgEl.dataset?.src || '';
-                            products.push({name, url: href, image: img});
+                            const image = imgList[idx] || '';
+                            const price = prices[idx] ? 'NT$ ' + prices[idx].toLocaleString() : '';
+                            products.push({name, url: href, image, price});
+                            idx++;
                         }
                         return products;
                     }
                 """)
 
-                log(f"  分類頁找到 {len(products_data)} 個產品連結")
-                page.close()
-
-                # === 2. 進入每個產品頁抓價格和大圖 ===
+                log(f"  分類頁找到 {len(products_data)} 個產品")
                 for pd in products_data:
-                    product_url = pd.get("url", "")
-                    if not product_url:
-                        continue
-                    try:
-                        log(f"  進入產品頁: {product_url[:60]}...")
-                        page = context.new_page()
-                        if stealth:
-                            stealth.apply_stealth_sync(page)
-                        resp = page.goto(product_url, wait_until="networkidle", timeout=30000)
-                        status = resp.status if resp else 0
-                        log(f"    產品頁 HTTP: {status}")
-                        if status == 200:
-                            detail = page.evaluate("""
-                                () => {
-                                    const h1 = document.querySelector('h1');
-                                    const name = h1 ? h1.textContent.trim() : '';
-                                    const priceEl = document.querySelector('[class*="price"], [class*="Price"]');
-                                    let price = priceEl ? priceEl.textContent.trim() : '';
-                                    price = price.replace(/^Price\\s*:\\s*/i, '').trim();
-                                    const imgs = document.querySelectorAll('img[src*="hermesproduct"]');
-                                    let image = '';
-                                    if (imgs.length > 0) {
-                                        image = imgs[0].src.replace(/\\d+-\\d+_g\\.jpg/, '800-800_g.jpg');
-                                    }
-                                    return { name, price, image, url: location.href };
-                                }
-                            """)
-                            product = make_product(detail)
-                            if not any(ep["id"] == product["id"] for ep in all_products):
-                                all_products.append(product)
-                                log(f"  ✅ {detail.get('name', '')} | {detail.get('price', '')}")
-                        else:
-                            # 產品頁被擋，用分類頁的基本資料
-                            log(f"    產品頁被擋，用基本資料")
-                            product = make_product(pd)
-                            if not any(ep["id"] == product["id"] for ep in all_products):
-                                all_products.append(product)
-                        page.close()
-                    except Exception as e:
-                        log(f"  產品頁爬取失敗: {e}")
-                        # fallback: 用分類頁資料
-                        product = make_product(pd)
-                        if not any(ep["id"] == product["id"] for ep in all_products):
-                            all_products.append(product)
+                    product = make_product(pd)
+                    if not any(ep["id"] == product["id"] for ep in all_products):
+                        all_products.append(product)
+                        log(f"  ✅ {pd.get('name', '')} | {pd.get('price', '')} | 圖:{bool(pd.get('image'))}")
+
+                page.close()
 
             except Exception as e:
                 log(f"  分類頁爬取失敗: {e}")
