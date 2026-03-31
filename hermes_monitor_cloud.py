@@ -182,57 +182,45 @@ def _scrape_hermes_once(attempt: int) -> list[dict]:
                     }
                 """)
 
-                log(f"  分類頁找到 {len(products_data)} 個產品")
-                for pd in products_data:
-                    product = make_product(pd)
-                    if not any(ep["id"] == product["id"] for ep in all_products):
-                        all_products.append(product)
-
+                log(f"  分類頁找到 {len(products_data)} 個產品連結")
                 page.close()
-            except Exception as e:
-                log(f"  分類頁爬取失敗: {e}")
 
-        # === 2. 爬個別產品頁（提前偵測） ===
-        known_urls = load_known_product_urls()
-        if known_urls:
-            log(f"正在掃描 {len(known_urls)} 個已知產品頁...")
-            for product_url in known_urls:
-                try:
-                    page = context.new_page()
-                    if stealth:
-                        stealth.apply_stealth_sync(page)
-                    resp = page.goto(product_url, wait_until="networkidle", timeout=30000)
-                    status = resp.status if resp else 0
-
-                    if status == 200:
-                        product_data = page.evaluate("""
-                            () => {
-                                const name = document.querySelector('h1, [class*="product-name"], [class*="ProductName"]');
-                                const price = document.querySelector('[class*="price"], [class*="Price"]');
-                                const img = document.querySelector('[class*="product"] img, .hero img, main img');
-                                const addToCart = document.querySelector('[class*="add-to-cart"], [class*="AddToCart"], button[class*="cart"]');
-                                return {
-                                    name: name ? name.textContent.trim() : '',
-                                    price: price ? price.textContent.trim() : '',
-                                    image: img ? (img.src || img.dataset?.src || '') : '',
-                                    available: !!addToCart,
-                                    url: location.href,
-                                };
-                            }
-                        """)
-
-                        if product_data.get("name"):
-                            product = make_product(product_data)
-                            product["price"] = product_data.get("price", "")
-                            product["available"] = product_data.get("available", False)
+                # === 2. 進入每個產品頁抓價格和大圖 ===
+                for pd in products_data:
+                    product_url = pd.get("url", "")
+                    if not product_url:
+                        continue
+                    try:
+                        page = context.new_page()
+                        if stealth:
+                            stealth.apply_stealth_sync(page)
+                        resp = page.goto(product_url, wait_until="networkidle", timeout=30000)
+                        if resp and resp.status == 200:
+                            detail = page.evaluate("""
+                                () => {
+                                    const h1 = document.querySelector('h1');
+                                    const name = h1 ? h1.textContent.trim() : '';
+                                    const priceEl = document.querySelector('[class*="price"], [class*="Price"]');
+                                    let price = priceEl ? priceEl.textContent.trim() : '';
+                                    price = price.replace(/^Price\\s*:\\s*/i, '').trim();
+                                    const imgs = document.querySelectorAll('img[src*="hermesproduct"]');
+                                    let image = '';
+                                    if (imgs.length > 0) {
+                                        image = imgs[0].src.replace(/\\d+-\\d+_g\\.jpg/, '800-800_g.jpg');
+                                    }
+                                    return { name, price, image, url: location.href };
+                                }
+                            """)
+                            product = make_product(detail)
                             if not any(ep["id"] == product["id"] for ep in all_products):
                                 all_products.append(product)
-
-                    page.close()
-                except Exception:
-                    pass
+                                log(f"  ✅ {detail.get('name', '')} | {detail.get('price', '')}")
+                        page.close()
+                    except Exception as e:
+                        log(f"  產品頁爬取失敗: {e}")
 
         # === 3. 更新已知產品 URL 清單 ===
+        known_urls = load_known_product_urls()
         current_urls = list(set(
             known_urls + [p["url"] for p in all_products if p.get("url")]
         ))
