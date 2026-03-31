@@ -216,11 +216,14 @@ def _scrape_hermes_once(attempt: int) -> list[dict]:
                     if not product_url:
                         continue
                     try:
+                        log(f"  進入產品頁: {product_url[:60]}...")
                         page = context.new_page()
                         if stealth:
                             stealth.apply_stealth_sync(page)
                         resp = page.goto(product_url, wait_until="networkidle", timeout=30000)
-                        if resp and resp.status == 200:
+                        status = resp.status if resp else 0
+                        log(f"    產品頁 HTTP: {status}")
+                        if status == 200:
                             detail = page.evaluate("""
                                 () => {
                                     const h1 = document.querySelector('h1');
@@ -240,9 +243,19 @@ def _scrape_hermes_once(attempt: int) -> list[dict]:
                             if not any(ep["id"] == product["id"] for ep in all_products):
                                 all_products.append(product)
                                 log(f"  ✅ {detail.get('name', '')} | {detail.get('price', '')}")
+                        else:
+                            # 產品頁被擋，用分類頁的基本資料
+                            log(f"    產品頁被擋，用基本資料")
+                            product = make_product(pd)
+                            if not any(ep["id"] == product["id"] for ep in all_products):
+                                all_products.append(product)
                         page.close()
                     except Exception as e:
                         log(f"  產品頁爬取失敗: {e}")
+                        # fallback: 用分類頁資料
+                        product = make_product(pd)
+                        if not any(ep["id"] == product["id"] for ep in all_products):
+                            all_products.append(product)
 
             except Exception as e:
                 log(f"  分類頁爬取失敗: {e}")
