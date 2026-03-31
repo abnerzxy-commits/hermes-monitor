@@ -30,6 +30,15 @@ except ImportError:
 LINE_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
 LINE_USER_ID = os.getenv("LINE_USER_ID")
 
+# DataDome 解題
+try:
+    sys.path.insert(0, str(Path(__file__).parent))
+    from datadome_solver import solve_datadome, setup_solver, with_datadome_bypass
+    setup_solver()
+    HAS_SOLVER = True
+except ImportError:
+    HAS_SOLVER = False
+
 # 分類頁 URL
 HERMES_CATEGORY_URLS = [
     "https://www.hermes.com/tw/zh/category/leather-goods/bags-and-clutches/womens-bags-and-clutches/",
@@ -96,6 +105,14 @@ def save_known_product_urls(urls: list[str]):
         json.dump(urls, f, ensure_ascii=False, indent=2)
 
 
+def solve_datadome_captcha(page, page_url: str) -> bool:
+    """用共用模組解 DataDome CAPTCHA"""
+    if not HAS_SOLVER:
+        log("  DataDome solver 未載入，跳過")
+        return False
+    return solve_datadome(page, page_url)
+
+
 def scrape_hermes() -> list[dict]:
     """用 Playwright + stealth 爬愛馬仕（分類頁 + 個別產品頁），自動重試"""
     # 最多重試 3 次
@@ -149,10 +166,18 @@ def _scrape_hermes_once(attempt: int) -> list[dict]:
                 log(f"  HTTP 狀態: {status}")
 
                 if status == 403:
-                    log("  ⚠️ 被 DataDome 擋住 (403)")
-                    page.close()
-                    browser.close()
-                    return []  # 觸發重試
+                    log("  ⚠️ 被 DataDome 擋住 (403)，嘗試解 CAPTCHA...")
+                    solved = solve_datadome_captcha(page, url)
+                    if solved:
+                        log("  ✅ CAPTCHA 解開！重新載入頁面")
+                        resp = page.goto(url, wait_until="networkidle", timeout=60000)
+                        status = resp.status if resp else 0
+                        log(f"  重新載入 HTTP 狀態: {status}")
+                    if status == 403:
+                        log("  ❌ CAPTCHA 解題失敗")
+                        page.close()
+                        browser.close()
+                        return []  # 觸發重試
 
                 page.wait_for_timeout(5000)
                 for _ in range(3):
