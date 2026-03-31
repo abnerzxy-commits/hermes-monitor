@@ -454,13 +454,14 @@ def send_line_notification(new_products: list[dict]):
     messages = messages[:5]
 
     try:
+        # Broadcast：所有加好友的人都會收到
         resp = requests.post(
-            "https://api.line.me/v2/bot/message/push",
+            "https://api.line.me/v2/bot/message/broadcast",
             headers={
                 "Content-Type": "application/json",
                 "Authorization": f"Bearer {LINE_TOKEN}",
             },
-            json={"to": LINE_USER_ID, "messages": messages},
+            json={"messages": messages},
             timeout=10,
         )
         if resp.status_code == 200:
