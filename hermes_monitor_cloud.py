@@ -142,7 +142,16 @@ def _scrape_hermes_once(attempt: int) -> list[dict]:
             ],
         }
         if proxy_url:
-            launch_args["proxy"] = {"server": proxy_url}
+            # 解析 http://user:pass@host:port 格式
+            from urllib.parse import urlparse
+            parsed = urlparse(proxy_url)
+            proxy_config = {"server": f"http://{parsed.hostname}:{parsed.port}"}
+            if parsed.username:
+                proxy_config["username"] = parsed.username
+            if parsed.password:
+                proxy_config["password"] = parsed.password
+            launch_args["proxy"] = proxy_config
+            log(f"使用 proxy: {parsed.hostname}:{parsed.port}")
 
         browser = p.chromium.launch(**launch_args)
         context = browser.new_context(
