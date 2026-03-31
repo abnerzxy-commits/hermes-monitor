@@ -294,6 +294,7 @@ def record_restock_history(new_products: list[dict]):
         history.append({
             "name": p.get("name", ""),
             "url": p.get("url", ""),
+            "price": p.get("price", ""),
             "timestamp": now.isoformat(),
             "weekday": now.strftime("%A"),
             "hour": now.hour,
@@ -303,6 +304,43 @@ def record_restock_history(new_products: list[dict]):
     history = history[-500:]
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
+
+
+def parse_price(price_str: str) -> float:
+    """解析價格字串為數字，例如 'NT$ 252,300' → 252300.0"""
+    import re
+    nums = re.sub(r"[^\d.]", "", price_str)
+    return float(nums) if nums else 0
+
+
+def get_price_comparison(product: dict) -> str:
+    """比對產品的歷史價格，如果現在比較便宜就回傳提示"""
+    if not HISTORY_FILE.exists():
+        return ""
+
+    current_price = parse_price(product.get("price", ""))
+    if current_price <= 0:
+        return ""
+
+    name = product.get("name", "").lower()
+
+    with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+        history = json.load(f)
+
+    # 找同名產品的歷史最高價
+    highest = 0
+    for entry in history:
+        if entry.get("name", "").lower() == name or name in entry.get("name", "").lower():
+            hist_price = parse_price(entry.get("price", ""))
+            if hist_price > highest:
+                highest = hist_price
+
+    if highest > 0 and current_price < highest:
+        diff = highest - current_price
+        pct = round(diff / highest * 100)
+        return f"📉 比歷史價便宜 {pct}%（歷史 NT$ {int(highest):,}）"
+
+    return ""
 
 
 def get_restock_stats() -> str:
@@ -403,6 +441,18 @@ def build_flex_message(product: dict, is_wishlist: bool) -> dict:
             "text": f"💰 {price}",
             "size": "md",
             "color": "#333333",
+            "margin": "sm",
+        })
+
+    # 比對歷史價格
+    price_note = get_price_comparison(product)
+    if price_note:
+        bubble["body"]["contents"].append({
+            "type": "text",
+            "text": price_note,
+            "size": "sm",
+            "color": "#E5004F",
+            "weight": "bold",
             "margin": "sm",
         })
 
