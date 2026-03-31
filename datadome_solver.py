@@ -108,6 +108,11 @@ def solve_datadome(page, page_url: str) -> bool:
 
         logger.info(f"找到 CAPTCHA: {captcha_url[:80]}...")
 
+        # t=bv 代表 IP 被 ban，2Captcha 無法解
+        if "t=bv" in captcha_url:
+            print("[2Captcha] IP 被 DataDome ban (t=bv)，無法解題，跳過")
+            return False
+
         # 2. 取得 User-Agent
         user_agent = page.evaluate("() => navigator.userAgent")
 
