@@ -131,14 +131,20 @@ def _scrape_hermes_once(attempt: int) -> list[dict]:
     all_products = []
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=True,
-            args=[
+        # 設定 proxy（如果有的話，讓爬蟲也走 proxy，跟 2Captcha 同 IP）
+        proxy_url = os.getenv("CAPTCHA_PROXY", "")
+        launch_args = {
+            "headless": True,
+            "args": [
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
                 "--disable-blink-features=AutomationControlled",
             ],
-        )
+        }
+        if proxy_url:
+            launch_args["proxy"] = {"server": proxy_url}
+
+        browser = p.chromium.launch(**launch_args)
         context = browser.new_context(
             user_agent=(
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "

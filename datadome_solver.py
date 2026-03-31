@@ -111,16 +111,24 @@ def solve_datadome(page, page_url: str) -> bool:
         # 2. 取得 User-Agent
         user_agent = page.evaluate("() => navigator.userAgent")
 
-        # 3. 送給 2Captcha 解題
+        # 3. 取得 proxy（DataDome 要求 2Captcha 從同 IP 解題）
+        proxy = os.getenv("CAPTCHA_PROXY", "")
+        if not proxy:
+            logger.error("CAPTCHA_PROXY 未設定（DataDome 需要 proxy）")
+            return False
+
+        # 4. 送給 2Captcha 解題
         solver = TwoCaptcha(api_key)
         result = solver.datadome(
-            websiteURL=page_url,
-            captchaUrl=captcha_url,
+            captcha_url=captcha_url,
+            pageurl=page_url,
             userAgent=user_agent,
+            proxy=proxy,
+            proxytype="http",
         )
 
-        if result and result.get("code"):
-            datadome_cookie = result["code"]
+        if result and (result.get("code") or result.get("cookie")):
+            datadome_cookie = result.get("cookie") or result.get("code")
             logger.info("2Captcha 解題成功！")
 
             # 4. 設定新的 datadome cookie

@@ -30,6 +30,7 @@ jobs:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
           TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
+          CAPTCHA_PROXY: ${{ secrets.CAPTCHA_PROXY }}
         run: python hermes_monitor_cloud.py || true
 
       - name: Commit updated products
