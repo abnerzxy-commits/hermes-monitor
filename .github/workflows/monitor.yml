@@ -1,0 +1,41 @@
+name: Hermès Monitor
+
+on:
+  schedule:
+    # 每小時整點執行
+    - cron: '0 * * * *'
+  workflow_dispatch: # 手動觸發
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Install dependencies
+        run: |
+          pip install undetected-chromedriver selenium requests python-dotenv certifi
+
+      - name: Run monitor
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python hermes_monitor_cloud.py
+
+      - name: Commit updated products
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/products.json data/monitor.log || true
+          git diff --cached --quiet || git commit -m "update products $(date -u +%Y-%m-%dT%H:%M)"
+          git push || true

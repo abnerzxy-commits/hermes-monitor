@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+data/monitor.log
+data/cron.log
+data/cookies.json
+data/*.png
+data/*.html
