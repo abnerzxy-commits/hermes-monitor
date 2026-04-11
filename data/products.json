@@ -4,24 +4,48 @@
     "name": "En Piste手拿包",
     "url": "https://www.hermes.com/tw/zh/product/en-piste%E6%89%8B%E6%8B%BF%E5%8C%85-H084948CP89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084948CP89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
-    "price": "NT$ 140,500",
-    "first_seen": "2026-04-11T11:58:47.487952"
+    "price": "NT$ 83,400",
+    "first_seen": "2026-04-11T14:07:47.485493"
+  },
+  "b5428ebc3952": {
+    "id": "b5428ebc3952",
+    "name": "Herbag Zip 20手提包",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-20%E6%89%8B%E6%8F%90%E5%8C%85-H086430CKAM/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086430CKAM_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
+    "price": "NT$ 105,300",
+    "first_seen": "2026-04-11T14:07:47.485563"
   },
   "4a7355082d02": {
     "id": "4a7355082d02",
     "name": "Boucle Sellier Chaine肩背包",
     "url": "https://www.hermes.com/tw/zh/product/boucle-sellier-chaine%E8%82%A9%E8%83%8C%E5%8C%85-H085745CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/085745CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
-    "price": "NT$ 161,900",
-    "first_seen": "2026-04-11T11:58:47.488023"
+    "price": "NT$ 131,000",
+    "first_seen": "2026-04-11T14:07:47.485611"
+  },
+  "f5d3452f3b76": {
+    "id": "f5d3452f3b76",
+    "name": "Hermès Della Cavalleria Elan肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/hermes-della-cavalleria-elan%E8%82%A9%E8%83%8C%E5%8C%85-H084658CKQ0/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/084658CKQ0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
+    "price": "NT$ 140,500",
+    "first_seen": "2026-04-11T14:07:47.485654"
   },
   "0bf26d451ce7": {
     "id": "0bf26d451ce7",
     "name": "Hermès Videpoches肩背包",
     "url": "https://www.hermes.com/tw/zh/product/hermes-videpoches%E8%82%A9%E8%83%8C%E5%8C%85-H084024CKAE/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/084024CKAE_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/084024CKAE_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=900&hei=900",
+    "price": "NT$ 161,900",
+    "first_seen": "2026-04-11T14:07:47.485694"
+  },
+  "3482e8280bdd": {
+    "id": "3482e8280bdd",
+    "name": "Evelyne 16 Amazone肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-16-amazone%E8%82%A9%E8%83%8C%E5%8C%85-H069426CKFK/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069426CKFK_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
     "price": "NT$ 252,300",
-    "first_seen": "2026-04-11T11:58:47.488080"
+    "first_seen": "2026-04-11T14:07:47.485733"
   },
   "b4c3722aacce": {
     "id": "b4c3722aacce",
@@ -29,14 +53,54 @@
     "url": "https://www.hermes.com/tw/zh/product/poche-cliquetis%E8%82%A9%E8%83%8C%E5%8C%85-H086915CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/086915CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
     "price": "NT$ 266,600",
-    "first_seen": "2026-04-11T11:58:47.488131"
+    "first_seen": "2026-04-11T14:07:47.485771"
   },
   "fd355ae16c67": {
     "id": "fd355ae16c67",
     "name": "Hermès Videpoches肩背包",
     "url": "https://www.hermes.com/tw/zh/product/hermes-videpoches%E8%82%A9%E8%83%8C%E5%8C%85-H086942CKAC/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/086942CKAC_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=900&hei=900",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086942CKAC_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
+    "price": "NT$ 280,900",
+    "first_seen": "2026-04-11T14:07:47.485809"
+  },
+  "9b0a114405b8": {
+    "id": "9b0a114405b8",
+    "name": "Evelyne 16 Sellier肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-16-sellier%E8%82%A9%E8%83%8C%E5%8C%85-H087080CC37/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087080CC37_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
     "price": "NT$ 576,000",
-    "first_seen": "2026-04-11T11:58:47.488181"
+    "first_seen": "2026-04-11T14:07:47.485845"
+  },
+  "a0752fbe3691": {
+    "id": "a0752fbe3691",
+    "name": "Herbag Zip 20手提包",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-20%E6%89%8B%E6%8F%90%E5%8C%85-H085414CCAB/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/085414CCAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
+    "price": "",
+    "first_seen": "2026-04-11T14:07:47.485888"
+  },
+  "25385282412e": {
+    "id": "25385282412e",
+    "name": "Evelyne 16 Amazone肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-16-amazone%E8%82%A9%E8%83%8C%E5%8C%85-H069426CKAV/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069426CKAV_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
+    "price": "",
+    "first_seen": "2026-04-11T14:07:47.485927"
+  },
+  "e496164bed4d": {
+    "id": "e496164bed4d",
+    "name": "Evelyne 16 Amazone肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-16-amazone%E8%82%A9%E8%83%8C%E5%8C%85-H069426CCAV/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069426CCAV_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=900&hei=900",
+    "price": "",
+    "first_seen": "2026-04-11T14:07:47.485964"
+  },
+  "0998330da767": {
+    "id": "0998330da767",
+    "name": "Picotin Lock 22手提包",
+    "url": "https://www.hermes.com/tw/zh/product/picotin-lock-22%E6%89%8B%E6%8F%90%E5%8C%85-H060991CC89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/060991CC89_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0&$product_item_grid_g$&wid=800&hei=800",
+    "price": "",
+    "first_seen": "2026-04-11T14:07:47.486001"
   }
 }

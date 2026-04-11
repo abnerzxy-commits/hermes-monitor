@@ -46,5 +46,69 @@
     "timestamp": "2026-04-07T06:09:58.015701",
     "weekday": "Tuesday",
     "hour": 6
+  },
+  {
+    "name": "Herbag Zip 20手提包",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-20%E6%89%8B%E6%8F%90%E5%8C%85-H086430CKAM/",
+    "price": "NT$ 105,300",
+    "timestamp": "2026-04-11T14:07:47.545948",
+    "weekday": "Saturday",
+    "hour": 14
+  },
+  {
+    "name": "Hermès Della Cavalleria Elan肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/hermes-della-cavalleria-elan%E8%82%A9%E8%83%8C%E5%8C%85-H084658CKQ0/",
+    "price": "NT$ 140,500",
+    "timestamp": "2026-04-11T14:07:47.545948",
+    "weekday": "Saturday",
+    "hour": 14
+  },
+  {
+    "name": "Evelyne 16 Amazone肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-16-amazone%E8%82%A9%E8%83%8C%E5%8C%85-H069426CKFK/",
+    "price": "NT$ 252,300",
+    "timestamp": "2026-04-11T14:07:47.545948",
+    "weekday": "Saturday",
+    "hour": 14
+  },
+  {
+    "name": "Evelyne 16 Sellier肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-16-sellier%E8%82%A9%E8%83%8C%E5%8C%85-H087080CC37/",
+    "price": "NT$ 576,000",
+    "timestamp": "2026-04-11T14:07:47.545948",
+    "weekday": "Saturday",
+    "hour": 14
+  },
+  {
+    "name": "Herbag Zip 20手提包",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-20%E6%89%8B%E6%8F%90%E5%8C%85-H085414CCAB/",
+    "price": "",
+    "timestamp": "2026-04-11T14:07:47.545948",
+    "weekday": "Saturday",
+    "hour": 14
+  },
+  {
+    "name": "Evelyne 16 Amazone肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-16-amazone%E8%82%A9%E8%83%8C%E5%8C%85-H069426CKAV/",
+    "price": "",
+    "timestamp": "2026-04-11T14:07:47.545948",
+    "weekday": "Saturday",
+    "hour": 14
+  },
+  {
+    "name": "Evelyne 16 Amazone肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-16-amazone%E8%82%A9%E8%83%8C%E5%8C%85-H069426CCAV/",
+    "price": "",
+    "timestamp": "2026-04-11T14:07:47.545948",
+    "weekday": "Saturday",
+    "hour": 14
+  },
+  {
+    "name": "Picotin Lock 22手提包",
+    "url": "https://www.hermes.com/tw/zh/product/picotin-lock-22%E6%89%8B%E6%8F%90%E5%8C%85-H060991CC89/",
+    "price": "",
+    "timestamp": "2026-04-11T14:07:47.545948",
+    "weekday": "Saturday",
+    "hour": 14
   }
 ]
