@@ -2,7 +2,7 @@ name: Hermès Monitor
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -20,18 +20,22 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: |
-          pip install playwright playwright-stealth requests python-dotenv 2captcha-python
-          playwright install chromium --with-deps
+        run: pip install requests python-dotenv
 
-      - name: Run monitor
+      - name: Run API monitor (5 rounds, 1 min interval)
         continue-on-error: true
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
-          TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
-          CAPTCHA_PROXY: ${{ secrets.CAPTCHA_PROXY }}
-        run: python hermes_monitor_cloud.py || true
+        run: |
+          for i in 1 2 3 4 5; do
+            echo "=== Round $i/5 ==="
+            python hermes_api_monitor.py || true
+            if [ $i -lt 5 ]; then
+              echo "Waiting 60s..."
+              sleep 60
+            fi
+          done
 
       - name: Commit updated products
         run: |

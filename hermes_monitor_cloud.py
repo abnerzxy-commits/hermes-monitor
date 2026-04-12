@@ -6,6 +6,7 @@
 
 import json
 import os
+import re
 import sys
 import hashlib
 import time
@@ -39,9 +40,15 @@ try:
 except ImportError:
     HAS_SOLVER = False
 
-# 分類頁 URL
+# 分類頁 URL（2026-04-11: 加入各系列子頁，避免漏掉 Lindy/Evelyne 等）
 HERMES_CATEGORY_URLS = [
     "https://www.hermes.com/tw/zh/category/leather-goods/bags-and-clutches/womens-bags-and-clutches/",
+    "https://www.hermes.com/tw/zh/category/leather-goods/bags-and-clutches/lindy/",
+    "https://www.hermes.com/tw/zh/category/leather-goods/bags-and-clutches/evelyne/",
+    "https://www.hermes.com/tw/zh/category/leather-goods/bags-and-clutches/birkin/",
+    "https://www.hermes.com/tw/zh/category/leather-goods/bags-and-clutches/kelly/",
+    "https://www.hermes.com/tw/zh/category/leather-goods/bags-and-clutches/constance/",
+    "https://www.hermes.com/tw/zh/category/leather-goods/bags-and-clutches/picotin/",
 ]
 
 # 個別產品頁 URL（這些產品會比分類頁更早出現，提前 10-20 分鐘通知）
@@ -59,6 +66,9 @@ DATA_DIR = Path(__file__).parent / "data"
 PRODUCTS_FILE = DATA_DIR / "products.json"
 HISTORY_FILE = DATA_DIR / "restock_history.json"
 LOG_FILE = DATA_DIR / "monitor.log"
+CDN_STATE_FILE = DATA_DIR / "cdn_state.json"
+
+SKU_PATTERN = re.compile(r"H?(\d{6}[A-Z]{2}\d{2})", re.IGNORECASE)
 
 
 def log(msg: str):
@@ -88,6 +98,24 @@ def is_wishlist_match(product: dict, wishlist: list[str]) -> bool:
     url = product.get("url", "").lower()
     text = f"{name} {url}"
     return any(w.lower() in text for w in wishlist)
+
+
+def load_cdn_notified_skus() -> set[str]:
+    """載入 CDN 早期預警已通知過的 SKU"""
+    if CDN_STATE_FILE.exists():
+        try:
+            with open(CDN_STATE_FILE, "r", encoding="utf-8") as f:
+                state = json.load(f)
+            return set(state.get("notified", []))
+        except Exception:
+            pass
+    return set()
+
+
+def extract_sku(url: str) -> str | None:
+    """從產品 URL 中提取 SKU"""
+    match = SKU_PATTERN.search(url)
+    return match.group(1).upper() if match else None
 
 
 def load_known_product_urls() -> list[str]:
@@ -369,16 +397,23 @@ def get_restock_stats() -> str:
 
 # === LINE 通知（Flex Message 帶圖片） ===
 
-def build_flex_message(product: dict, is_wishlist: bool) -> dict:
+def build_flex_message(product: dict, is_wishlist: bool, is_cdn_confirmed: bool = False) -> dict:
     """建立單個產品的 Flex Message bubble"""
     name = product.get("name", "未知品名")
     url = product.get("url", "")
     image = product.get("image", "")
     price = product.get("price", "")
 
-    # 熱門款式標記
-    tag = "🔥 熱門款式！" if is_wishlist else "🆕 新品上架"
-    tag_color = "#FF0000" if is_wishlist else "#FF6B00"
+    # 標記優先順序：熱門款式 > CDN 確認上架 > 一般新品
+    if is_wishlist:
+        tag = "🔥 熱門款式！"
+        tag_color = "#FF0000"
+    elif is_cdn_confirmed:
+        tag = "✅ 正式上架！（CDN 已預告）"
+        tag_color = "#00A600"
+    else:
+        tag = "🆕 新品上架"
+        tag_color = "#FF6B00"
 
     bubble = {
         "type": "bubble",
@@ -470,10 +505,19 @@ def send_line_notification(new_products: list[dict]):
         return False
 
     wishlist = load_wishlist()
+    cdn_notified = load_cdn_notified_skus()
 
-    # 分類：熱門款式 vs 一般新品
+    # 檢查每個產品是否曾被 CDN 預警通知過
+    def is_cdn_confirmed(product: dict) -> bool:
+        sku = extract_sku(product.get("url", ""))
+        return sku is not None and sku in cdn_notified
+
+    # 分類：熱門款式 vs CDN 確認上架 vs 一般新品
     wishlist_products = [p for p in new_products if is_wishlist_match(p, wishlist)]
-    normal_products = [p for p in new_products if not is_wishlist_match(p, wishlist)]
+    cdn_confirmed_products = [p for p in new_products
+                              if not is_wishlist_match(p, wishlist) and is_cdn_confirmed(p)]
+    normal_products = [p for p in new_products
+                       if not is_wishlist_match(p, wishlist) and not is_cdn_confirmed(p)]
 
     messages = []
 
@@ -481,11 +525,27 @@ def send_line_notification(new_products: list[dict]):
     if wishlist_products:
         bubbles = []
         for p in wishlist_products[:5]:
-            bubbles.append(build_flex_message(p, is_wishlist=True))
+            cdn_flag = is_cdn_confirmed(p)
+            bubbles.append(build_flex_message(p, is_wishlist=True, is_cdn_confirmed=cdn_flag))
 
         messages.append({
             "type": "flex",
             "altText": f"🔥 熱門款式！{len(wishlist_products)} 件",
+            "contents": {
+                "type": "carousel",
+                "contents": bubbles,
+            },
+        })
+
+    # CDN 已預告 → 現在正式上架
+    if cdn_confirmed_products:
+        bubbles = []
+        for p in cdn_confirmed_products[:5]:
+            bubbles.append(build_flex_message(p, is_wishlist=False, is_cdn_confirmed=True))
+
+        messages.append({
+            "type": "flex",
+            "altText": f"✅ 正式上架！{len(cdn_confirmed_products)} 件（CDN 已預告）",
             "contents": {
                 "type": "carousel",
                 "contents": bubbles,
@@ -532,7 +592,7 @@ def send_line_notification(new_products: list[dict]):
             timeout=10,
         )
         if resp.status_code == 200:
-            log(f"✅ LINE 通知成功（熱門款式 {len(wishlist_products)} 件 + 一般 {len(normal_products)} 件）")
+            log(f"✅ LINE 通知成功（熱門 {len(wishlist_products)} + CDN確認 {len(cdn_confirmed_products)} + 一般 {len(normal_products)} 件）")
             return True
         else:
             log(f"❌ LINE 通知失敗: {resp.status_code} {resp.text}")
@@ -557,9 +617,15 @@ def main():
     if previous:
         new_products = find_new_products(current_products, previous)
         if new_products:
-            log(f"🆕 發現 {len(new_products)} 件新品！")
+            cdn_notified = load_cdn_notified_skus()
+            cdn_count = sum(1 for p in new_products
+                           if extract_sku(p.get("url", "")) in cdn_notified)
+            log(f"🆕 發現 {len(new_products)} 件新品！"
+                f"（其中 {cdn_count} 件 CDN 已預告）" if cdn_count else "")
             for p in new_products:
-                log(f"  - {p.get('name', '未知')} | {p.get('url', '')}")
+                sku = extract_sku(p.get("url", ""))
+                cdn_tag = " [CDN✅]" if sku and sku in cdn_notified else ""
+                log(f"  - {p.get('name', '未知')}{cdn_tag} | {p.get('url', '')}")
 
             # 記錄補貨歷史
             record_restock_history(new_products)

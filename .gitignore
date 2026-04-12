@@ -1,8 +1,26 @@
 .env
+.env.local
 __pycache__/
 *.pyc
+node_modules/
+
+# Logs
 data/monitor.log
 data/cron.log
+data/*.launchd*.log
+data/scraper.log
+data/predictor.log
+data/cdn_warning.log
+data/auto_buy.log
+
+# Sensitive / runtime data
 data/cookies.json
+data/hermes_cookies.json
+data/auto_buy_history.json
+data/auto_buy_rate_limit.json
 data/*.png
 data/*.html
+
+# Next.js
+web/.next/
+web/node_modules/
