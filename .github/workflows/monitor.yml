@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: hermes-monitor
+  cancel-in-progress: true
+
 jobs:
   monitor:
     runs-on: ubuntu-latest
@@ -22,25 +26,34 @@ jobs:
       - name: Install dependencies
         run: pip install requests python-dotenv
 
-      - name: Run API monitor (5 rounds, 1 min interval)
+      - name: Run Vercel cron (5 rounds, 1 min interval)
+        continue-on-error: true
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          for i in 1 2 3 4 5; do
+            echo "=== Vercel scan $i/5 ==="
+            RESULT=$(curl -sf -m 30 "https://hermes.slime-tools.com/api/cron" \
+              -H "Authorization: Bearer $CRON_SECRET" 2>&1) || echo "Vercel cron failed: $RESULT"
+            echo "$RESULT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(f'Scraped: {d.get(\"totalScraped\",0)}, New: {d.get(\"newProducts\",0)}, Duration: {d.get(\"duration\",0)}ms')" 2>/dev/null || true
+            if [ $i -lt 5 ]; then
+              echo "Waiting 55s..."
+              sleep 55
+            fi
+          done
+
+      - name: Run Python monitor as backup
         continue-on-error: true
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
-        run: |
-          for i in 1 2 3 4 5; do
-            echo "=== Round $i/5 ==="
-            python hermes_api_monitor.py || true
-            if [ $i -lt 5 ]; then
-              echo "Waiting 60s..."
-              sleep 60
-            fi
-          done
+        run: python hermes_api_monitor.py || true
 
       - name: Commit updated products
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase || true
           git add data/products.json data/monitor.log data/restock_history.json data/known_product_urls.json data/wishlist.json || true
           git diff --cached --quiet || git commit -m "update products $(date -u +%Y-%m-%dT%H:%M)"
           git push || true
