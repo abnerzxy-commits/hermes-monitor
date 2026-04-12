@@ -7,7 +7,9 @@
     "enabled": true,
     "lastScan": null,
     "productCount": 0,
-    "subscribers": []
+    "subscribers": [
+      "pangwen"
+    ]
   },
   {
     "id": "hermes-cdn",
@@ -17,9 +19,7 @@
     "enabled": true,
     "lastScan": null,
     "productCount": 0,
-    "subscribers": [
-      "abner"
-    ]
+    "subscribers": []
   },
   {
     "id": "blueberry",
