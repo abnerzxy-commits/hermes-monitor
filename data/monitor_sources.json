@@ -1,0 +1,32 @@
+[
+  {
+    "id": "hermes",
+    "name": "愛馬仕包包",
+    "type": "hermes",
+    "scanInterval": 60,
+    "enabled": true,
+    "lastScan": null,
+    "productCount": 0,
+    "subscribers": []
+  },
+  {
+    "id": "hermes-cdn",
+    "name": "愛馬仕 CDN 預警",
+    "type": "hermes",
+    "scanInterval": 30,
+    "enabled": true,
+    "lastScan": null,
+    "productCount": 0,
+    "subscribers": []
+  },
+  {
+    "id": "blueberry",
+    "name": "山丘藍藍莓",
+    "type": "blueberry",
+    "scanInterval": 3600,
+    "enabled": true,
+    "lastScan": null,
+    "productCount": 0,
+    "subscribers": []
+  }
+]
