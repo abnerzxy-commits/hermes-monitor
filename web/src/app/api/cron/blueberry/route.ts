@@ -12,6 +12,23 @@ const API_BASE = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/co
 const BLUEBERRY_API = "https://api.taiwanblueberry.com/api/frontend/products/productDetails";
 const PRODUCT_JSON = "https://api.taiwanblueberry.com/public/json/product.json";
 
+// SKU pattern decoder: BBL25{size}{qty}{box}
+// size: 13=中果, 15=大果, 17=?, 18=特大果, 21=超大果
+// qty: 04=4入, 05=5入, 08=8入
+// box: 01=一箱, 04=四箱
+const SIZE_MAP: Record<string, string> = { "13": "中果", "15": "大果", "17": "中大果", "18": "特大果", "21": "超大果" };
+const QTY_MAP: Record<string, string> = { "04": "4入", "05": "5入", "08": "8入" };
+
+function decodeSku(sku: string): string | null {
+  const m = sku.match(/^BBL25(\d{2})(\d{2})(\d{2})$/);
+  if (!m) return null;
+  const size = SIZE_MAP[m[1]];
+  const qty = QTY_MAP[m[2]];
+  if (!size || !qty) return null;
+  const box = m[3] === "04" ? "/四箱" : "";
+  return `${size}${qty}${box}`;
+}
+
 // ─── Types ───────────────────────────
 
 interface BlueberryAvail {
@@ -132,7 +149,7 @@ export async function GET(req: NextRequest) {
 
       const info = psMap.get(psId);
       activeProducts.push({
-        name: info?.name || item.sku,
+        name: info?.name || decodeSku(item.sku) || item.sku,
         price: info?.price || 0,
         size: info?.size || "",
         available: avail,
