@@ -54,6 +54,18 @@ export interface RestockEntry {
 
 async function readJsonFromGitHub<T>(filename: string, fallback: T): Promise<T> {
   try {
+    // Use GitHub API (no cache) when token available, fallback to raw URL
+    if (GITHUB_TOKEN) {
+      const res = await fetch(`${API_BASE}/${filename}`, {
+        headers: {
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
+          Accept: "application/vnd.github.v3.raw",
+        },
+        cache: "no-store",
+      });
+      if (!res.ok) return fallback;
+      return await res.json();
+    }
     const url = `${RAW_BASE}/${filename}?t=${Date.now()}`;
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) return fallback;
