@@ -31,6 +31,8 @@
     "enabled": true,
     "lastScan": null,
     "productCount": 0,
-    "subscribers": []
+    "subscribers": [
+      "abner"
+    ]
   }
 ]
