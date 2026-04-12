@@ -12,13 +12,14 @@
   },
   {
     "id": "mnvaep6j",
-    "name": "KeyEvekey",
+    "name": "蕭key",
     "lineUserId": "U3f6073627defc897e4e142b1d14bbbbc",
     "subscribedProducts": [
       "hermes-cdn",
       "hermes"
     ],
-    "createdAt": "2026-04-12T04:52:17.275Z"
+    "createdAt": "2026-04-12T04:52:17.275Z",
+    "action": "update_subscriber"
   },
   {
     "id": "mnvf7qar",
