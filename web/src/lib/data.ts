@@ -234,6 +234,21 @@ export async function updateMonitorSource(id: string, updates: Partial<MonitorSo
   return sources[idx];
 }
 
+export async function deleteMonitorSource(id: string): Promise<void> {
+  const sources = (await getMonitorSources()).filter((s) => s.id !== id);
+  await saveMonitorSources(sources);
+  // Also remove this source from all subscribers
+  const subs = await getSubscribers();
+  let changed = false;
+  for (const sub of subs) {
+    if (sub.subscribedProducts.includes(id)) {
+      sub.subscribedProducts = sub.subscribedProducts.filter((sid) => sid !== id);
+      changed = true;
+    }
+  }
+  if (changed) await saveSubscribers(subs);
+}
+
 // ─── Products (read-only) ─────────────────────────
 
 export async function getHermesProducts(): Promise<Record<string, Product>> {

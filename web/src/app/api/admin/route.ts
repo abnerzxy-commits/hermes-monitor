@@ -6,6 +6,7 @@ import {
   deleteSubscriber,
   getMonitorSources,
   updateMonitorSource,
+  deleteMonitorSource,
   getHermesProducts,
   getRestockHistory,
   getCdnState,
@@ -104,6 +105,13 @@ export async function POST(req: NextRequest) {
     case "unsubscribe": {
       const { subscriberId, sourceId } = body;
       await unsubscribeUserFromSource(subscriberId, sourceId);
+      return Response.json({ success: true });
+    }
+
+    case "delete_source": {
+      const { id } = body;
+      if (!id) return Response.json({ error: "id 必填" }, { status: 400 });
+      await deleteMonitorSource(id);
       return Response.json({ success: true });
     }
 

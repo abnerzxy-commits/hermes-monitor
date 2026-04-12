@@ -123,6 +123,9 @@ export default function AdminPage() {
   const [editSourceInterval, setEditSourceInterval] = useState(60);
   const [editSourceCustom, setEditSourceCustom] = useState("");
 
+  // User rename
+  const [editUserName, setEditUserName] = useState("");
+
   // Search
   const [userSearch, setUserSearch] = useState("");
 
@@ -204,6 +207,26 @@ export default function AdminPage() {
     await apiPost({ action: "delete_subscriber", id });
     showToast("已刪除");
     setUserModal(null);
+    refresh();
+  };
+
+  const handleRenameUser = async () => {
+    if (!userModal || !editUserName.trim() || editUserName === userModal.name) return;
+    const result = await apiPost({ action: "update_subscriber", id: userModal.id, name: editUserName.trim() });
+    if (result.success) {
+      showToast("已更新名稱");
+      setUserModal({ ...userModal, name: editUserName.trim() });
+      refresh();
+    } else {
+      showToast(result.error || "更新失敗", "error");
+    }
+  };
+
+  const handleDeleteSource = async (id: string, name: string) => {
+    if (!confirm(`確定要刪除監控源「${name}」嗎？所有用戶的訂閱也會一併移除。`)) return;
+    await apiPost({ action: "delete_source", id });
+    showToast("已刪除監控源");
+    setSourceModal(null);
     refresh();
   };
 
@@ -365,7 +388,7 @@ export default function AdminPage() {
                 </div>
               ) : (
                 filteredUsers.map((sub) => (
-                  <div key={sub.id} className="user-row" onClick={() => setUserModal(sub)}>
+                  <div key={sub.id} className="user-row" onClick={() => { setUserModal(sub); setEditUserName(sub.name); }}>
                     <div className="avatar" style={{ background: `linear-gradient(135deg, ${sourceColor(sub.subscribedProducts.length > 0 ? "hermes" : "custom")}, ${sourceColor("blueberry")})` }}>
                       {avatarInitial(sub.name)}
                     </div>
@@ -543,6 +566,26 @@ export default function AdminPage() {
                 })}
               </div>
               <div className="modal-section">
+                <div className="modal-section-title">自訂名稱</div>
+                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                  <input
+                    type="text"
+                    value={editUserName}
+                    onChange={(e) => setEditUserName(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleRenameUser()}
+                    style={{ flex: 1, padding: "10px 14px", border: "1.5px solid var(--border)", borderRadius: 10, fontSize: 13, fontFamily: "inherit" }}
+                  />
+                  <button
+                    className="btn btn-primary btn-small"
+                    onClick={handleRenameUser}
+                    disabled={!editUserName.trim() || editUserName === userModal.name}
+                    style={{ opacity: (!editUserName.trim() || editUserName === userModal.name) ? 0.4 : 1 }}
+                  >
+                    儲存
+                  </button>
+                </div>
+              </div>
+              <div className="modal-section">
                 <div className="modal-section-title">基本資訊</div>
                 <div style={{ padding: "10px 16px", background: "#fafbfc", borderRadius: 12, fontSize: 12, color: "var(--text-soft)", lineHeight: 2 }}>
                   <div>LINE ID: <span style={{ fontFamily: "monospace" }}>{userModal.lineUserId}</span></div>
@@ -670,6 +713,16 @@ export default function AdminPage() {
 
               <button className="btn btn-primary" onClick={handleSaveSource} style={{ width: "100%", justifyContent: "center", padding: 14 }}>
                 {"\u{1F4BE}"} 儲存所有變更
+              </button>
+
+              <div style={{ borderTop: "1px dashed var(--border)", margin: "18px 0" }} />
+
+              <button
+                className="btn btn-danger"
+                onClick={() => handleDeleteSource(sourceModal.id, sourceModal.name)}
+                style={{ width: "100%", justifyContent: "center", padding: 14 }}
+              >
+                {"\u{1F5D1}\uFE0F"} 刪除此監控源
               </button>
             </div>
           </div>
