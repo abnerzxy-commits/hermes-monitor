@@ -8,14 +8,5 @@
       "hermes-cdn"
     ],
     "createdAt": "2026-04-01T00:00:00Z"
-  },
-  {
-    "id": "chidong",
-    "name": "池董",
-    "lineUserId": "U667f0a680157296f575dee2e44e015e0",
-    "subscribedProducts": [
-      "hermes"
-    ],
-    "createdAt": "2026-04-09T00:46:47Z"
   }
 ]
