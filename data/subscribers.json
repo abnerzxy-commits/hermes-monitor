@@ -23,12 +23,13 @@
   },
   {
     "id": "mnvf7qar",
-    "name": "Way",
+    "name": "阿信",
     "lineUserId": "Uf1938d7c63bb1a909ca19850fc50035d",
     "subscribedProducts": [
       "hermes",
       "hermes-cdn"
     ],
-    "createdAt": "2026-04-12T07:06:50.211Z"
+    "createdAt": "2026-04-12T07:06:50.211Z",
+    "action": "update_subscriber"
   }
 ]
