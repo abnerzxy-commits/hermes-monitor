@@ -403,7 +403,7 @@ export default function AdminPage() {
             {/* Monitor source cards */}
             <div className="card">
               <div className="card-header">
-                <h2><span className="ico">{"\u2708\uFE0F"}</span> 監控源</h2>
+                <h2><span className="ico">{"\u{1F4E1}"}</span> 監控源</h2>
                 <span className="meta">{data.sources.length} 項</span>
               </div>
               <div className="card-body" style={{ maxHeight: "none" }}>
