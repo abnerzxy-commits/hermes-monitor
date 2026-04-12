@@ -57,37 +57,7 @@ interface AdminData {
   recentRestocks: RestockEntry[];
 }
 
-interface ToastState {
-  message: string;
-  type: "success" | "error";
-}
-
-/* ═══════════════ Styles ═══════════════ */
-
-const C = {
-  bg: "#F5F1EB",
-  card: "#FFFFFF",
-  border: "#E8E0D8",
-  primary: "#C47530",
-  primaryLight: "#E8A860",
-  accent: "#8B6914",
-  success: "#7FA07C",
-  warning: "#C4975A",
-  danger: "#B87070",
-  text: "#3A3A3A",
-  muted: "#8A8A8A",
-  subtle: "#C8C0B8",
-  hermes: "#F37021",
-  blueberry: "#4A6FA5",
-};
-
 /* ═══════════════ Helpers ═══════════════ */
-
-function formatInterval(seconds: number): string {
-  if (seconds < 60) return `${seconds} 秒`;
-  if (seconds < 3600) return `${Math.round(seconds / 60)} 分鐘`;
-  return `${Math.round(seconds / 3600)} 小時`;
-}
 
 function timeAgo(isoStr: string | null): string {
   if (!isoStr) return "從未";
@@ -101,10 +71,38 @@ function timeAgo(isoStr: string | null): string {
 }
 
 function sourceIcon(type: string): string {
-  if (type === "hermes") return "🧡";
-  if (type === "blueberry") return "🫐";
-  return "📦";
+  if (type === "hermes") return "\u{1F9E1}";
+  if (type === "blueberry") return "\u{1FAD0}";
+  return "\u{1F4E6}";
 }
+
+function sourceColor(type: string): string {
+  if (type === "hermes") return "#F37021";
+  if (type === "blueberry") return "#4A6FA5";
+  return "#8B6914";
+}
+
+function formatInterval(seconds: number): string {
+  if (seconds < 60) return `${seconds} 秒`;
+  if (seconds < 3600) return `${Math.round(seconds / 60)} 分鐘`;
+  return `${(seconds / 3600).toFixed(1).replace(/\.0$/, "")} 小時`;
+}
+
+function avatarInitial(name: string): string {
+  return name.charAt(0).toUpperCase();
+}
+
+const INTERVAL_PRESETS = [
+  { label: "10 秒", value: 10 },
+  { label: "30 秒", value: 30 },
+  { label: "1 分鐘", value: 60 },
+  { label: "5 分鐘", value: 300 },
+  { label: "10 分鐘", value: 600 },
+  { label: "30 分鐘", value: 1800 },
+  { label: "1 小時", value: 3600 },
+  { label: "6 小時", value: 21600 },
+  { label: "1 天", value: 86400 },
+];
 
 /* ═══════════════ Component ═══════════════ */
 
@@ -113,18 +111,25 @@ export default function AdminPage() {
   const [password, setPassword] = useState("");
   const [data, setData] = useState<AdminData | null>(null);
   const [loading, setLoading] = useState(false);
-  const [toast, setToast] = useState<ToastState | null>(null);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
-  // Left panel
-  const [selectedSubId, setSelectedSubId] = useState<string | null>(null);
-  const [subSearch, setSubSearch] = useState("");
-  const [showAddSub, setShowAddSub] = useState(false);
-  const [addSubForm, setAddSubForm] = useState({ name: "", lineUserId: "" });
+  // Modals
+  const [userModal, setUserModal] = useState<Subscriber | null>(null);
+  const [sourceModal, setSourceModal] = useState<MonitorSource | null>(null);
+  const [productModal, setProductModal] = useState<Product | null>(null);
 
-  // Right panel
-  const [selectedSourceId, setSelectedSourceId] = useState<string | null>(null);
-  const [editingInterval, setEditingInterval] = useState<string | null>(null);
-  const [intervalValue, setIntervalValue] = useState("");
+  // Source edit form
+  const [editSourceName, setEditSourceName] = useState("");
+  const [editSourceInterval, setEditSourceInterval] = useState(60);
+  const [editSourceCustom, setEditSourceCustom] = useState("");
+
+  // Search
+  const [userSearch, setUserSearch] = useState("");
+
+  // Add subscriber
+  const [showAddUser, setShowAddUser] = useState(false);
+  const [addName, setAddName] = useState("");
+  const [addLineId, setAddLineId] = useState("");
 
   /* --- Init --- */
   useEffect(() => {
@@ -145,17 +150,13 @@ export default function AdminPage() {
         setToken("");
         return;
       }
-      const json = await res.json();
-      setData(json);
-      if (!selectedSourceId && json.sources?.length > 0) {
-        setSelectedSourceId(json.sources[0].id);
-      }
+      setData(await res.json());
     } catch {
       showToast("載入失敗", "error");
     } finally {
       setLoading(false);
     }
-  }, [token, selectedSourceId]);
+  }, [token]);
 
   useEffect(() => {
     if (token) refresh();
@@ -185,15 +186,13 @@ export default function AdminPage() {
   };
 
   const handleAddSubscriber = async () => {
-    if (!addSubForm.name || !addSubForm.lineUserId) {
-      showToast("請填寫完整", "error");
-      return;
-    }
-    const result = await apiPost({ action: "add_subscriber", ...addSubForm });
+    if (!addName || !addLineId) { showToast("請填寫完整", "error"); return; }
+    const result = await apiPost({ action: "add_subscriber", name: addName, lineUserId: addLineId });
     if (result.success) {
       showToast("已新增用戶");
-      setShowAddSub(false);
-      setAddSubForm({ name: "", lineUserId: "" });
+      setShowAddUser(false);
+      setAddName("");
+      setAddLineId("");
       refresh();
     } else {
       showToast(result.error, "error");
@@ -202,547 +201,828 @@ export default function AdminPage() {
 
   const handleDeleteSubscriber = async (id: string, name: string) => {
     if (!confirm(`確定要刪除 ${name} 嗎？`)) return;
-    const result = await apiPost({ action: "delete_subscriber", id });
-    if (result.success) {
-      showToast("已刪除");
-      if (selectedSubId === id) setSelectedSubId(null);
-      refresh();
-    }
+    await apiPost({ action: "delete_subscriber", id });
+    showToast("已刪除");
+    setUserModal(null);
+    refresh();
   };
 
-  const handleToggleSubscription = async (subscriberId: string, sourceId: string, subscribed: boolean) => {
+  const handleToggleSub = async (subscriberId: string, sourceId: string, subscribed: boolean) => {
+    await apiPost({ action: subscribed ? "unsubscribe" : "subscribe", subscriberId, sourceId });
+    refresh();
+  };
+
+  const handleSaveSource = async () => {
+    if (!sourceModal) return;
+    const interval = editSourceCustom ? parseInt(editSourceCustom) : editSourceInterval;
+    if (isNaN(interval) || interval < 10) { showToast("間隔至少 10 秒", "error"); return; }
     const result = await apiPost({
-      action: subscribed ? "unsubscribe" : "subscribe",
-      subscriberId,
-      sourceId,
+      action: "update_source",
+      id: sourceModal.id,
+      name: editSourceName || sourceModal.name,
+      scanInterval: interval,
     });
-    if (result.success) refresh();
-  };
-
-  const handleUpdateInterval = async (sourceId: string) => {
-    const seconds = parseInt(intervalValue);
-    if (isNaN(seconds) || seconds < 10) {
-      showToast("間隔至少 10 秒", "error");
-      return;
-    }
-    const result = await apiPost({ action: "update_source", id: sourceId, scanInterval: seconds });
     if (result.success) {
-      showToast("已更新掃描頻率");
-      setEditingInterval(null);
+      showToast("已更新監控源");
+      setSourceModal(null);
       refresh();
     }
   };
 
   const handleToggleSource = async (sourceId: string, enabled: boolean) => {
-    const result = await apiPost({ action: "update_source", id: sourceId, enabled: !enabled });
-    if (result.success) refresh();
+    await apiPost({ action: "update_source", id: sourceId, enabled: !enabled });
+    refresh();
   };
 
-  /* --- Login screen --- */
+  const openSourceModal = (src: MonitorSource) => {
+    setSourceModal(src);
+    setEditSourceName(src.name);
+    setEditSourceInterval(src.scanInterval);
+    setEditSourceCustom("");
+  };
+
+  /* ═══════════════ LOGIN ═══════════════ */
   if (!token) {
     return (
-      <div style={{ background: C.bg, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{
-          background: C.card, borderRadius: 20, padding: 40, boxShadow: "0 8px 32px rgba(0,0,0,.08)",
-          width: 380, textAlign: "center",
-        }}>
-          <div style={{ fontSize: 48, marginBottom: 12 }}>🔒</div>
-          <h1 style={{ fontSize: 22, fontWeight: 700, color: C.text, marginBottom: 8 }}>盯貨監控後台</h1>
-          <p style={{ color: C.muted, fontSize: 14, marginBottom: 24 }}>Hermès + 山丘藍 統一管理</p>
-          <input
-            type="password"
-            placeholder="管理密碼"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-            style={{
-              width: "100%", padding: "12px 16px", borderRadius: 10,
-              border: `1px solid ${C.border}`, fontSize: 15, marginBottom: 16,
-              outline: "none", boxSizing: "border-box",
-            }}
-          />
-          <button
-            onClick={handleLogin}
-            style={{
-              width: "100%", padding: "12px", borderRadius: 10, border: "none",
-              background: C.primary, color: "#fff", fontSize: 15, fontWeight: 600,
-              cursor: "pointer",
-            }}
-          >
-            登入
-          </button>
+      <>
+        <style>{globalCSS}</style>
+        <div className="login-screen">
+          <div className="login-card">
+            <div className="logo-big">{"\u{1F4E1}"}</div>
+            <h1>盯貨監控後台</h1>
+            <p>Hermes + 山丘藍 統一管理</p>
+            <input
+              type="password"
+              placeholder="管理密碼"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+            />
+            <button onClick={handleLogin}>登入</button>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (!data) {
     return (
-      <div style={{ background: C.bg, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ color: C.muted, fontSize: 16 }}>載入中...</div>
-      </div>
+      <>
+        <style>{globalCSS}</style>
+        <div className="login-screen">
+          <div style={{ color: "#8A8A8A", fontSize: 16 }}>{loading ? "載入中..." : "連線失敗"}</div>
+        </div>
+      </>
     );
   }
 
-  const selectedSub = data.subscribers.find((s) => s.id === selectedSubId);
-  const selectedSource = data.sources.find((s) => s.id === selectedSourceId);
-  const filteredSubs = data.subscribers.filter(
-    (s) => !subSearch || s.name.toLowerCase().includes(subSearch.toLowerCase()) || s.lineUserId.includes(subSearch)
+  const filteredUsers = data.subscribers.filter(
+    (s) => !userSearch || s.name.toLowerCase().includes(userSearch.toLowerCase()) || s.lineUserId.includes(userSearch)
   );
 
-  /* --- Main layout --- */
+  /* ═══════════════ MAIN ═══════════════ */
   return (
-    <div style={{ background: C.bg, minHeight: "100vh" }}>
+    <>
+      <style>{globalCSS}</style>
+
       {/* Toast */}
       {toast && (
-        <div style={{
-          position: "fixed", top: 20, right: 20, zIndex: 999,
-          background: toast.type === "success" ? C.success : C.danger,
-          color: "#fff", padding: "12px 20px", borderRadius: 10,
-          fontSize: 14, fontWeight: 500, boxShadow: "0 4px 12px rgba(0,0,0,.15)",
-          animation: "fadeInUp .3s ease",
-        }}>
-          {toast.message}
-        </div>
+        <div className={`toast show ${toast.type}`}>{toast.type === "success" ? "\u2705" : "\u274C"} {toast.message}</div>
       )}
 
       {/* Header */}
-      <div style={{
-        background: C.card, borderBottom: `1px solid ${C.border}`,
-        padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between",
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <span style={{ fontSize: 28 }}>📡</span>
+      <header>
+        <div className="brand">
+          <div className="logo">{"\u{1F4E1}"}</div>
           <div>
-            <h1 style={{ fontSize: 20, fontWeight: 700, color: C.text, margin: 0 }}>盯貨監控後台</h1>
-            <p style={{ fontSize: 12, color: C.muted, margin: 0 }}>
-              {data.stats.totalProducts} 商品 · {data.stats.cdnTracking} SKU 追蹤 · {data.stats.totalSubscribers} 訂閱者
-            </p>
+            <h1>盯貨監控後台</h1>
+            <div className="stats">
+              <span>{"\u{1F6CD}\uFE0F"} {data.stats.totalProducts} 商品</span>
+              <span>{"\u00B7"}</span>
+              <span>{"\u{1F4E1}"} {data.stats.cdnTracking} SKU</span>
+              <span>{"\u00B7"}</span>
+              <span>{"\u{1F514}"} {data.stats.cdnNotified} 已通知</span>
+              <span>{"\u00B7"}</span>
+              <span>{"\u{1F465}"} {data.stats.totalSubscribers} 用戶</span>
+            </div>
           </div>
         </div>
-        <button
-          onClick={() => { localStorage.removeItem("monitor_admin_token"); setToken(""); setData(null); }}
-          style={{
-            padding: "8px 16px", borderRadius: 8, border: `1px solid ${C.border}`,
-            background: "transparent", color: C.muted, fontSize: 13, cursor: "pointer",
-          }}
-        >
-          登出
-        </button>
-      </div>
+        <div className="actions">
+          <button className="btn btn-ghost" onClick={() => refresh()} title="重新整理">
+            {loading ? <span className="spin">{"\u21BB"}</span> : "\u21BB"}
+          </button>
+          <button className="btn btn-ghost btn-small" onClick={() => { localStorage.removeItem("monitor_admin_token"); setToken(""); setData(null); }}>
+            登出
+          </button>
+        </div>
+      </header>
 
-      {/* Stats bar */}
-      <div style={{ padding: "16px 24px", display: "flex", gap: 12, flexWrap: "wrap" }}>
-        {[
-          { label: "商品監控中", value: data.stats.totalProducts, color: C.hermes },
-          { label: "CDN 追蹤", value: data.stats.cdnTracking, color: C.primary },
-          { label: "CDN 已通知", value: data.stats.cdnNotified, color: C.success },
-          { label: "補貨記錄", value: data.stats.totalRestocks, color: C.warning },
-          { label: "訂閱者", value: data.stats.totalSubscribers, color: C.blueberry },
-        ].map((s) => (
-          <div key={s.label} style={{
-            background: C.card, borderRadius: 12, padding: "12px 20px",
-            border: `1px solid ${C.border}`, flex: "1 1 140px", minWidth: 140,
-          }}>
-            <div style={{ fontSize: 24, fontWeight: 700, color: s.color }}>{s.value.toLocaleString()}</div>
-            <div style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>{s.label}</div>
-          </div>
-        ))}
-      </div>
+      <div className="container">
+        <div className="grid">
 
-      {/* Main content: left + right panels */}
-      <div style={{ padding: "0 24px 24px", display: "flex", gap: 20, alignItems: "flex-start" }}>
-
-        {/* ═══ LEFT: Subscribers ═══ */}
-        <div style={{ flex: "0 0 380px", minWidth: 320 }}>
-          <div style={{
-            background: C.card, borderRadius: 16, border: `1px solid ${C.border}`,
-            overflow: "hidden",
-          }}>
-            {/* Header */}
-            <div style={{
-              padding: "16px 20px", borderBottom: `1px solid ${C.border}`,
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-            }}>
-              <h2 style={{ fontSize: 16, fontWeight: 700, color: C.text, margin: 0 }}>👥 訂閱用戶</h2>
-              <button
-                onClick={() => setShowAddSub(true)}
-                style={{
-                  padding: "6px 14px", borderRadius: 8, border: "none",
-                  background: C.primary, color: "#fff", fontSize: 13, fontWeight: 600,
-                  cursor: "pointer",
-                }}
-              >
-                + 新增
-              </button>
+          {/* ═══ LEFT: Users ═══ */}
+          <div className="card">
+            <div className="card-header">
+              <h2><span className="ico">{"\u{1F465}"}</span> 所有用戶</h2>
+              <span className="meta">{data.subscribers.length} 人</span>
             </div>
 
-            {/* Search */}
-            <div style={{ padding: "12px 20px" }}>
+            <div className="user-search">
               <input
-                placeholder="搜尋用戶名稱或 LINE ID..."
-                value={subSearch}
-                onChange={(e) => setSubSearch(e.target.value)}
-                style={{
-                  width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: `1px solid ${C.border}`, fontSize: 13, outline: "none",
-                  boxSizing: "border-box",
-                }}
+                type="text"
+                placeholder="搜尋名稱 / LINE ID..."
+                value={userSearch}
+                onChange={(e) => setUserSearch(e.target.value)}
               />
+              <span className="search-ico">{"\u{1F50D}"}</span>
             </div>
 
-            {/* Add subscriber form */}
-            {showAddSub && (
-              <div style={{ padding: "0 20px 16px", borderBottom: `1px solid ${C.border}` }}>
+            {/* Add user form */}
+            {showAddUser && (
+              <div style={{ padding: "12px 22px", borderBottom: "1px solid var(--border)", background: "#fafbfc" }}>
                 <input
-                  placeholder="用戶名稱"
-                  value={addSubForm.name}
-                  onChange={(e) => setAddSubForm({ ...addSubForm, name: e.target.value })}
-                  style={{
-                    width: "100%", padding: "10px 14px", borderRadius: 8,
-                    border: `1px solid ${C.border}`, fontSize: 13, marginBottom: 8,
-                    outline: "none", boxSizing: "border-box",
-                  }}
+                  type="text" placeholder="用戶名稱" value={addName}
+                  onChange={(e) => setAddName(e.target.value)}
+                  style={{ width: "100%", padding: "10px 14px", border: "1.5px solid var(--border)", borderRadius: 10, fontSize: 13, marginBottom: 8, fontFamily: "inherit" }}
                 />
                 <input
-                  placeholder="LINE User ID"
-                  value={addSubForm.lineUserId}
-                  onChange={(e) => setAddSubForm({ ...addSubForm, lineUserId: e.target.value })}
-                  style={{
-                    width: "100%", padding: "10px 14px", borderRadius: 8,
-                    border: `1px solid ${C.border}`, fontSize: 13, marginBottom: 8,
-                    outline: "none", boxSizing: "border-box",
-                  }}
+                  type="text" placeholder="LINE User ID (U...)" value={addLineId}
+                  onChange={(e) => setAddLineId(e.target.value)}
+                  style={{ width: "100%", padding: "10px 14px", border: "1.5px solid var(--border)", borderRadius: 10, fontSize: 13, marginBottom: 8, fontFamily: "inherit" }}
                 />
                 <div style={{ display: "flex", gap: 8 }}>
-                  <button
-                    onClick={handleAddSubscriber}
-                    style={{
-                      flex: 1, padding: "8px", borderRadius: 8, border: "none",
-                      background: C.success, color: "#fff", fontSize: 13, cursor: "pointer",
-                    }}
-                  >
-                    確認新增
-                  </button>
-                  <button
-                    onClick={() => setShowAddSub(false)}
-                    style={{
-                      padding: "8px 14px", borderRadius: 8, border: `1px solid ${C.border}`,
-                      background: "transparent", color: C.muted, fontSize: 13, cursor: "pointer",
-                    }}
-                  >
-                    取消
-                  </button>
+                  <button className="btn btn-primary btn-small" onClick={handleAddSubscriber} style={{ flex: 1, justifyContent: "center" }}>確認新增</button>
+                  <button className="btn btn-secondary btn-small" onClick={() => setShowAddUser(false)}>取消</button>
                 </div>
               </div>
             )}
 
-            {/* Subscriber list */}
-            <div style={{ maxHeight: 600, overflowY: "auto" }}>
-              {filteredSubs.length === 0 ? (
-                <div style={{ padding: 40, textAlign: "center", color: C.muted, fontSize: 14 }}>
-                  {data.subscribers.length === 0 ? "還沒有訂閱用戶" : "找不到符合的用戶"}
+            <div className="card-body" style={{ maxHeight: 600 }}>
+              {filteredUsers.length === 0 ? (
+                <div className="empty">
+                  <span className="ico">{"\u{1F464}"}</span>
+                  {data.subscribers.length === 0 ? "尚無用戶" : "找不到符合的用戶"}
                 </div>
               ) : (
-                filteredSubs.map((sub) => (
-                  <div
-                    key={sub.id}
-                    onClick={() => setSelectedSubId(sub.id)}
-                    style={{
-                      padding: "14px 20px", cursor: "pointer",
-                      borderBottom: `1px solid ${C.border}`,
-                      background: selectedSubId === sub.id ? "#FFF8F0" : "transparent",
-                      borderLeft: selectedSubId === sub.id ? `3px solid ${C.primary}` : "3px solid transparent",
-                      transition: "all .15s",
-                    }}
-                  >
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <div>
-                        <div style={{ fontSize: 14, fontWeight: 600, color: C.text }}>{sub.name}</div>
-                        <div style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>
-                          {sub.lineUserId.slice(0, 12)}... · {sub.subscribedProducts.length} 個訂閱
-                        </div>
-                      </div>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); handleDeleteSubscriber(sub.id, sub.name); }}
-                        style={{
-                          padding: "4px 8px", borderRadius: 6, border: `1px solid ${C.border}`,
-                          background: "transparent", color: C.danger, fontSize: 12, cursor: "pointer",
-                        }}
-                      >
-                        刪除
-                      </button>
+                filteredUsers.map((sub) => (
+                  <div key={sub.id} className="user-row" onClick={() => setUserModal(sub)}>
+                    <div className="avatar" style={{ background: `linear-gradient(135deg, ${sourceColor(sub.subscribedProducts.length > 0 ? "hermes" : "custom")}, ${sourceColor("blueberry")})` }}>
+                      {avatarInitial(sub.name)}
                     </div>
-
-                    {/* Subscription badges */}
-                    {selectedSubId === sub.id && (
-                      <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 6 }}>
-                        {data.sources.map((src) => {
-                          const subscribed = sub.subscribedProducts.includes(src.id);
-                          return (
-                            <button
-                              key={src.id}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleToggleSubscription(sub.id, src.id, subscribed);
-                              }}
-                              style={{
-                                padding: "4px 10px", borderRadius: 20, fontSize: 12,
-                                border: subscribed ? "none" : `1px dashed ${C.subtle}`,
-                                background: subscribed ? (src.type === "hermes" ? "#FFF0E0" : "#E8F0FF") : "transparent",
-                                color: subscribed ? (src.type === "hermes" ? C.hermes : C.blueberry) : C.muted,
-                                cursor: "pointer", fontWeight: subscribed ? 600 : 400,
-                              }}
-                            >
-                              {sourceIcon(src.type)} {src.name} {subscribed ? "✓" : "+"}
-                            </button>
-                          );
-                        })}
+                    <div className="user-info">
+                      <div className="user-name">{sub.name}</div>
+                      <div className="user-id">{sub.lineUserId}</div>
+                      <div className="user-routes">
+                        {sub.subscribedProducts.length === 0 ? (
+                          <span className="tag tag-empty">未訂閱</span>
+                        ) : (
+                          sub.subscribedProducts.map((srcId) => {
+                            const src = data.sources.find((s) => s.id === srcId);
+                            return (
+                              <span key={srcId} className="tag tag-primary" style={{ background: `${sourceColor(src?.type || "custom")}18`, color: sourceColor(src?.type || "custom") }}>
+                                {sourceIcon(src?.type || "custom")} {src?.name || srcId}
+                              </span>
+                            );
+                          })
+                        )}
                       </div>
-                    )}
+                    </div>
                   </div>
                 ))
               )}
             </div>
-          </div>
-        </div>
 
-        {/* ═══ RIGHT: Monitor Sources + Products ═══ */}
-        <div style={{ flex: 1, minWidth: 0 }}>
-          {/* Source cards */}
-          <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
-            {data.sources.map((src) => (
-              <div
-                key={src.id}
-                onClick={() => setSelectedSourceId(src.id)}
-                style={{
-                  flex: "1 1 240px", minWidth: 240,
-                  background: C.card, borderRadius: 14, padding: "16px 20px",
-                  border: selectedSourceId === src.id ? `2px solid ${C.primary}` : `1px solid ${C.border}`,
-                  cursor: "pointer", transition: "all .15s",
-                  opacity: src.enabled ? 1 : 0.5,
-                }}
-              >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: C.text }}>
-                    {sourceIcon(src.type)} {src.name}
-                  </span>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); handleToggleSource(src.id, src.enabled); }}
-                    style={{
-                      padding: "3px 10px", borderRadius: 12, fontSize: 11, border: "none",
-                      background: src.enabled ? "#E8F5E9" : "#FFEBEE",
-                      color: src.enabled ? "#2E7D32" : "#C62828",
-                      cursor: "pointer", fontWeight: 600,
-                    }}
-                  >
-                    {src.enabled ? "啟用中" : "已停用"}
-                  </button>
-                </div>
-
-                <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.8 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span>掃描頻率</span>
-                    {editingInterval === src.id ? (
-                      <span style={{ display: "flex", gap: 4 }}>
-                        <input
-                          value={intervalValue}
-                          onChange={(e) => setIntervalValue(e.target.value)}
-                          onClick={(e) => e.stopPropagation()}
-                          style={{ width: 60, padding: "2px 6px", borderRadius: 4, border: `1px solid ${C.border}`, fontSize: 12 }}
-                          placeholder="秒"
-                        />
-                        <button
-                          onClick={(e) => { e.stopPropagation(); handleUpdateInterval(src.id); }}
-                          style={{ fontSize: 11, color: C.success, background: "none", border: "none", cursor: "pointer", fontWeight: 700 }}
-                        >
-                          ✓
-                        </button>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); setEditingInterval(null); }}
-                          style={{ fontSize: 11, color: C.danger, background: "none", border: "none", cursor: "pointer" }}
-                        >
-                          ✕
-                        </button>
-                      </span>
-                    ) : (
-                      <span
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setEditingInterval(src.id);
-                          setIntervalValue(String(src.scanInterval));
-                        }}
-                        style={{ color: C.primary, cursor: "pointer", fontWeight: 600, borderBottom: `1px dashed ${C.primary}` }}
-                      >
-                        {formatInterval(src.scanInterval)} ✏️
-                      </span>
-                    )}
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span>訂閱者</span>
-                    <span style={{ fontWeight: 600, color: C.text }}>{src.subscribers.length} 人</span>
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span>最後掃描</span>
-                    <span>{timeAgo(src.lastScan)}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+            {/* Bottom bar: add user */}
+            <div style={{ padding: "12px 22px", borderTop: "1px solid var(--border)", display: "flex", justifyContent: "center" }}>
+              <button className="btn btn-primary btn-small" onClick={() => setShowAddUser(true)}>+ 新增用戶</button>
+            </div>
           </div>
 
-          {/* Selected source detail */}
-          {selectedSource && (
-            <div style={{
-              background: C.card, borderRadius: 16, border: `1px solid ${C.border}`,
-              overflow: "hidden",
-            }}>
-              <div style={{
-                padding: "16px 20px", borderBottom: `1px solid ${C.border}`,
-                display: "flex", justifyContent: "space-between", alignItems: "center",
-              }}>
-                <h2 style={{ fontSize: 16, fontWeight: 700, color: C.text, margin: 0 }}>
-                  {sourceIcon(selectedSource.type)} {selectedSource.name} — 訂閱者
-                </h2>
+          {/* ═══ RIGHT: Sources ═══ */}
+          <div>
+            {/* Monitor source cards */}
+            <div className="card">
+              <div className="card-header">
+                <h2><span className="ico">{"\u2708\uFE0F"}</span> 監控源</h2>
+                <span className="meta">{data.sources.length} 項</span>
               </div>
-
-              {/* Subscribers of this source */}
-              <div style={{ padding: "16px 20px" }}>
-                {selectedSource.subscribers.length === 0 ? (
-                  <div style={{ color: C.muted, fontSize: 14, textAlign: "center", padding: 20 }}>
-                    還沒有人訂閱此監控
+              <div className="card-body" style={{ maxHeight: "none" }}>
+                {data.sources.map((src) => (
+                  <div key={src.id} className="route-card" onClick={() => openSourceModal(src)}>
+                    <div className="route-title" style={{ color: sourceColor(src.type) }}>
+                      {sourceIcon(src.type)} {src.name}
+                      {!src.enabled && <span style={{ fontSize: 11, color: "#C62828", marginLeft: 8, fontWeight: 500 }}>({"\u5DF2\u505C\u7528"})</span>}
+                    </div>
+                    <div className="route-meta">
+                      <span className="dot" style={{ background: src.enabled ? "var(--success)" : "var(--danger)" }} />
+                      每 {formatInterval(src.scanInterval)} 掃描
+                      <span style={{ margin: "0 4px" }}>{"\u00B7"}</span>
+                      最後掃描：{timeAgo(src.lastScan)}
+                    </div>
+                    <div className="route-subscribers">
+                      {src.subscribers.length === 0 ? (
+                        <span style={{ fontSize: 11, color: "var(--text-muted)" }}>尚無訂閱者</span>
+                      ) : (
+                        src.subscribers.map((subId) => {
+                          const sub = data.subscribers.find((s) => s.id === subId);
+                          if (!sub) return null;
+                          return (
+                            <span key={subId} className="sub-chip">
+                              <span className="mini-avatar" style={{ background: sourceColor(src.type) }}>{avatarInitial(sub.name)}</span>
+                              {sub.name}
+                            </span>
+                          );
+                        })
+                      )}
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Products */}
+            <div className="card" style={{ marginTop: 20 }}>
+              <div className="card-header">
+                <h2><span className="ico">{"\u{1F6CD}\uFE0F"}</span> 目前上架商品</h2>
+                <span className="meta">{data.products.length} 件</span>
+              </div>
+              <div className="card-body" style={{ maxHeight: 500 }}>
+                {data.products.length === 0 ? (
+                  <div className="empty"><span className="ico">{"\u{1F6CD}\uFE0F"}</span>暫無商品</div>
                 ) : (
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                    {selectedSource.subscribers.map((subId) => {
-                      const sub = data.subscribers.find((s) => s.id === subId);
-                      if (!sub) return null;
-                      return (
-                        <div
-                          key={subId}
-                          style={{
-                            padding: "8px 14px", borderRadius: 10,
-                            background: "#F9F6F2", border: `1px solid ${C.border}`,
-                            fontSize: 13, display: "flex", alignItems: "center", gap: 8,
-                          }}
-                        >
-                          <span style={{ fontWeight: 600, color: C.text }}>{sub.name}</span>
-                          <button
-                            onClick={() => handleToggleSubscription(subId, selectedSource.id, true)}
-                            style={{
-                              padding: "2px 6px", borderRadius: 4, fontSize: 11,
-                              background: "none", border: `1px solid ${C.danger}`,
-                              color: C.danger, cursor: "pointer",
-                            }}
-                          >
-                            移除
-                          </button>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  data.products.map((p) => (
+                    <div key={p.id} className="product-row" onClick={() => setProductModal(p)}>
+                      {p.image && (
+                        <img src={p.image} alt={p.name} className="product-img" />
+                      )}
+                      <div className="product-info">
+                        <div className="product-name">{p.name}</div>
+                        <div className="product-price">{p.price}</div>
+                        <div className="product-meta">首次出現 {timeAgo(p.first_seen)}</div>
+                      </div>
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary btn-small"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        前往購買
+                      </a>
+                    </div>
+                  ))
                 )}
               </div>
             </div>
-          )}
 
-          {/* Products list */}
-          <div style={{
-            background: C.card, borderRadius: 16, border: `1px solid ${C.border}`,
-            overflow: "hidden", marginTop: 20,
-          }}>
-            <div style={{ padding: "16px 20px", borderBottom: `1px solid ${C.border}` }}>
-              <h2 style={{ fontSize: 16, fontWeight: 700, color: C.text, margin: 0 }}>
-                🛍️ 目前上架商品（{data.products.length}）
-              </h2>
-            </div>
-            <div style={{ maxHeight: 500, overflowY: "auto" }}>
-              {data.products.length === 0 ? (
-                <div style={{ padding: 40, textAlign: "center", color: C.muted }}>暫無商品資料</div>
-              ) : (
-                data.products.map((p) => (
-                  <div
-                    key={p.id}
-                    style={{
-                      padding: "12px 20px", borderBottom: `1px solid ${C.border}`,
-                      display: "flex", alignItems: "center", gap: 14,
-                    }}
-                  >
-                    {p.image && (
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        style={{ width: 50, height: 50, borderRadius: 8, objectFit: "cover", background: "#f5f5f5" }}
-                      />
-                    )}
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 14, fontWeight: 600, color: C.text, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {p.name}
+            {/* Recent restocks */}
+            <div className="card" style={{ marginTop: 20 }}>
+              <div className="card-header">
+                <h2><span className="ico">{"\u{1F4CB}"}</span> 補貨記錄</h2>
+                <span className="meta">{data.recentRestocks.length} 筆</span>
+              </div>
+              <div className="card-body" style={{ maxHeight: 300 }}>
+                {data.recentRestocks.length === 0 ? (
+                  <div className="empty"><span className="ico">{"\u{1F4CB}"}</span>暫無記錄</div>
+                ) : (
+                  data.recentRestocks.map((r, i) => (
+                    <div key={i} style={{ padding: "12px 22px", borderBottom: "1px solid #f3f4f6", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text)" }}>{r.name}</div>
+                        <div style={{ fontSize: 12, color: "var(--text-muted)" }}>{r.price}</div>
                       </div>
-                      <div style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>
-                        {p.price} · 首次出現 {timeAgo(p.first_seen)}
-                      </div>
+                      <div style={{ fontSize: 12, color: "var(--text-muted)" }}>{timeAgo(r.timestamp)}</div>
                     </div>
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        padding: "6px 12px", borderRadius: 8, fontSize: 12,
-                        background: C.hermes, color: "#fff", textDecoration: "none",
-                        fontWeight: 600, whiteSpace: "nowrap",
-                      }}
-                    >
-                      前往購買
-                    </a>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-
-          {/* Recent restocks */}
-          <div style={{
-            background: C.card, borderRadius: 16, border: `1px solid ${C.border}`,
-            overflow: "hidden", marginTop: 20,
-          }}>
-            <div style={{ padding: "16px 20px", borderBottom: `1px solid ${C.border}` }}>
-              <h2 style={{ fontSize: 16, fontWeight: 700, color: C.text, margin: 0 }}>
-                📋 近期補貨記錄
-              </h2>
-            </div>
-            <div style={{ maxHeight: 300, overflowY: "auto" }}>
-              {data.recentRestocks.length === 0 ? (
-                <div style={{ padding: 40, textAlign: "center", color: C.muted }}>暫無補貨記錄</div>
-              ) : (
-                data.recentRestocks.map((r, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      padding: "10px 20px", borderBottom: `1px solid ${C.border}`,
-                      display: "flex", justifyContent: "space-between", alignItems: "center",
-                    }}
-                  >
-                    <div>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: C.text }}>{r.name}</div>
-                      <div style={{ fontSize: 12, color: C.muted }}>{r.price}</div>
-                    </div>
-                    <div style={{ fontSize: 12, color: C.muted }}>{timeAgo(r.timestamp)}</div>
-                  </div>
-                ))
-              )}
+                  ))
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        * { box-sizing: border-box; }
-      `}</style>
-    </div>
+      {/* ═══ User Modal ═══ */}
+      {userModal && (
+        <div className="modal-bg show" onClick={(e) => { if (e.target === e.currentTarget) setUserModal(null); }}>
+          <div className="modal">
+            <div className="modal-header">
+              <div className="avatar" style={{ background: "linear-gradient(135deg, #F37021, #C47530)" }}>{avatarInitial(userModal.name)}</div>
+              <div className="info">
+                <div className="name">{userModal.name}</div>
+                <div className="uid">{userModal.lineUserId}</div>
+              </div>
+              <button className="close" onClick={() => setUserModal(null)}>{"\u00D7"}</button>
+            </div>
+            <div className="modal-body">
+              <div className="modal-section">
+                <div className="modal-section-title">訂閱管理</div>
+                {data.sources.map((src) => {
+                  const subscribed = userModal.subscribedProducts.includes(src.id);
+                  return (
+                    <button
+                      key={src.id}
+                      className={`modal-item ${subscribed ? "subscribed" : ""}`}
+                      onClick={() => {
+                        handleToggleSub(userModal.id, src.id, subscribed);
+                        setUserModal({
+                          ...userModal,
+                          subscribedProducts: subscribed
+                            ? userModal.subscribedProducts.filter((id) => id !== src.id)
+                            : [...userModal.subscribedProducts, src.id],
+                        });
+                      }}
+                    >
+                      <span className="ico">{sourceIcon(src.type)}</span>
+                      <span className="label">
+                        {src.name}
+                        <span className="meta">每 {formatInterval(src.scanInterval)} 掃描 · {src.subscribers.length} 人訂閱</span>
+                      </span>
+                      <span style={{ fontSize: 14 }}>{subscribed ? "\u2705" : "\u2795"}</span>
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="modal-section">
+                <div className="modal-section-title">基本資訊</div>
+                <div style={{ padding: "10px 16px", background: "#fafbfc", borderRadius: 12, fontSize: 12, color: "var(--text-soft)", lineHeight: 2 }}>
+                  <div>LINE ID: <span style={{ fontFamily: "monospace" }}>{userModal.lineUserId}</span></div>
+                  <div>加入時間: {new Date(userModal.createdAt).toLocaleString("zh-TW")}</div>
+                  <div>訂閱數: {userModal.subscribedProducts.length} 項</div>
+                </div>
+              </div>
+              <div className="modal-section">
+                <button
+                  className="modal-item danger"
+                  onClick={() => handleDeleteSubscriber(userModal.id, userModal.name)}
+                >
+                  <span className="ico">{"\u{1F5D1}\uFE0F"}</span>
+                  <span className="label">刪除此用戶</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ═══ Source Modal ═══ */}
+      {sourceModal && (
+        <div className="modal-bg show" onClick={(e) => { if (e.target === e.currentTarget) setSourceModal(null); }}>
+          <div className="modal" style={{ maxWidth: 520 }}>
+            <div className="modal-header">
+              <div className="avatar" style={{ background: `linear-gradient(135deg, ${sourceColor(sourceModal.type)}, ${sourceColor(sourceModal.type)}88)` }}>
+                {sourceIcon(sourceModal.type)}
+              </div>
+              <div className="info">
+                <div className="name">編輯監控源</div>
+                <div className="uid">{sourceModal.id}</div>
+              </div>
+              <button className="close" onClick={() => setSourceModal(null)}>{"\u00D7"}</button>
+            </div>
+            <div className="modal-body">
+              {/* Name */}
+              <div style={{ fontSize: 13, color: "var(--text)", fontWeight: 700, marginBottom: 10 }}>{"\u{1F4E1}"} 基本資訊</div>
+              <label style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600, display: "block", marginBottom: 4 }}>顯示名稱</label>
+              <input
+                type="text"
+                value={editSourceName}
+                onChange={(e) => setEditSourceName(e.target.value)}
+                style={{ width: "100%", padding: "10px 14px", border: "1.5px solid var(--border)", borderRadius: 10, fontSize: 13, marginBottom: 10, fontFamily: "inherit" }}
+              />
+
+              {/* Enable/Disable */}
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
+                <span style={{ fontSize: 12, color: "var(--text-soft)" }}>狀態</span>
+                <button
+                  className={`btn btn-small ${sourceModal.enabled ? "btn-primary" : "btn-danger"}`}
+                  onClick={() => {
+                    handleToggleSource(sourceModal.id, sourceModal.enabled);
+                    setSourceModal({ ...sourceModal, enabled: !sourceModal.enabled });
+                  }}
+                >
+                  {sourceModal.enabled ? "\u2705 啟用中" : "\u23F8\uFE0F 已停用"}
+                </button>
+              </div>
+
+              <div style={{ borderTop: "1px dashed var(--border)", margin: "14px 0" }} />
+
+              {/* Interval */}
+              <div style={{ fontSize: 13, color: "var(--text)", fontWeight: 700, marginBottom: 8 }}>{"\u23F1\uFE0F"} 檢查頻率</div>
+              <div style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 10, lineHeight: 1.5 }}>
+                CDN 預警建議 10~30 秒，官網掃描建議 1~5 分鐘
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
+                {INTERVAL_PRESETS.map((p) => (
+                  <button
+                    key={p.value}
+                    className={`modal-item ${editSourceInterval === p.value && !editSourceCustom ? "subscribed" : ""}`}
+                    style={{ padding: "10px 12px", marginBottom: 0, justifyContent: "center", textAlign: "center" }}
+                    onClick={() => { setEditSourceInterval(p.value); setEditSourceCustom(""); }}
+                  >
+                    <span className="label" style={{ textAlign: "center" }}>{p.label}</span>
+                  </button>
+                ))}
+              </div>
+              <div style={{ marginTop: 12 }}>
+                <label style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600, display: "block", marginBottom: 4 }}>自訂秒數</label>
+                <input
+                  type="number"
+                  min={10}
+                  placeholder="例：120"
+                  value={editSourceCustom}
+                  onChange={(e) => setEditSourceCustom(e.target.value)}
+                  style={{ width: "100%", padding: "10px 14px", border: "1.5px solid var(--border)", borderRadius: 10, fontSize: 13, fontFamily: "inherit" }}
+                />
+              </div>
+
+              <div style={{ borderTop: "1px dashed var(--border)", margin: "18px 0" }} />
+
+              {/* Subscribers */}
+              <div style={{ fontSize: 13, color: "var(--text)", fontWeight: 700, marginBottom: 8 }}>{"\u{1F465}"} 訂閱此監控的用戶</div>
+              {sourceModal.subscribers.length === 0 ? (
+                <div style={{ fontSize: 12, color: "var(--text-muted)", padding: "8px 0" }}>尚無訂閱者</div>
+              ) : (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
+                  {sourceModal.subscribers.map((subId) => {
+                    const sub = data.subscribers.find((s) => s.id === subId);
+                    if (!sub) return null;
+                    return (
+                      <span key={subId} className="sub-chip">
+                        <span className="mini-avatar" style={{ background: sourceColor(sourceModal.type) }}>{avatarInitial(sub.name)}</span>
+                        {sub.name}
+                        <span
+                          className="x"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleToggleSub(subId, sourceModal.id, true);
+                            setSourceModal({
+                              ...sourceModal,
+                              subscribers: sourceModal.subscribers.filter((id) => id !== subId),
+                            });
+                          }}
+                        >{"\u00D7"}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
+
+              <div style={{ borderTop: "1px dashed var(--border)", margin: "18px 0" }} />
+
+              <button className="btn btn-primary" onClick={handleSaveSource} style={{ width: "100%", justifyContent: "center", padding: 14 }}>
+                {"\u{1F4BE}"} 儲存所有變更
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ═══ Product Modal ═══ */}
+      {productModal && (
+        <div className="modal-bg show" onClick={(e) => { if (e.target === e.currentTarget) setProductModal(null); }}>
+          <div className="modal" style={{ maxWidth: 480 }}>
+            <div className="modal-header">
+              <div className="avatar" style={{ background: "linear-gradient(135deg, #F37021, #E8A860)" }}>{"\u{1F6CD}\uFE0F"}</div>
+              <div className="info">
+                <div className="name">{productModal.name}</div>
+                <div className="uid">{productModal.price}</div>
+              </div>
+              <button className="close" onClick={() => setProductModal(null)}>{"\u00D7"}</button>
+            </div>
+            <div className="modal-body">
+              {productModal.image && (
+                <div style={{ textAlign: "center", marginBottom: 16 }}>
+                  <img
+                    src={productModal.image}
+                    alt={productModal.name}
+                    style={{ maxWidth: "100%", maxHeight: 300, borderRadius: 12, objectFit: "contain", background: "#f9f9f9" }}
+                  />
+                </div>
+              )}
+              <div style={{ padding: "14px 16px", background: "#fafbfc", borderRadius: 12, fontSize: 13, color: "var(--text-soft)", lineHeight: 2, marginBottom: 16 }}>
+                <div><strong>名稱：</strong>{productModal.name}</div>
+                <div><strong>價格：</strong>{productModal.price}</div>
+                <div><strong>首次出現：</strong>{new Date(productModal.first_seen).toLocaleString("zh-TW")}</div>
+                <div><strong>商品 ID：</strong><span style={{ fontFamily: "monospace", fontSize: 11 }}>{productModal.id}</span></div>
+              </div>
+              <a
+                href={productModal.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                style={{ width: "100%", justifyContent: "center", padding: 14, textDecoration: "none" }}
+              >
+                {"\u{1F6D2}"} 前往購買
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
+
+/* ═══════════════ CSS ═══════════════ */
+
+const globalCSS = `
+:root {
+  --primary: #C47530;
+  --primary-light: #E8A860;
+  --primary-strong: #A35D1A;
+  --accent: #F37021;
+  --accent-soft: #FFF0E0;
+  --success: #7FA07C;
+  --success-strong: #5D8A59;
+  --danger: #B87070;
+  --danger-strong: #A05555;
+  --bg: #F5F1EB;
+  --surface: #FFFFFF;
+  --border: #E8E0D8;
+  --text: #3A3A3A;
+  --text-soft: #6E6661;
+  --text-muted: #9C9389;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: linear-gradient(135deg, #C47530 0%, #E8A860 50%, #F37021 100%);
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: 200% 200%;
+  animation: bg-drift 20s ease infinite;
+}
+@keyframes bg-drift { 0%,100% { background-position: 0% 50% } 50% { background-position: 100% 50% } }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 24px; }
+
+/* Header */
+header {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px; padding: 16px 24px;
+}
+header .brand { display: flex; align-items: center; gap: 14px; }
+header .logo {
+  width: 48px; height: 48px; background: rgba(255,255,255,.15);
+  backdrop-filter: blur(20px); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; border: 1px solid rgba(255,255,255,.2);
+}
+header h1 { color: #fff; font-size: 22px; font-weight: 700; letter-spacing: -.3px; }
+header .stats { color: rgba(255,255,255,.7); font-size: 12px; margin-top: 2px; display: flex; gap: 10px; flex-wrap: wrap; }
+header .stats span { display: inline-flex; align-items: center; gap: 4px; }
+header .actions { display: flex; gap: 8px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 16px; border-radius: 10px; border: none; cursor: pointer;
+  font-size: 13px; font-weight: 600; transition: all .15s; font-family: inherit;
+  text-decoration: none; white-space: nowrap;
+}
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--primary-strong); color: #fff; box-shadow: 0 2px 10px rgba(196,117,48,.4); }
+.btn-primary:hover { background: #8A4E12; box-shadow: 0 4px 14px rgba(196,117,48,.5); }
+.btn-secondary { background: rgba(255,255,255,.96); color: var(--primary-strong); }
+.btn-secondary:hover { background: #fff; }
+.btn-ghost { background: rgba(255,255,255,.18); color: #fff; border: 1px solid rgba(255,255,255,.3); backdrop-filter: blur(10px); }
+.btn-ghost:hover { background: rgba(255,255,255,.28); }
+.btn-danger { background: var(--danger-strong); color: #fff; }
+.btn-danger:hover { background: #8D5757; }
+.btn-small { padding: 6px 12px; font-size: 12px; border-radius: 8px; }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+@media(max-width:900px) { .grid { grid-template-columns: 1fr; } }
+
+/* Card */
+.card {
+  background: var(--surface); border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12); overflow: hidden;
+  border: 1px solid rgba(255,255,255,.5);
+  animation: card-in .4s cubic-bezier(.16,1,.3,1) both;
+}
+.grid .card:nth-child(1) { animation-delay: .05s; }
+.grid .card:nth-child(2) { animation-delay: .12s; }
+@keyframes card-in { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.card-header {
+  padding: 18px 22px; border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  background: linear-gradient(180deg, #fafbfc, #fff);
+}
+.card-header h2 { font-size: 15px; color: var(--text); font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.card-header h2 .ico { font-size: 18px; }
+.card-header .meta { font-size: 11px; color: var(--text-muted); font-weight: 600; }
+.card-body { padding: 0; overflow-y: auto; }
+.card-body::-webkit-scrollbar { width: 6px; }
+.card-body::-webkit-scrollbar-track { background: transparent; }
+.card-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Empty */
+.empty { padding: 60px 20px; text-align: center; color: var(--text-muted); font-size: 13px; }
+.empty .ico { font-size: 48px; display: block; margin-bottom: 12px; opacity: .4; }
+
+/* User row */
+.user-row {
+  padding: 14px 22px; border-bottom: 1px solid #f3f4f6;
+  display: flex; align-items: center; gap: 14px;
+  transition: background .12s, transform .15s; cursor: pointer;
+}
+.user-row:hover { background: #fafbfc; transform: translateX(2px); }
+.user-row:last-child { border-bottom: none; }
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 16px; flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(196,117,48,.35);
+}
+.user-info { flex: 1; min-width: 0; }
+.user-name { font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+.user-id { font-size: 10px; color: var(--text-muted); font-family: 'SF Mono', Monaco, monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.user-routes { margin-top: 6px; display: flex; gap: 4px; flex-wrap: wrap; }
+
+.tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px; border-radius: 12px; font-size: 10px; font-weight: 600;
+}
+.tag-primary { background: var(--accent-soft); color: var(--accent); }
+.tag-empty { background: #f3f4f6; color: var(--text-muted); }
+
+/* User search */
+.user-search { padding: 10px 22px 0; position: relative; }
+.user-search input {
+  width: 100%; padding: 10px 14px 10px 34px; border: 1.5px solid var(--border);
+  border-radius: 10px; font-size: 13px; font-family: inherit; transition: all .15s; background: #fafbfc;
+}
+.user-search input:focus { outline: none; border-color: var(--primary); background: #fff; }
+.user-search .search-ico { position: absolute; right: 36px; top: 22px; font-size: 12px; pointer-events: none; color: var(--text-muted); }
+
+/* Route/Source card */
+.route-card {
+  padding: 18px 22px; border-bottom: 1px solid #f3f4f6;
+  transition: background .12s, transform .15s, box-shadow .15s; cursor: pointer;
+}
+.route-card:hover { background: #fafbfc; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+.route-card:last-child { border-bottom: none; }
+.route-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.route-meta { font-size: 11px; color: var(--text-muted); margin-top: 6px; display: flex; align-items: center; gap: 6px; }
+.route-meta .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.8); } }
+.route-subscribers { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.sub-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 10px 5px 5px; background: #f0f6ff; border-radius: 14px;
+  font-size: 11px; color: var(--primary-strong); font-weight: 600;
+}
+.sub-chip .mini-avatar {
+  width: 18px; height: 18px; border-radius: 50%; color: #fff;
+  font-size: 9px; display: flex; align-items: center; justify-content: center;
+}
+.sub-chip .x { cursor: pointer; color: var(--danger); font-weight: bold; margin-left: 2px; padding: 0 4px; border-radius: 4px; }
+.sub-chip .x:hover { background: #fee2e2; }
+
+/* Product row */
+.product-row {
+  padding: 14px 22px; border-bottom: 1px solid #f3f4f6;
+  display: flex; align-items: center; gap: 14px; cursor: pointer;
+  transition: background .12s;
+}
+.product-row:hover { background: #fafbfc; }
+.product-img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; background: #f5f5f5; flex-shrink: 0; }
+.product-info { flex: 1; min-width: 0; }
+.product-name { font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.product-price { font-size: 14px; font-weight: 700; color: var(--accent); margin-top: 2px; }
+.product-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* Login */
+.login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.login-card {
+  background: rgba(255,255,255,.98); backdrop-filter: blur(20px);
+  border-radius: 24px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  max-width: 400px; width: 100%; border: 1px solid rgba(255,255,255,.5);
+  animation: login-in .5s cubic-bezier(.16,1,.3,1); text-align: center;
+}
+@keyframes login-in { from { transform: scale(.9) translateY(30px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+.login-card .logo-big {
+  width: 72px; height: 72px; background: linear-gradient(135deg, #C47530, #F37021);
+  border-radius: 20px; display: flex; align-items: center; justify-content: center;
+  font-size: 36px; margin: 0 auto 20px; box-shadow: 0 8px 24px rgba(196,117,48,.4);
+}
+.login-card h1 { font-size: 22px; color: var(--text); margin-bottom: 6px; font-weight: 700; }
+.login-card p { font-size: 13px; color: var(--text-soft); margin-bottom: 28px; }
+.login-card input {
+  width: 100%; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 12px;
+  font-size: 14px; margin-bottom: 14px; font-family: inherit; transition: border-color .15s;
+}
+.login-card input:focus { outline: none; border-color: var(--primary); }
+.login-card button {
+  width: 100%; padding: 14px; background: var(--primary-strong); color: #fff;
+  border: none; border-radius: 12px; font-size: 14px; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: all .15s;
+}
+.login-card button:hover { background: #8A4E12; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(196,117,48,.45); }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+  padding: 16px 24px; border-radius: 14px; font-size: 14px; font-weight: 600;
+  opacity: 0; transition: all .3s cubic-bezier(.16,1,.3,1); z-index: 1100;
+  pointer-events: none; display: flex; align-items: center; gap: 8px;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.success { background: var(--success-strong); color: #fff; box-shadow: 0 12px 36px rgba(93,138,89,.45); }
+.toast.error { background: var(--danger-strong); color: #fff; box-shadow: 0 12px 36px rgba(160,85,85,.45); }
+
+/* Modal */
+.modal-bg {
+  display: none; position: fixed; inset: 0;
+  background: rgba(58,46,38,.55); backdrop-filter: blur(6px); z-index: 1000;
+  align-items: center; justify-content: center; padding: 20px;
+}
+.modal-bg.show { display: flex; animation: fade-in .2s ease-out; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.modal {
+  background: #fff; border-radius: 20px; max-width: 440px; width: 100%; max-height: 88vh;
+  overflow-y: auto; box-shadow: 0 24px 80px rgba(196,117,48,.3);
+  animation: modal-in .3s cubic-bezier(.16,1,.3,1);
+  border-top: 4px solid var(--primary-strong);
+}
+@keyframes modal-in { from { transform: scale(.92) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+.modal-header {
+  padding: 22px 24px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 14px;
+}
+.modal-header .info { flex: 1; min-width: 0; }
+.modal-header .name { font-size: 15px; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.modal-header .uid { font-size: 10px; color: var(--text-muted); font-family: 'SF Mono', Monaco, monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+.modal-header .close {
+  background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 10px;
+  font-size: 18px; color: var(--text-soft); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all .15s;
+}
+.modal-header .close:hover { background: #e5e7eb; color: var(--text); }
+.modal-body { padding: 18px 20px; }
+.modal-section { margin-bottom: 14px; }
+.modal-section:last-child { margin-bottom: 0; }
+.modal-section-title { font-size: 11px; color: var(--text-muted); font-weight: 700; padding: 0 4px 8px; text-transform: uppercase; letter-spacing: .5px; }
+.modal-item {
+  padding: 14px 16px; cursor: pointer; font-size: 13px; border-radius: 12px;
+  color: var(--text); display: flex; align-items: center; gap: 12px; text-align: left;
+  width: 100%; background: #fafbfc; border: 1.5px solid #f3f4f6; margin-bottom: 8px;
+  transition: all .15s; font-family: inherit;
+}
+.modal-item:hover { background: #f0f6ff; border-color: #cce0f0; transform: translateX(2px); }
+.modal-item.subscribed { background: var(--accent-soft); border-color: #FFD4B3; }
+.modal-item.subscribed:hover { background: #FFE8D6; }
+.modal-item.danger { background: #fef2f2; border-color: #fecaca; color: var(--danger); }
+.modal-item.danger:hover { background: #fee2e2; }
+.modal-item .ico { font-size: 18px; flex-shrink: 0; width: 24px; text-align: center; }
+.modal-item .label { flex: 1; font-weight: 600; line-height: 1.4; }
+.modal-item .label .meta { font-size: 10px; color: var(--text-muted); font-weight: 500; display: block; margin-top: 2px; }
+
+/* Spin */
+.spin { animation: spin 1s linear infinite; display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Mobile */
+@media(max-width:768px) {
+  .container { padding: 12px; }
+  header { margin-bottom: 0; gap: 10px; padding: 12px 16px; }
+  header .logo { width: 42px; height: 42px; font-size: 20px; border-radius: 12px; }
+  header h1 { font-size: 18px; }
+  header .stats { font-size: 11px; flex-wrap: wrap; gap: 6px; }
+  .grid { gap: 12px; }
+  .card { border-radius: 14px; }
+  .card-header { padding: 14px 16px; }
+  .card-header h2 { font-size: 14px; }
+  .card-body { max-height: none !important; }
+  .user-row { padding: 12px 16px; gap: 10px; }
+  .avatar { width: 38px; height: 38px; font-size: 14px; }
+  .user-name { font-size: 13px; }
+  .user-id { font-size: 9px; }
+  .route-card { padding: 14px 16px; }
+  .route-title { font-size: 14px; }
+  .route-meta { font-size: 10px; }
+  .sub-chip { font-size: 10px; padding: 4px 8px 4px 4px; }
+  .sub-chip .mini-avatar { width: 16px; height: 16px; font-size: 8px; }
+  .product-img { width: 48px; height: 48px; }
+  .modal-bg { padding: 0; align-items: flex-end; }
+  .modal { max-width: 100%; max-height: 90vh; border-radius: 20px 20px 0 0; width: 100%; }
+  .modal-header { padding: 18px 18px 14px; position: sticky; top: 0; background: #fff; z-index: 1; border-bottom: 1px solid var(--border); }
+  .modal-body { padding: 14px 16px 24px; }
+  .modal-item { padding: 14px 14px; font-size: 13px; }
+  .btn { min-height: 36px; }
+  .btn-small { min-height: 30px; padding: 7px 12px; font-size: 12px; }
+}
+@media(max-width:380px) {
+  .container { padding: 10px; }
+  header h1 { font-size: 16px; }
+  header .stats { font-size: 10px; }
+  .card-header h2 { font-size: 13px; }
+  .user-row { padding: 10px 12px; }
+  .avatar { width: 34px; height: 34px; font-size: 13px; }
+}
+`;

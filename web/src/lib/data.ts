@@ -106,8 +106,20 @@ async function writeJsonToGitHub(filename: string, data: unknown, message?: stri
 
 const SUBSCRIBERS_FILE = "subscribers.json";
 
+const DEFAULT_SUBSCRIBERS: Subscriber[] = [
+  { id: "abner", name: "Abner", lineUserId: "Ubc7cbeaa0c873e42562b57addff63362", subscribedProducts: ["hermes", "hermes-cdn"], createdAt: "2026-04-01T00:00:00Z" },
+  { id: "pangwen", name: "胖雯", lineUserId: "U2b8f1576a62e8dd90c1c1a43853d415b", subscribedProducts: ["hermes", "hermes-cdn"], createdAt: "2026-04-09T00:44:01Z" },
+  { id: "chidong", name: "池董", lineUserId: "U667f0a680157296f575dee2e44e015e0", subscribedProducts: ["hermes"], createdAt: "2026-04-09T00:46:47Z" },
+  { id: "rey", name: "Rey", lineUserId: "U0fc06d1fcf4f88f51695d49e869e6530", subscribedProducts: [], createdAt: "2026-04-10T15:47:27Z" },
+];
+
 export async function getSubscribers(): Promise<Subscriber[]> {
-  return readJsonFromGitHub<Subscriber[]>(SUBSCRIBERS_FILE, []);
+  const subs = await readJsonFromGitHub<Subscriber[]>(SUBSCRIBERS_FILE, []);
+  if (subs.length === 0) {
+    await saveSubscribers(DEFAULT_SUBSCRIBERS);
+    return DEFAULT_SUBSCRIBERS;
+  }
+  return subs;
 }
 
 export async function saveSubscribers(subs: Subscriber[]): Promise<boolean> {
@@ -165,7 +177,7 @@ const DEFAULT_SOURCES: MonitorSource[] = [
     enabled: true,
     lastScan: null,
     productCount: 0,
-    subscribers: [],
+    subscribers: ["abner", "pangwen", "chidong"],
   },
   {
     id: "hermes-cdn",
@@ -175,7 +187,7 @@ const DEFAULT_SOURCES: MonitorSource[] = [
     enabled: true,
     lastScan: null,
     productCount: 0,
-    subscribers: [],
+    subscribers: ["abner", "pangwen"],
   },
   {
     id: "blueberry",
