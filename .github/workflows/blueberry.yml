@@ -1,0 +1,27 @@
+name: Blueberry Daily Report
+
+on:
+  schedule:
+    # 9:00 AM Taiwan time (UTC+8) = 1:00 UTC
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send daily blueberry report
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          echo "=== Blueberry daily report ==="
+          RESULT=$(curl -sf -m 30 "https://hermes.slime-tools.com/api/cron/blueberry" \
+            -H "Authorization: Bearer $CRON_SECRET" 2>&1) || echo "Failed: $RESULT"
+          echo "$RESULT" | python3 -c "
+          import json, sys
+          try:
+            d = json.load(sys.stdin)
+            print(f'Active: {d.get(\"activeProducts\",0)}, In stock: {d.get(\"inStock\",0)}, Notified: {d.get(\"notifiedUsers\",0)}')
+          except:
+            print('Could not parse response')
+          " 2>/dev/null || true

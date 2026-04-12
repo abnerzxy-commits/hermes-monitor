@@ -204,11 +204,11 @@ const DEFAULT_SOURCES: MonitorSource[] = [
     id: "blueberry",
     name: "山丘藍藍莓",
     type: "blueberry",
-    scanInterval: 3600,
+    scanInterval: 86400,
     enabled: true,
     lastScan: null,
     productCount: 0,
-    subscribers: [],
+    subscribers: ["abner"],
   },
 ];
 
