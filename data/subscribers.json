@@ -10,16 +10,6 @@
     "createdAt": "2026-04-01T00:00:00Z"
   },
   {
-    "id": "pangwen",
-    "name": "胖雯",
-    "lineUserId": "U2b8f1576a62e8dd90c1c1a43853d415b",
-    "subscribedProducts": [
-      "hermes",
-      "hermes-cdn"
-    ],
-    "createdAt": "2026-04-09T00:44:01Z"
-  },
-  {
     "id": "chidong",
     "name": "池董",
     "lineUserId": "U667f0a680157296f575dee2e44e015e0",
