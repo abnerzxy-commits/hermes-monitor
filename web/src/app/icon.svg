@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C47530"/>
+      <stop offset="100%" stop-color="#F37021"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FFE0C0" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="512" height="512" rx="108" fill="url(#bg)"/>
+  <!-- Radar waves -->
+  <g fill="none" stroke="url(#wave)" stroke-width="28" stroke-linecap="round" opacity="0.55">
+    <path d="M256 310 Q256 230 200 174" />
+    <path d="M256 350 Q256 210 160 134" />
+    <path d="M256 390 Q256 190 120 94" />
+  </g>
+  <g fill="none" stroke="url(#wave)" stroke-width="28" stroke-linecap="round" opacity="0.55">
+    <path d="M256 310 Q256 230 312 174" />
+    <path d="M256 350 Q256 210 352 134" />
+    <path d="M256 390 Q256 190 392 94" />
+  </g>
+  <!-- Center dot -->
+  <circle cx="256" cy="340" r="36" fill="#fff"/>
+  <!-- Antenna stick -->
+  <line x1="256" y1="304" x2="256" y2="180" stroke="#fff" stroke-width="24" stroke-linecap="round"/>
+  <!-- Small signal dot top -->
+  <circle cx="256" cy="148" r="16" fill="#fff" opacity="0.7"/>
+</svg>
