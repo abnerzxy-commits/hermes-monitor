@@ -238,12 +238,17 @@ export async function GET(req: NextRequest) {
 
   const startTime = Date.now();
 
+  const scrapePromise = Promise.all(CATEGORY_URLS.map((u) => scrapeCategory(u)));
+  const existingPromise = readGitHub<Record<string, Product>>("products.json", {});
+  const notifiedPromise = readGitHub<Record<string, string>>("notified_skus.json", {});
+  const historyPromise = readGitHub<Array<Record<string, unknown>>>("restock_history.json", []);
+
+  const scrapeResults = await scrapePromise;
   const allProducts: Product[] = [];
   const seenSkus = new Set<string>();
   const categoryStatus: Array<{ url: string; status: string; count: number }> = [];
-
-  for (const url of CATEGORY_URLS) {
-    const { products, status } = await scrapeCategory(url);
+  CATEGORY_URLS.forEach((url, i) => {
+    const { products, status } = scrapeResults[i];
     categoryStatus.push({ url, status, count: products.length });
     for (const p of products) {
       if (!seenSkus.has(p.sku)) {
@@ -251,8 +256,7 @@ export async function GET(req: NextRequest) {
         allProducts.push(p);
       }
     }
-    await new Promise((r) => setTimeout(r, 1000 + Math.random() * 2000));
-  }
+  });
 
   if (allProducts.length === 0) {
     return Response.json({
@@ -264,25 +268,17 @@ export async function GET(req: NextRequest) {
     });
   }
 
-  const existing = await readGitHub<Record<string, Product>>("products.json", {});
+  const existing = await existingPromise;
   const existingSkus = new Set(Object.values(existing).map((p) => p.sku));
 
-  const newProducts: Product[] = [];
-  const updatedProducts: Record<string, Product> = { ...existing };
-
-  for (const p of allProducts) {
-    if (!existingSkus.has(p.sku)) {
-      newProducts.push(p);
-      updatedProducts[p.id] = p;
-    }
-  }
+  const newProducts: Product[] = allProducts.filter((p) => !existingSkus.has(p.sku));
 
   let notifySent = { telegram: false, line: { sent: 0, status: "skipped" as string } };
   let productsToNotify: Product[] = [];
   let suppressedCount = 0;
 
   if (newProducts.length > 0) {
-    const notified = await readGitHub<Record<string, string>>("notified_skus.json", {});
+    const notified = await notifiedPromise;
     const now = Date.now();
 
     productsToNotify = newProducts.filter((p) => {
@@ -293,37 +289,58 @@ export async function GET(req: NextRequest) {
     });
     suppressedCount = newProducts.length - productsToNotify.length;
 
-    await writeGitHub(
-      "products.json",
-      updatedProducts,
-      `new products: ${newProducts.map((p) => p.name).slice(0, 8).join(", ")}${newProducts.length > 8 ? ", ..." : ""}`
-    );
+    const updatedProducts: Record<string, Product> = { ...existing };
+    for (const p of newProducts) updatedProducts[p.id] = p;
 
-    const history = await readGitHub<Array<Record<string, unknown>>>("restock_history.json", []);
-    for (const p of newProducts) {
-      history.push({
-        name: p.name,
-        url: p.url,
-        price: p.price,
-        sku: p.sku,
-        timestamp: new Date().toISOString(),
-      });
-    }
-    await writeGitHub("restock_history.json", history, `restock: ${newProducts.length} new`);
+    const writes: Array<Promise<unknown>> = [
+      writeGitHub(
+        "products.json",
+        updatedProducts,
+        `scan: +${newProducts.length} skus`
+      ),
+    ];
 
     if (productsToNotify.length > 0) {
       const text = buildMessage(productsToNotify);
-      const [tg, line] = await Promise.all([sendTelegram(text), sendLine(text)]);
+      const nowIso = new Date().toISOString();
+
+      const [tg, line, history] = await Promise.all([
+        sendTelegram(text),
+        sendLine(text),
+        historyPromise,
+      ]);
       notifySent = { telegram: tg, line };
 
-      const nowIso = new Date().toISOString();
-      for (const p of productsToNotify) notified[p.sku] = nowIso;
+      for (const p of productsToNotify) {
+        history.push({
+          name: p.name,
+          url: p.url,
+          price: p.price,
+          sku: p.sku,
+          timestamp: nowIso,
+        });
+        notified[p.sku] = nowIso;
+      }
       for (const sku of Object.keys(notified)) {
         const age = now - Date.parse(notified[sku]);
         if (Number.isFinite(age) && age > NOTIFIED_RETENTION_MS) delete notified[sku];
       }
-      await writeGitHub("notified_skus.json", notified, `notified: ${productsToNotify.length} sku(s)`);
+
+      writes.push(
+        writeGitHub(
+          "restock_history.json",
+          history,
+          `restock: ${productsToNotify.length} new`
+        ),
+        writeGitHub(
+          "notified_skus.json",
+          notified,
+          `notified: ${productsToNotify.length} sku(s)`
+        )
+      );
     }
+
+    await Promise.all(writes);
   }
 
   return Response.json({
