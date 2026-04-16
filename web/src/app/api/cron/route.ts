@@ -6,6 +6,9 @@ export const maxDuration = 60;
 
 const LINE_TOKEN = process.env.LINE_CHANNEL_ACCESS_TOKEN || "";
 const LINE_USER_ID = process.env.LINE_USER_ID || "";
+const LINE_PAUSE_UNTIL = process.env.LINE_PAUSE_UNTIL || "";
+const TG_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "";
+const TG_CHAT_ID = process.env.TELEGRAM_CHAT_ID || "";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
 const CRON_SECRET = process.env.CRON_SECRET || "";
 const PROXY_URL = process.env.CAPTCHA_PROXY || "";
@@ -29,6 +32,9 @@ const USER_AGENTS = [
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
 ];
+
+const DEDUPE_WINDOW_MS = 6 * 60 * 60 * 1000;
+const NOTIFIED_RETENTION_MS = 7 * 24 * 60 * 60 * 1000;
 
 interface Product {
   id: string;
@@ -81,7 +87,6 @@ async function writeGitHub(filename: string, data: unknown, message: string): Pr
 // ─── Scraper ──────────────────────────
 
 function extractProducts(html: string): Product[] {
-  // Find hermes-state JSON
   const stateMatch = html.match(/<script\s+id=["']?hermes-state["']?\s+type="application\/json">([\s\S]*?)<\/script>/);
   if (!stateMatch) return [];
 
@@ -165,39 +170,67 @@ async function scrapeCategory(url: string): Promise<{ products: Product[]; statu
   }
 }
 
-// ─── LINE notification ─────────────────
+// ─── Notification channels ─────────────
 
-async function sendLineNotification(newProducts: Product[]) {
-  if (!LINE_TOKEN || !LINE_USER_ID || newProducts.length === 0) return;
+function isLinePaused(): boolean {
+  if (!LINE_PAUSE_UNTIL) return false;
+  const until = Date.parse(LINE_PAUSE_UNTIL);
+  return Number.isFinite(until) && Date.now() < until;
+}
 
-  // Send to all subscribers
-  const subscribers = await readGitHub<Array<{ lineUserId: string; subscribedProducts: string[] }>>("subscribers.json", []);
-  const hermesSubscribers = subscribers.filter((s) => s.subscribedProducts.includes("hermes"));
-  const userIds = hermesSubscribers.map((s) => s.lineUserId);
-  if (userIds.length === 0) userIds.push(LINE_USER_ID); // fallback to admin
+function buildMessage(products: Product[]): string {
+  const lines = products.slice(0, 10).map((p) => `🆕 ${p.name}\n💰 ${p.price}\n🔗 ${p.url}`);
+  const more = products.length > 10 ? `\n\n…還有 ${products.length - 10} 件` : "";
+  return `🛍️ 愛馬仕新品上架！(${products.length} 件)\n\n${lines.join("\n\n")}${more}`;
+}
 
-  const lines = newProducts.slice(0, 10).map((p) => `${p.name}\n${p.price}\n${p.url}`);
-  const text = `🛍️ 愛馬仕新品上架！(${newProducts.length} 件)\n\n${lines.join("\n\n")}`;
-
-  for (const uid of userIds) {
-    await fetch("https://api.line.me/v2/bot/message/push", {
+async function sendTelegram(text: string): Promise<boolean> {
+  if (!TG_TOKEN || !TG_CHAT_ID) return false;
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${LINE_TOKEN}`,
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        to: uid,
-        messages: [{ type: "text", text }],
+        chat_id: TG_CHAT_ID,
+        text,
+        disable_web_page_preview: true,
       }),
     });
+    return res.ok;
+  } catch {
+    return false;
   }
+}
+
+async function sendLine(text: string): Promise<{ sent: number; status: string }> {
+  if (isLinePaused()) return { sent: 0, status: `paused_until_${LINE_PAUSE_UNTIL}` };
+  if (!LINE_TOKEN || !LINE_USER_ID) return { sent: 0, status: "no_credentials" };
+
+  const subscribers = await readGitHub<Array<{ lineUserId: string; subscribedProducts: string[] }>>("subscribers.json", []);
+  const userIds = subscribers.filter((s) => s.subscribedProducts.includes("hermes")).map((s) => s.lineUserId);
+  if (userIds.length === 0) userIds.push(LINE_USER_ID);
+
+  let sent = 0;
+  let lastErr = "";
+  for (const uid of userIds) {
+    try {
+      const res = await fetch("https://api.line.me/v2/bot/message/push", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${LINE_TOKEN}` },
+        body: JSON.stringify({ to: uid, messages: [{ type: "text", text }] }),
+      });
+      if (res.ok) sent++;
+      else lastErr = `http_${res.status}`;
+    } catch (e) {
+      lastErr = (e as Error).message.slice(0, 40);
+    }
+  }
+  return { sent, status: sent > 0 ? "ok" : lastErr || "none" };
 }
 
 // ─── Main handler ──────────────────────
 
 export async function GET(req: NextRequest) {
-  // Verify cron secret
   const authHeader = req.headers.get("authorization");
   if (CRON_SECRET && authHeader !== `Bearer ${CRON_SECRET}`) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
@@ -205,7 +238,6 @@ export async function GET(req: NextRequest) {
 
   const startTime = Date.now();
 
-  // Scrape all categories
   const allProducts: Product[] = [];
   const seenSkus = new Set<string>();
   const categoryStatus: Array<{ url: string; status: string; count: number }> = [];
@@ -232,11 +264,9 @@ export async function GET(req: NextRequest) {
     });
   }
 
-  // Load existing products
   const existing = await readGitHub<Record<string, Product>>("products.json", {});
   const existingSkus = new Set(Object.values(existing).map((p) => p.sku));
 
-  // Find new products
   const newProducts: Product[] = [];
   const updatedProducts: Record<string, Product> = { ...existing };
 
@@ -247,11 +277,28 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  // Save if there are new products
-  if (newProducts.length > 0) {
-    await writeGitHub("products.json", updatedProducts, `new products: ${newProducts.map((p) => p.name).join(", ")}`);
+  let notifySent = { telegram: false, line: { sent: 0, status: "skipped" as string } };
+  let productsToNotify: Product[] = [];
+  let suppressedCount = 0;
 
-    // Update restock history
+  if (newProducts.length > 0) {
+    const notified = await readGitHub<Record<string, string>>("notified_skus.json", {});
+    const now = Date.now();
+
+    productsToNotify = newProducts.filter((p) => {
+      const last = notified[p.sku];
+      if (!last) return true;
+      const age = now - Date.parse(last);
+      return !Number.isFinite(age) || age > DEDUPE_WINDOW_MS;
+    });
+    suppressedCount = newProducts.length - productsToNotify.length;
+
+    await writeGitHub(
+      "products.json",
+      updatedProducts,
+      `new products: ${newProducts.map((p) => p.name).slice(0, 8).join(", ")}${newProducts.length > 8 ? ", ..." : ""}`
+    );
+
     const history = await readGitHub<Array<Record<string, unknown>>>("restock_history.json", []);
     for (const p of newProducts) {
       history.push({
@@ -264,16 +311,31 @@ export async function GET(req: NextRequest) {
     }
     await writeGitHub("restock_history.json", history, `restock: ${newProducts.length} new`);
 
-    // Send LINE notifications
-    await sendLineNotification(newProducts);
+    if (productsToNotify.length > 0) {
+      const text = buildMessage(productsToNotify);
+      const [tg, line] = await Promise.all([sendTelegram(text), sendLine(text)]);
+      notifySent = { telegram: tg, line };
+
+      const nowIso = new Date().toISOString();
+      for (const p of productsToNotify) notified[p.sku] = nowIso;
+      for (const sku of Object.keys(notified)) {
+        const age = now - Date.parse(notified[sku]);
+        if (Number.isFinite(age) && age > NOTIFIED_RETENTION_MS) delete notified[sku];
+      }
+      await writeGitHub("notified_skus.json", notified, `notified: ${productsToNotify.length} sku(s)`);
+    }
   }
 
   return Response.json({
     status: "ok",
     totalScraped: allProducts.length,
     newProducts: newProducts.length,
+    notified: productsToNotify.length,
+    suppressedByDedupe: suppressedCount,
+    notifySent,
     newItems: newProducts.map((p) => ({ name: p.name, price: p.price, sku: p.sku })),
     proxy: PROXY_URL ? "on" : "off",
+    linePaused: isLinePaused() ? LINE_PAUSE_UNTIL : null,
     categoryStatus,
     duration: Date.now() - startTime,
   });
