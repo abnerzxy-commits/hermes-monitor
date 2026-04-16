@@ -1,9 +1,16 @@
 import { NextRequest } from "next/server";
+import { request as undiciRequest, ProxyAgent, Agent } from "undici";
+
+export const runtime = "nodejs";
+export const maxDuration = 60;
 
 const LINE_TOKEN = process.env.LINE_CHANNEL_ACCESS_TOKEN || "";
 const LINE_USER_ID = process.env.LINE_USER_ID || "";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
 const CRON_SECRET = process.env.CRON_SECRET || "";
+const PROXY_URL = process.env.CAPTCHA_PROXY || "";
+
+const scrapeDispatcher = PROXY_URL ? new ProxyAgent(PROXY_URL) : new Agent();
 
 const GITHUB_OWNER = "abnerzxy-commits";
 const GITHUB_REPO = "hermes-monitor";
@@ -131,23 +138,30 @@ function extractProducts(html: string): Product[] {
   return products;
 }
 
-async function scrapeCategory(url: string): Promise<Product[]> {
+async function scrapeCategory(url: string): Promise<{ products: Product[]; status: string }> {
   const ua = USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length)];
   try {
-    const res = await fetch(url, {
+    const { statusCode, body } = await undiciRequest(url, {
+      method: "GET",
       headers: {
         "User-Agent": ua,
         Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "zh-TW,zh;q=0.9",
         "Accept-Encoding": "identity",
       },
+      dispatcher: scrapeDispatcher,
+      bodyTimeout: 25_000,
+      headersTimeout: 15_000,
     });
-    if (!res.ok) return [];
-    const html = await res.text();
-    if (html.length < 200000) return []; // DataDome fake page
-    return extractProducts(html);
-  } catch {
-    return [];
+    if (statusCode !== 200) {
+      body.dump().catch(() => {});
+      return { products: [], status: `http_${statusCode}` };
+    }
+    const html = await body.text();
+    if (html.length < 200000) return { products: [], status: "blocked" };
+    return { products: extractProducts(html), status: "ok" };
+  } catch (e) {
+    return { products: [], status: `error:${(e as Error).message.slice(0, 60)}` };
   }
 }
 
@@ -194,16 +208,17 @@ export async function GET(req: NextRequest) {
   // Scrape all categories
   const allProducts: Product[] = [];
   const seenSkus = new Set<string>();
+  const categoryStatus: Array<{ url: string; status: string; count: number }> = [];
 
   for (const url of CATEGORY_URLS) {
-    const products = await scrapeCategory(url);
+    const { products, status } = await scrapeCategory(url);
+    categoryStatus.push({ url, status, count: products.length });
     for (const p of products) {
       if (!seenSkus.has(p.sku)) {
         seenSkus.add(p.sku);
         allProducts.push(p);
       }
     }
-    // Small delay between requests
     await new Promise((r) => setTimeout(r, 1000 + Math.random() * 2000));
   }
 
@@ -211,6 +226,8 @@ export async function GET(req: NextRequest) {
     return Response.json({
       status: "no_data",
       message: "All requests blocked or empty",
+      proxy: PROXY_URL ? "on" : "off",
+      categoryStatus,
       duration: Date.now() - startTime,
     });
   }
@@ -256,6 +273,8 @@ export async function GET(req: NextRequest) {
     totalScraped: allProducts.length,
     newProducts: newProducts.length,
     newItems: newProducts.map((p) => ({ name: p.name, price: p.price, sku: p.sku })),
+    proxy: PROXY_URL ? "on" : "off",
+    categoryStatus,
     duration: Date.now() - startTime,
   });
 }
