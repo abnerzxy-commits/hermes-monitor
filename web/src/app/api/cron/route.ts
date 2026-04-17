@@ -43,6 +43,7 @@ interface Product {
   image: string;
   price: string;
   sku: string;
+  inStock: boolean;
   first_seen: string;
 }
 
@@ -113,6 +114,8 @@ function extractProducts(html: string): Product[] {
       const price = item.price || 0;
       const urlPath = item.url || "";
       const assets = item.assets || [];
+      const stock = item.stock || {};
+      const inStock = stock.ecom === true;
 
       let image = "";
       for (const asset of assets) {
@@ -136,6 +139,7 @@ function extractProducts(html: string): Product[] {
         image,
         price: typeof price === "number" ? `NT$ ${price.toLocaleString()}` : String(price),
         sku,
+        inStock,
         first_seen: new Date().toISOString(),
       });
     }
@@ -178,10 +182,13 @@ function isLinePaused(): boolean {
   return Number.isFinite(until) && Date.now() < until;
 }
 
-function buildMessage(products: Product[]): string {
-  const lines = products.slice(0, 10).map((p) => `🆕 ${p.name}\n💰 ${p.price}\n🔗 ${p.url}`);
+function buildMessage(products: Product[], restockedSkus: Set<string>): string {
+  const lines = products.slice(0, 10).map((p) => {
+    const tag = restockedSkus.has(p.sku) ? "🔄 補貨" : "🆕 新品";
+    return `${tag} ${p.name}\n💰 ${p.price}\n🔗 ${p.url}`;
+  });
   const more = products.length > 10 ? `\n\n…還有 ${products.length - 10} 件` : "";
-  return `🛍️ 愛馬仕新品上架！(${products.length} 件)\n\n${lines.join("\n\n")}${more}`;
+  return `🛍️ 愛馬仕有貨通知！(${products.length} 件)\n\n${lines.join("\n\n")}${more}`;
 }
 
 async function sendTelegram(text: string): Promise<boolean> {
@@ -269,39 +276,67 @@ export async function GET(req: NextRequest) {
   }
 
   const existing = await existingPromise;
-  const existingSkus = new Set(Object.values(existing).map((p) => p.sku));
+  const existingBySku = new Map<string, Product>();
+  for (const p of Object.values(existing)) existingBySku.set(p.sku, p);
 
-  const newProducts: Product[] = allProducts.filter((p) => !existingSkus.has(p.sku));
+  const newInStock: Product[] = [];
+  const restocked: Product[] = [];
+  const restockedSkus = new Set<string>();
+  let totalInStock = 0;
+
+  for (const p of allProducts) {
+    if (p.inStock) totalInStock++;
+    const prev = existingBySku.get(p.sku);
+    if (!prev) {
+      if (p.inStock) newInStock.push(p);
+    } else if (p.inStock && !prev.inStock) {
+      restocked.push(p);
+      restockedSkus.add(p.sku);
+    }
+  }
+
+  const alertProducts = [...newInStock, ...restocked];
 
   let notifySent = { telegram: false, line: { sent: 0, status: "skipped" as string } };
   let productsToNotify: Product[] = [];
   let suppressedCount = 0;
 
-  if (newProducts.length > 0) {
+  const updatedProducts: Record<string, Product> = { ...existing };
+  let hasChanges = false;
+  for (const p of allProducts) {
+    const prev = existingBySku.get(p.sku);
+    if (!prev || prev.inStock !== p.inStock) {
+      updatedProducts[p.id] = p;
+      hasChanges = true;
+    }
+  }
+
+  if (alertProducts.length > 0) {
     const notified = await notifiedPromise;
     const now = Date.now();
 
-    productsToNotify = newProducts.filter((p) => {
+    productsToNotify = alertProducts.filter((p) => {
       const last = notified[p.sku];
       if (!last) return true;
       const age = now - Date.parse(last);
       return !Number.isFinite(age) || age > DEDUPE_WINDOW_MS;
     });
-    suppressedCount = newProducts.length - productsToNotify.length;
+    suppressedCount = alertProducts.length - productsToNotify.length;
 
-    const updatedProducts: Record<string, Product> = { ...existing };
-    for (const p of newProducts) updatedProducts[p.id] = p;
+    const writes: Array<Promise<unknown>> = [];
 
-    const writes: Array<Promise<unknown>> = [
-      writeGitHub(
-        "products.json",
-        updatedProducts,
-        `scan: +${newProducts.length} skus`
-      ),
-    ];
+    if (hasChanges) {
+      writes.push(
+        writeGitHub(
+          "products.json",
+          updatedProducts,
+          `scan: ${newInStock.length} new, ${restocked.length} restocked, ${totalInStock} in stock`
+        )
+      );
+    }
 
     if (productsToNotify.length > 0) {
-      const text = buildMessage(productsToNotify);
+      const text = buildMessage(productsToNotify, restockedSkus);
       const nowIso = new Date().toISOString();
 
       const [tg, line, history] = await Promise.all([
@@ -317,6 +352,7 @@ export async function GET(req: NextRequest) {
           url: p.url,
           price: p.price,
           sku: p.sku,
+          type: restockedSkus.has(p.sku) ? "restock" : "new",
           timestamp: nowIso,
         });
         notified[p.sku] = nowIso;
@@ -330,7 +366,7 @@ export async function GET(req: NextRequest) {
         writeGitHub(
           "restock_history.json",
           history,
-          `restock: ${productsToNotify.length} new`
+          `restock: ${productsToNotify.length} items`
         ),
         writeGitHub(
           "notified_skus.json",
@@ -340,17 +376,30 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    await Promise.all(writes);
+    if (writes.length > 0) await Promise.all(writes);
+  } else if (hasChanges) {
+    await writeGitHub(
+      "products.json",
+      updatedProducts,
+      `scan: stock update, ${totalInStock} in stock`
+    );
   }
 
   return Response.json({
     status: "ok",
     totalScraped: allProducts.length,
-    newProducts: newProducts.length,
+    totalInStock,
+    newInStock: newInStock.length,
+    restocked: restocked.length,
     notified: productsToNotify.length,
     suppressedByDedupe: suppressedCount,
     notifySent,
-    newItems: newProducts.map((p) => ({ name: p.name, price: p.price, sku: p.sku })),
+    alertItems: alertProducts.map((p) => ({
+      name: p.name,
+      price: p.price,
+      sku: p.sku,
+      type: restockedSkus.has(p.sku) ? "restock" : "new",
+    })),
     proxy: PROXY_URL ? "on" : "off",
     linePaused: isLinePaused() ? LINE_PAUSE_UNTIL : null,
     categoryStatus,
