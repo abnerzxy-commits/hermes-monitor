@@ -123,9 +123,9 @@ function extractProducts(html: string): Product[] {
         }
       }
 
-      const fullUrl = urlPath.startsWith("http")
-        ? urlPath
-        : `https://www.hermes.com${urlPath}`;
+      let path: string = urlPath;
+      if (path.startsWith("/product/")) path = `/tw/zh${path}`;
+      const fullUrl = path.startsWith("http") ? path : `https://www.hermes.com${path}`;
 
       const id = Buffer.from(sku || fullUrl).toString("hex").slice(0, 12);
 
