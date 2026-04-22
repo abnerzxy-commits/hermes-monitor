@@ -126,5 +126,205 @@
     "image": "https://assets.hermes.com/is/image/hermesproduct/086915CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 266,600",
     "first_seen": "2026-04-22T12:58:02.243347"
+  },
+  "483038363935": {
+    "id": "483038363935",
+    "name": "Bolide郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/bolide郵差包-H086959CK34/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086959CK34_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 319,000",
+    "sku": "H086959CK34",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038363036": {
+    "id": "483038363036",
+    "name": "Equipier肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/equipier肩背包-H086060CK37/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086060CK37_worn_9?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 423,700",
+    "sku": "H086060CK37",
+    "inStock": false,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038363433": {
+    "id": "483038363433",
+    "name": "Herbag Zip 20手提包",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-20手提包-H086430CKAI/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086430CKAI_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 105,300",
+    "sku": "H086430CKAI",
+    "inStock": false,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483036393537": {
+    "id": "483036393537",
+    "name": "Garden Party 30手提包",
+    "url": "https://www.hermes.com/tw/zh/product/garden-party-30手提包-H069573CKDL/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069573CKDL_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 108,600",
+    "sku": "H069573CKDL",
+    "inStock": false,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038373037": {
+    "id": "483038373037",
+    "name": "Lassoie Hermès肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/lassoie-hermes肩背包-H087076CKAE/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087076CKAE_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 154,800",
+    "sku": "H087076CKAE",
+    "inStock": false,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483037393139": {
+    "id": "483037393139",
+    "name": "Roulis迷你肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/roulis迷你肩背包-H079195CKP0/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/079195CKP0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 333,300",
+    "sku": "H079195CKP0",
+    "inStock": false,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483036393532": {
+    "id": "483036393532",
+    "name": "Halzan迷你肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/halzan迷你肩背包-H069523CKBY/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069523CKBY_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 214,300",
+    "sku": "H069523CKBY",
+    "inStock": false,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038373934": {
+    "id": "483038373934",
+    "name": "Herbag Zip 31口袋手提包",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31口袋手提包-H087943CCAA/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087943CCAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 145,200",
+    "sku": "H087943CCAA",
+    "inStock": false,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483037383339": {
+    "id": "483037383339",
+    "name": "Kelly depeches 25手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/kelly-depeches-25手拿包-H078397CK7U/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/078397CK7U_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 366,600",
+    "sku": "H078397CK7U",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038363936": {
+    "id": "483038363936",
+    "name": "Sanglons手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/sanglons手拿包-H086962CK0G/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086962CK0G_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 233,300",
+    "sku": "H086962CK0G",
+    "inStock": false,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038363234": {
+    "id": "483038363234",
+    "name": "Hermès Messenger 57肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/hermes-messenger-57肩背包-H086248CK37/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086248CK37_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 485,600",
+    "sku": "H086248CK37",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038353437": {
+    "id": "483038353437",
+    "name": "Sac a depeches 21郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK8F/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/085470CK8F_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 292,800",
+    "sku": "H085470CK8F",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038353037": {
+    "id": "483038353037",
+    "name": "Cab'H手提包",
+    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H085072CK34/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/085072CK34_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 276,100",
+    "sku": "H085072CK34",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038323131": {
+    "id": "483038323131",
+    "name": "Steve light junior郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/steve-light-junior郵差包-H082119CK2D/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/082119CK2D_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 240,400",
+    "sku": "H082119CK2D",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038343932": {
+    "id": "483038343932",
+    "name": "Cab'H手提包",
+    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H084929CK18/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/084929CK18_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 245,200",
+    "sku": "H084929CK18",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038353732": {
+    "id": "483038353732",
+    "name": "Sac a depeches light 1-36公事包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-light-1-36公事包-H085721CKH0/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/085721CKH0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 376,100",
+    "sku": "H085721CKH0",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038343934": {
+    "id": "483038343934",
+    "name": "En Piste手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/en-piste手拿包-H084948CP89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/084948CP89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 252,300",
+    "sku": "H084948CP89",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038353734": {
+    "id": "483038353734",
+    "name": "Boucle Sellier Chaine肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/boucle-sellier-chaine肩背包-H085745CK89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/085745CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 576,000",
+    "sku": "H085745CK89",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038363931": {
+    "id": "483038363931",
+    "name": "Poche Cliquetis肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/poche-cliquetis肩背包-H086915CK89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086915CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 266,600",
+    "sku": "H086915CK89",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
+  },
+  "483038363435": {
+    "id": "483038363435",
+    "name": "Harnacheur肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/harnacheur肩背包-H086453CKAA/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086453CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 330,900",
+    "sku": "H086453CKAA",
+    "inStock": true,
+    "first_seen": "2026-04-22T14:26:53.836Z"
   }
 }
