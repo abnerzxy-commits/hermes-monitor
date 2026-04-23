@@ -1,89 +1,5 @@
 [
   {
-    "name": "Evelyne 23 Poche III肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/evelyne-23-poche-iii肩背包-H087941CKD2/",
-    "price": "NT$ 140,500",
-    "sku": "H087941CKD2",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Roulis迷你肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/roulis迷你肩背包-H079195CKP0/",
-    "price": "NT$ 333,300",
-    "sku": "H079195CKP0",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Herbag Zip 31口袋手提包",
-    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31口袋手提包-H087943CCAA/",
-    "price": "NT$ 145,200",
-    "sku": "H087943CCAA",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Bolide郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/bolide郵差包-H086959CK34/",
-    "price": "NT$ 319,000",
-    "sku": "H086959CK34",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Sac a depeches 21郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK37/",
-    "price": "NT$ 292,800",
-    "sku": "H085470CK37",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Hermès Videpoches肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/hermes-videpoches肩背包-H084024CKAE/",
-    "price": "NT$ 140,500",
-    "sku": "H084024CKAE",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "En Piste手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/en-piste手拿包-H084948CP89/",
-    "price": "NT$ 252,300",
-    "sku": "H084948CP89",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Bastia零錢包",
-    "url": "https://www.hermes.com/tw/zh/product/bastia零錢包-H041054CKQ5/",
-    "price": "NT$ 11,400",
-    "sku": "H041054CKQ5",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Bastia零錢包",
-    "url": "https://www.hermes.com/tw/zh/product/bastia零錢包-H041054CK37/",
-    "price": "NT$ 11,400",
-    "sku": "H041054CK37",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Bastia零錢包",
-    "url": "https://www.hermes.com/tw/zh/product/bastia零錢包-H039759CK3Q/",
-    "price": "NT$ 11,900",
-    "sku": "H039759CK3Q",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Silk'In短夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087539CKAB/",
-    "price": "NT$ 46,700",
-    "sku": "H087539CKAB",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
-    "name": "Silk'In短夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087542CKAA/",
-    "price": "NT$ 49,600",
-    "sku": "H087542CKAA",
-    "timestamp": "2026-04-16T11:28:43.819Z"
-  },
-  {
     "name": "Silk'In短夾",
     "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087539CKAA/",
     "price": "NT$ 46,700",
@@ -3967,5 +3883,101 @@
     "timestamp": "2026-04-22T17:48:44.784429",
     "weekday": "Wednesday",
     "hour": 17
+  },
+  {
+    "name": "Equipier肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/equipier肩背包-H086060CK89/",
+    "price": "NT$ 423,700",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Equipier肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/equipier肩背包-H086060CK37/",
+    "price": "NT$ 423,700",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Kelly depeches 25手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/kelly-depeches-25手拿包-H078397CK7U/",
+    "price": "NT$ 366,600",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Bolide郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/bolide郵差包-H086959CK34/",
+    "price": "NT$ 319,000",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Hermès Messenger 57肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/hermes-messenger-57肩背包-H086248CK37/",
+    "price": "NT$ 485,600",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Sac a depeches 21郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK37/",
+    "price": "NT$ 292,800",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Cab'H手提包",
+    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H085072CK34/",
+    "price": "NT$ 276,100",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Steve light junior郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/steve-light-junior郵差包-H082119CK2D/",
+    "price": "NT$ 240,400",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Cab'H手提包",
+    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H084929CK18/",
+    "price": "NT$ 245,200",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Sac a depeches 21郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK8F/",
+    "price": "NT$ 292,800",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Sac a depeches light 1-36公事包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-light-1-36公事包-H085721CKH0/",
+    "price": "NT$ 376,100",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
+  },
+  {
+    "name": "Harnacheur肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/harnacheur肩背包-H086453CKAA/",
+    "price": "NT$ 330,900",
+    "timestamp": "2026-04-23T05:57:58.500060",
+    "weekday": "Thursday",
+    "hour": 5
   }
 ]
