@@ -1,11 +1,131 @@
 {
+  "f65073976ed5": {
+    "id": "f65073976ed5",
+    "name": "Lassoie Hermès肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/lassoie-hermes肩背包-H087076CKAE/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087076CKAE_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 154,800",
+    "first_seen": "2026-04-25T20:57:32.260174"
+  },
+  "c0c99a8e0305": {
+    "id": "c0c99a8e0305",
+    "name": "Lassoie Hermès肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/lassoie-hermes肩背包-H087076CKAB/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087076CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 154,800",
+    "first_seen": "2026-04-25T20:57:32.260186"
+  },
+  "4676e1441db9": {
+    "id": "4676e1441db9",
+    "name": "Sanglons手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/sanglons手拿包-H086962CK0G/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086962CK0G_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 233,300",
+    "first_seen": "2026-04-25T20:57:32.260189"
+  },
+  "458ae43135e5": {
+    "id": "458ae43135e5",
+    "name": "Sanglons手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/sanglons手拿包-H086955CC89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086955CC89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 321,400",
+    "first_seen": "2026-04-25T20:57:32.260192"
+  },
+  "f08dd712a861": {
+    "id": "f08dd712a861",
+    "name": "Herbag Zip 20手提包",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-20手提包-H086430CKAI/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086430CKAI_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 105,300",
+    "first_seen": "2026-04-25T20:57:32.260194"
+  },
+  "bf3691550cf8": {
+    "id": "bf3691550cf8",
+    "name": "Garden Party 30手提包",
+    "url": "https://www.hermes.com/tw/zh/product/garden-party-30手提包-H069573CKDL/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069573CKDL_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 108,600",
+    "first_seen": "2026-04-25T20:57:32.260197"
+  },
+  "37d16bc80a66": {
+    "id": "37d16bc80a66",
+    "name": "Herbag Zip 31口袋手提包",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31口袋手提包-H087943CKAB/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087943CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 145,200",
+    "first_seen": "2026-04-25T20:57:32.260199"
+  },
+  "737d77d61a0c": {
+    "id": "737d77d61a0c",
+    "name": "Evelyne 23 Poche III肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-23-poche-iii肩背包-H087941CKD2/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087941CKD2_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 140,500",
+    "first_seen": "2026-04-25T20:57:32.260202"
+  },
+  "26d746129360": {
+    "id": "26d746129360",
+    "name": "Roulis迷你肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/roulis迷你肩背包-H079195CKN4/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/079195CKN4_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 333,300",
+    "first_seen": "2026-04-25T20:57:32.260204"
+  },
+  "1789780e4363": {
+    "id": "1789780e4363",
+    "name": "Halzan迷你肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/halzan迷你肩背包-H069523CKAB/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069523CKAB_front_1?size=3000,3000&extend=300,300,300,300&align=0,0",
+    "price": "NT$ 214,300",
+    "first_seen": "2026-04-25T20:57:32.260206"
+  },
+  "c6d7cd915602": {
+    "id": "c6d7cd915602",
+    "name": "Roulis迷你肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/roulis迷你肩背包-H079195CKP0/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/079195CKP0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 333,300",
+    "first_seen": "2026-04-25T20:57:32.260209"
+  },
+  "30c6106f1811": {
+    "id": "30c6106f1811",
+    "name": "Halzan迷你肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/halzan迷你肩背包-H069523CKBY/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069523CKBY_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 214,300",
+    "first_seen": "2026-04-25T20:57:32.260211"
+  },
+  "759879800d36": {
+    "id": "759879800d36",
+    "name": "Herbag Zip 31口袋手提包",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31口袋手提包-H087943CCAA/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087943CCAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 145,200",
+    "first_seen": "2026-04-25T20:57:32.260213"
+  },
+  "cb62fa192a51": {
+    "id": "cb62fa192a51",
+    "name": "En Piste手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/en-piste手拿包-H084948CP89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/084948CP89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 252,300",
+    "first_seen": "2026-04-25T20:57:32.260215"
+  },
+  "d53d6d0824d9": {
+    "id": "d53d6d0824d9",
+    "name": "Poche Cliquetis肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/poche-cliquetis肩背包-H086915CK89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086915CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 266,600",
+    "first_seen": "2026-04-25T20:57:32.260218"
+  },
   "e4313ad18619": {
     "id": "e4313ad18619",
     "name": "Constance To Go皮夾",
     "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H085822CCAG085/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/085822CCAG_front_wm_2?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 311,800",
-    "first_seen": "2026-04-25T20:09:38.099936"
+    "first_seen": "2026-04-25T20:57:32.260220"
   },
   "a11451d84e0e": {
     "id": "a11451d84e0e",
@@ -13,7 +133,7 @@
     "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/080125CK89_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 261,900",
-    "first_seen": "2026-04-25T20:09:38.099946"
+    "first_seen": "2026-04-25T20:57:32.260222"
   },
   "216a7043c723": {
     "id": "216a7043c723",
@@ -21,7 +141,7 @@
     "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/080125CK18_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 261,900",
-    "first_seen": "2026-04-25T20:09:38.099949"
+    "first_seen": "2026-04-25T20:57:32.260224"
   },
   "88ffadad4f38": {
     "id": "88ffadad4f38",
@@ -29,7 +149,7 @@
     "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CC7A/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/080125CC7A_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 261,900",
-    "first_seen": "2026-04-25T20:09:38.099952"
+    "first_seen": "2026-04-25T20:57:32.260227"
   },
   "bcdcff76bc6b": {
     "id": "bcdcff76bc6b",
@@ -37,7 +157,7 @@
     "url": "https://www.hermes.com/tw/zh/product/calvi-duo短卡夾-H083035CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/083035CK18_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 23,300",
-    "first_seen": "2026-04-25T20:09:38.099954"
+    "first_seen": "2026-04-25T20:57:32.260229"
   },
   "c497add264d7": {
     "id": "c497add264d7",
@@ -45,7 +165,7 @@
     "url": "https://www.hermes.com/tw/zh/product/calvi-duo短卡夾-H083035CK37/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/083035CK37_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 23,300",
-    "first_seen": "2026-04-25T20:09:38.099957"
+    "first_seen": "2026-04-25T20:57:32.260231"
   },
   "299e4f454ff0": {
     "id": "299e4f454ff0",
@@ -53,7 +173,7 @@
     "url": "https://www.hermes.com/tw/zh/product/calvi-duo短卡夾-H083035CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/083035CK89_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 23,300",
-    "first_seen": "2026-04-25T20:09:38.099959"
+    "first_seen": "2026-04-25T20:57:32.260233"
   },
   "055e51bba7f8": {
     "id": "055e51bba7f8",
@@ -61,7 +181,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaron-to-go皮夾-H087361CK37/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087361CK37_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 135,700",
-    "first_seen": "2026-04-25T20:09:38.099961"
+    "first_seen": "2026-04-25T20:57:32.260235"
   },
   "520b4da14794": {
     "id": "520b4da14794",
@@ -69,7 +189,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaron-to-go皮夾-H087361CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087361CK18_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 135,700",
-    "first_seen": "2026-04-25T20:09:38.099964"
+    "first_seen": "2026-04-25T20:57:32.260238"
   },
   "0a11e601a01d": {
     "id": "0a11e601a01d",
@@ -77,7 +197,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaron-to-go皮夾-H087361CCQ0/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087361CCQ0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 135,700",
-    "first_seen": "2026-04-25T20:09:38.099966"
+    "first_seen": "2026-04-25T20:57:32.260240"
   },
   "5de7bd6391d1": {
     "id": "5de7bd6391d1",
@@ -85,7 +205,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaron短夾-H087357CK37/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087357CK37_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 119,100",
-    "first_seen": "2026-04-25T20:09:38.099968"
+    "first_seen": "2026-04-25T20:57:32.260242"
   },
   "026dcb5b66ec": {
     "id": "026dcb5b66ec",
@@ -93,7 +213,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaron短夾-H087357CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087357CK18_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 119,100",
-    "first_seen": "2026-04-25T20:09:38.099971"
+    "first_seen": "2026-04-25T20:57:32.260244"
   },
   "cc0e88f0a906": {
     "id": "cc0e88f0a906",
@@ -101,7 +221,7 @@
     "url": "https://www.hermes.com/tw/zh/product/bastia零錢包-H041054CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/041054CK18_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 11,400",
-    "first_seen": "2026-04-25T20:09:38.099973"
+    "first_seen": "2026-04-25T20:57:32.260247"
   },
   "2dae30e027f5": {
     "id": "2dae30e027f5",
@@ -109,7 +229,7 @@
     "url": "https://www.hermes.com/tw/zh/product/bastia零錢包-H041054CK37/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/041054CK37_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 11,400",
-    "first_seen": "2026-04-25T20:09:38.099976"
+    "first_seen": "2026-04-25T20:57:32.260249"
   },
   "6bcb2e79934b": {
     "id": "6bcb2e79934b",
@@ -117,7 +237,7 @@
     "url": "https://www.hermes.com/tw/zh/product/calvi卡夾-H044164CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/044164CK18_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 16,800",
-    "first_seen": "2026-04-25T20:09:38.099978"
+    "first_seen": "2026-04-25T20:57:32.260251"
   },
   "f87f989e3ae2": {
     "id": "f87f989e3ae2",
@@ -125,7 +245,7 @@
     "url": "https://www.hermes.com/tw/zh/product/calvi卡夾-H044164CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/044164CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 16,800",
-    "first_seen": "2026-04-25T20:09:38.099980"
+    "first_seen": "2026-04-25T20:57:32.260253"
   },
   "86ce173e668b": {
     "id": "86ce173e668b",
@@ -133,7 +253,7 @@
     "url": "https://www.hermes.com/tw/zh/product/hermesnap卡夾-H087066CKAG/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087066CKAG_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 59,100",
-    "first_seen": "2026-04-25T20:09:38.099982"
+    "first_seen": "2026-04-25T20:57:32.260255"
   },
   "19ec3b3d448a": {
     "id": "19ec3b3d448a",
@@ -141,7 +261,7 @@
     "url": "https://www.hermes.com/tw/zh/product/hermesnap卡夾-H087066CKAF/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087066CKAF_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 59,100",
-    "first_seen": "2026-04-25T20:09:38.099985"
+    "first_seen": "2026-04-25T20:57:32.260258"
   },
   "6627e18ae115": {
     "id": "6627e18ae115",
@@ -149,7 +269,7 @@
     "url": "https://www.hermes.com/tw/zh/product/hermesnap卡夾-H087066CKAE/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087066CKAE_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 59,100",
-    "first_seen": "2026-04-25T20:09:38.099987"
+    "first_seen": "2026-04-25T20:57:32.260260"
   },
   "25ffeab7b565": {
     "id": "25ffeab7b565",
@@ -157,7 +277,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087116CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087116CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 49,600",
-    "first_seen": "2026-04-25T20:09:38.099989"
+    "first_seen": "2026-04-25T20:57:32.260262"
   },
   "01450259e61c": {
     "id": "01450259e61c",
@@ -165,7 +285,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087114CKAC/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087114CKAC_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 49,600",
-    "first_seen": "2026-04-25T20:09:38.099992"
+    "first_seen": "2026-04-25T20:57:32.260265"
   },
   "0ecb39c867f1": {
     "id": "0ecb39c867f1",
@@ -173,7 +293,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in-classique長夾-H085859CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/085859CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 71,900",
-    "first_seen": "2026-04-25T20:09:38.099994"
+    "first_seen": "2026-04-25T20:57:32.260267"
   },
   "a9abc19aeeaf": {
     "id": "a9abc19aeeaf",
@@ -181,7 +301,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087115CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087115CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 49,600",
-    "first_seen": "2026-04-25T20:09:38.099996"
+    "first_seen": "2026-04-25T20:57:32.260269"
   },
   "ca77f705480d": {
     "id": "ca77f705480d",
@@ -189,7 +309,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087114CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087114CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 49,600",
-    "first_seen": "2026-04-25T20:09:38.099999"
+    "first_seen": "2026-04-25T20:57:32.260271"
   },
   "8b8aeee6dda9": {
     "id": "8b8aeee6dda9",
@@ -197,7 +317,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H088008CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/088008CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 33,100",
-    "first_seen": "2026-04-25T20:09:38.100001"
+    "first_seen": "2026-04-25T20:57:32.260273"
   },
   "856eb001f404": {
     "id": "856eb001f404",
@@ -205,7 +325,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H084335CKBH/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084335CKBH_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 36,000",
-    "first_seen": "2026-04-25T20:09:38.100003"
+    "first_seen": "2026-04-25T20:57:32.260276"
   },
   "b510a79aeceb": {
     "id": "b510a79aeceb",
@@ -213,7 +333,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H084335CKBG/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084335CKBG_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 36,000",
-    "first_seen": "2026-04-25T20:09:38.100006"
+    "first_seen": "2026-04-25T20:57:32.260278"
   },
   "ec1e8c6b3126": {
     "id": "ec1e8c6b3126",
@@ -221,7 +341,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H084335CKAT/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084335CKAT_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 36,000",
-    "first_seen": "2026-04-25T20:09:38.100008"
+    "first_seen": "2026-04-25T20:57:32.260280"
   },
   "a9ecf8f3b189": {
     "id": "a9ecf8f3b189",
@@ -229,7 +349,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H084335CKAD/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084335CKAD_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 36,000",
-    "first_seen": "2026-04-25T20:09:38.100010"
+    "first_seen": "2026-04-25T20:57:32.260282"
   },
   "ea259e498748": {
     "id": "ea259e498748",
@@ -237,7 +357,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20-手拿包-H088215CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/088215CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-25T20:09:38.100013"
+    "first_seen": "2026-04-25T20:57:32.260285"
   },
   "c44b27a91ac4": {
     "id": "c44b27a91ac4",
@@ -245,7 +365,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087929CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087929CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-25T20:09:38.100015"
+    "first_seen": "2026-04-25T20:57:32.260287"
   },
   "577c07a5e116": {
     "id": "577c07a5e116",
@@ -253,7 +373,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087917CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087917CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-25T20:09:38.100017"
+    "first_seen": "2026-04-25T20:57:32.260289"
   },
   "18aed3cf8cc1": {
     "id": "18aed3cf8cc1",
@@ -261,7 +381,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H087139CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087139CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 53,800",
-    "first_seen": "2026-04-25T20:09:38.100019"
+    "first_seen": "2026-04-25T20:57:32.260291"
   },
   "3fc3e7e839d8": {
     "id": "3fc3e7e839d8",
@@ -269,7 +389,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H087138CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087138CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 53,800",
-    "first_seen": "2026-04-25T20:09:38.100022"
+    "first_seen": "2026-04-25T20:57:32.260293"
   },
   "8ba8ab130492": {
     "id": "8ba8ab130492",
@@ -277,7 +397,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087136CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087136CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-25T20:09:38.100024"
+    "first_seen": "2026-04-25T20:57:32.260295"
   },
   "941581de8524": {
     "id": "941581de8524",
@@ -285,7 +405,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087136CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087136CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-25T20:09:38.100026"
+    "first_seen": "2026-04-25T20:57:32.260298"
   },
   "7478fcf0a948": {
     "id": "7478fcf0a948",
@@ -293,7 +413,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087135CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087135CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-25T20:09:38.100029"
+    "first_seen": "2026-04-25T20:57:32.260300"
   },
   "d508509c96cc": {
     "id": "d508509c96cc",
@@ -301,7 +421,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087135CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087135CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-25T20:09:38.100031"
+    "first_seen": "2026-04-25T20:57:32.260302"
   },
   "f104facc64d3": {
     "id": "f104facc64d3",
@@ -309,7 +429,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H086640CKAE/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/086640CKAE_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-25T20:09:38.100033"
+    "first_seen": "2026-04-25T20:57:32.260304"
   },
   "b45c734a4a83": {
     "id": "b45c734a4a83",
@@ -317,7 +437,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086639CKAF/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/086639CKAF_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 53,800",
-    "first_seen": "2026-04-25T20:09:38.100035"
+    "first_seen": "2026-04-25T20:57:32.260307"
   },
   "b6e3ea44afeb": {
     "id": "b6e3ea44afeb",
@@ -325,7 +445,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086639CKAE/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/086639CKAE_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 53,800",
-    "first_seen": "2026-04-25T20:09:38.100037"
+    "first_seen": "2026-04-25T20:57:32.260309"
   },
   "63395298c701": {
     "id": "63395298c701",
@@ -333,7 +453,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086373CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/086373CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 53,800",
-    "first_seen": "2026-04-25T20:09:38.100040"
+    "first_seen": "2026-04-25T20:57:32.260311"
   },
   "f2ad6baa4e08": {
     "id": "f2ad6baa4e08",
@@ -341,7 +461,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086373CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/086373CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 53,800",
-    "first_seen": "2026-04-25T20:09:38.100042"
+    "first_seen": "2026-04-25T20:57:32.260313"
   },
   "f7016fcfb256": {
     "id": "f7016fcfb256",
@@ -349,7 +469,7 @@
     "url": "https://www.hermes.com/tw/zh/product/bearn鑰匙包-H047748CK3Q/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/047748CK3Q_front_1?size=3000,3000&extend=300,300,300,300&align=0,0",
     "price": "NT$ 53,800",
-    "first_seen": "2026-04-25T20:09:38.100045"
+    "first_seen": "2026-04-25T20:57:32.260315"
   },
   "3fb8c7cf0588": {
     "id": "3fb8c7cf0588",
@@ -357,7 +477,7 @@
     "url": "https://www.hermes.com/tw/zh/product/bearn鑰匙包-H047744CKQ0/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/047744CKQ0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 51,000",
-    "first_seen": "2026-04-25T20:09:38.100047"
+    "first_seen": "2026-04-25T20:57:32.260317"
   },
   "18cdc7d3542a": {
     "id": "18cdc7d3542a",
@@ -365,7 +485,7 @@
     "url": "https://www.hermes.com/tw/zh/product/bearn皮夾-H039078CK1A/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/039078CK1A_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 164,300",
-    "first_seen": "2026-04-25T20:09:38.100049"
+    "first_seen": "2026-04-25T20:57:32.260320"
   },
   "684438d436bc": {
     "id": "684438d436bc",
@@ -373,7 +493,7 @@
     "url": "https://www.hermes.com/tw/zh/product/bearn迷你皮夾-H084818CKP0/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084818CKP0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 102,400",
-    "first_seen": "2026-04-25T20:09:38.100052"
+    "first_seen": "2026-04-25T20:57:32.260322"
   },
   "92609df5b29a": {
     "id": "92609df5b29a",
@@ -381,6 +501,6 @@
     "url": "https://www.hermes.com/tw/zh/product/bearn皮夾-H084830CKP0/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084830CKP0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 142,900",
-    "first_seen": "2026-04-25T20:09:38.100054"
+    "first_seen": "2026-04-25T20:57:32.260324"
   }
 }
