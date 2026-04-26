@@ -1,101 +1,5 @@
 [
   {
-    "name": "Silk'In零錢包",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in零錢包-H087089CKAB/",
-    "price": "NT$ 30,500",
-    "sku": "H087089CKAB",
-    "type": "new",
-    "timestamp": "2026-04-21T13:14:45.276Z"
-  },
-  {
-    "name": "Silk'In Classique長夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in-classique長夾-H087000CKAB/",
-    "price": "NT$ 76,200",
-    "sku": "H087000CKAB",
-    "type": "new",
-    "timestamp": "2026-04-21T13:14:45.276Z"
-  },
-  {
-    "name": "Silk'In Classique長夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in-classique長夾-H087000CKAA/",
-    "price": "NT$ 76,200",
-    "sku": "H087000CKAA",
-    "type": "new",
-    "timestamp": "2026-04-21T13:14:45.276Z"
-  },
-  {
-    "name": "Silk'In Classique長夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in-classique長夾-H087004CKAB/",
-    "price": "NT$ 76,200",
-    "sku": "H087004CKAB",
-    "type": "new",
-    "timestamp": "2026-04-21T13:14:45.276Z"
-  },
-  {
-    "name": "Equipier肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/equipier肩背包-H086060CK89/",
-    "price": "NT$ 423,700",
-    "timestamp": "2026-04-21T14:58:06.564773",
-    "weekday": "Tuesday",
-    "hour": 14
-  },
-  {
-    "name": "Equipier肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/equipier肩背包-H086060CK37/",
-    "price": "NT$ 423,700",
-    "timestamp": "2026-04-21T14:58:06.564773",
-    "weekday": "Tuesday",
-    "hour": 14
-  },
-  {
-    "name": "Kelly depeches 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/kelly-depeches-25手拿包-H078397CK7U/",
-    "price": "NT$ 366,600",
-    "timestamp": "2026-04-21T14:58:06.564773",
-    "weekday": "Tuesday",
-    "hour": 14
-  },
-  {
-    "name": "Bolide郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/bolide郵差包-H086959CK34/",
-    "price": "NT$ 319,000",
-    "timestamp": "2026-04-21T14:58:06.564773",
-    "weekday": "Tuesday",
-    "hour": 14
-  },
-  {
-    "name": "Hermès Messenger 57肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/hermes-messenger-57肩背包-H086248CK37/",
-    "price": "NT$ 485,600",
-    "timestamp": "2026-04-21T14:58:06.564773",
-    "weekday": "Tuesday",
-    "hour": 14
-  },
-  {
-    "name": "Sac a depeches 21郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK37/",
-    "price": "NT$ 292,800",
-    "timestamp": "2026-04-21T14:58:06.564773",
-    "weekday": "Tuesday",
-    "hour": 14
-  },
-  {
-    "name": "Cab'H手提包",
-    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H085072CK34/",
-    "price": "NT$ 276,100",
-    "timestamp": "2026-04-21T14:58:06.564773",
-    "weekday": "Tuesday",
-    "hour": 14
-  },
-  {
-    "name": "Steve light junior郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/steve-light-junior郵差包-H082119CK2D/",
-    "price": "NT$ 240,400",
-    "timestamp": "2026-04-21T14:58:06.564773",
-    "weekday": "Tuesday",
-    "hour": 14
-  },
-  {
     "name": "Cab'H手提包",
     "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H084929CK18/",
     "price": "NT$ 245,200",
@@ -3998,5 +3902,101 @@
     "timestamp": "2026-04-26T04:37:56.812818",
     "weekday": "Sunday",
     "hour": 4
+  },
+  {
+    "name": "Equipier肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/equipier肩背包-H086060CK89/",
+    "price": "NT$ 423,700",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Equipier肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/equipier肩背包-H086060CK37/",
+    "price": "NT$ 423,700",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Kelly depeches 25手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/kelly-depeches-25手拿包-H078397CK7U/",
+    "price": "NT$ 366,600",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Bolide郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/bolide郵差包-H086959CK34/",
+    "price": "NT$ 319,000",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Hermès Messenger 57肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/hermes-messenger-57肩背包-H086248CK37/",
+    "price": "NT$ 485,600",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Sac a depeches 21郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK37/",
+    "price": "NT$ 292,800",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Cab'H手提包",
+    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H085072CK34/",
+    "price": "NT$ 276,100",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Steve light junior郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/steve-light-junior郵差包-H082119CK2D/",
+    "price": "NT$ 240,400",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Cab'H手提包",
+    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H084929CK18/",
+    "price": "NT$ 245,200",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Sac a depeches 21郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK8F/",
+    "price": "NT$ 292,800",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Sac a depeches light 1-36公事包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-light-1-36公事包-H085721CKH0/",
+    "price": "NT$ 376,100",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
+  },
+  {
+    "name": "Harnacheur肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/harnacheur肩背包-H086453CKAA/",
+    "price": "NT$ 330,900",
+    "timestamp": "2026-04-26T09:12:35.144787",
+    "weekday": "Sunday",
+    "hour": 9
   }
 ]
