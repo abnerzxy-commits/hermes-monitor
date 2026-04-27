@@ -1,13 +1,5 @@
 [
   {
-    "name": "Calvi卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/calvi卡夾-H044164CK89/",
-    "price": "NT$ 16,800",
-    "timestamp": "2026-04-25T22:40:34.578847",
-    "weekday": "Saturday",
-    "hour": 22
-  },
-  {
     "name": "Hermèsnap卡夾",
     "url": "https://www.hermes.com/tw/zh/product/hermesnap卡夾-H087066CKAG/",
     "price": "NT$ 59,100",
@@ -3998,5 +3990,13 @@
     "timestamp": "2026-04-27T06:29:34.551382",
     "weekday": "Monday",
     "hour": 6
+  },
+  {
+    "name": "Le Petit Sac手提包",
+    "url": "https://www.hermes.com/tw/zh/product/le-petit-sac手提包-H087967CC28/",
+    "price": "NT$ 209,500",
+    "timestamp": "2026-04-27T12:14:01.118316",
+    "weekday": "Monday",
+    "hour": 12
   }
 ]
