@@ -1,613 +1,5 @@
 [
   {
-    "name": "Hermès Messenger 57肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/hermes-messenger-57肩背包-H086248CK37/",
-    "price": "NT$ 485,600",
-    "timestamp": "2026-04-26T01:21:14.979251",
-    "weekday": "Sunday",
-    "hour": 1
-  },
-  {
-    "name": "Sac a depeches 21郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK37/",
-    "price": "NT$ 292,800",
-    "timestamp": "2026-04-26T01:21:14.979251",
-    "weekday": "Sunday",
-    "hour": 1
-  },
-  {
-    "name": "Cab'H手提包",
-    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H085072CK34/",
-    "price": "NT$ 276,100",
-    "timestamp": "2026-04-26T01:21:14.979251",
-    "weekday": "Sunday",
-    "hour": 1
-  },
-  {
-    "name": "Steve light junior郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/steve-light-junior郵差包-H082119CK2D/",
-    "price": "NT$ 240,400",
-    "timestamp": "2026-04-26T01:21:14.979251",
-    "weekday": "Sunday",
-    "hour": 1
-  },
-  {
-    "name": "Cab'H手提包",
-    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H084929CK18/",
-    "price": "NT$ 245,200",
-    "timestamp": "2026-04-26T01:21:14.979251",
-    "weekday": "Sunday",
-    "hour": 1
-  },
-  {
-    "name": "Sac a depeches 21郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK8F/",
-    "price": "NT$ 292,800",
-    "timestamp": "2026-04-26T01:21:14.979251",
-    "weekday": "Sunday",
-    "hour": 1
-  },
-  {
-    "name": "Sac a depeches light 1-36公事包",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-light-1-36公事包-H085721CKH0/",
-    "price": "NT$ 376,100",
-    "timestamp": "2026-04-26T01:21:14.979251",
-    "weekday": "Sunday",
-    "hour": 1
-  },
-  {
-    "name": "Harnacheur肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/harnacheur肩背包-H086453CKAA/",
-    "price": "NT$ 330,900",
-    "timestamp": "2026-04-26T01:21:14.979251",
-    "weekday": "Sunday",
-    "hour": 1
-  },
-  {
-    "name": "Constance To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H085822CCAG085/",
-    "price": "NT$ 311,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Constance To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CK89/",
-    "price": "NT$ 261,900",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Constance To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CK18/",
-    "price": "NT$ 261,900",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Constance To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CC7A/",
-    "price": "NT$ 261,900",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Calvi Duo短卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/calvi-duo短卡夾-H083035CK18/",
-    "price": "NT$ 23,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Calvi Duo短卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/calvi-duo短卡夾-H083035CK37/",
-    "price": "NT$ 23,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Calvi Duo短卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/calvi-duo短卡夾-H083035CK89/",
-    "price": "NT$ 23,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Macaron To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/macaron-to-go皮夾-H087361CK37/",
-    "price": "NT$ 135,700",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Macaron To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/macaron-to-go皮夾-H087361CK18/",
-    "price": "NT$ 135,700",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Macaron To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/macaron-to-go皮夾-H087361CCQ0/",
-    "price": "NT$ 135,700",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Macaron短夾",
-    "url": "https://www.hermes.com/tw/zh/product/macaron短夾-H087357CK37/",
-    "price": "NT$ 119,100",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Macaron短夾",
-    "url": "https://www.hermes.com/tw/zh/product/macaron短夾-H087357CK18/",
-    "price": "NT$ 119,100",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Bastia零錢包",
-    "url": "https://www.hermes.com/tw/zh/product/bastia零錢包-H041054CK18/",
-    "price": "NT$ 11,400",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Bastia零錢包",
-    "url": "https://www.hermes.com/tw/zh/product/bastia零錢包-H041054CK37/",
-    "price": "NT$ 11,400",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Calvi卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/calvi卡夾-H044164CK18/",
-    "price": "NT$ 16,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Calvi卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/calvi卡夾-H044164CK89/",
-    "price": "NT$ 16,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Hermèsnap卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/hermesnap卡夾-H087066CKAG/",
-    "price": "NT$ 59,100",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Hermèsnap卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/hermesnap卡夾-H087066CKAF/",
-    "price": "NT$ 59,100",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Hermèsnap卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/hermesnap卡夾-H087066CKAE/",
-    "price": "NT$ 59,100",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Silk'In短夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087116CKAB/",
-    "price": "NT$ 49,600",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Silk'In短夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087114CKAC/",
-    "price": "NT$ 49,600",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Silk'In Classique長夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in-classique長夾-H085859CKAA/",
-    "price": "NT$ 71,900",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Silk'In短夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087115CKAB/",
-    "price": "NT$ 49,600",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Silk'In短夾",
-    "url": "https://www.hermes.com/tw/zh/product/silk-in短夾-H087114CKAB/",
-    "price": "NT$ 49,600",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "R.M.S卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H088008CK89/",
-    "price": "NT$ 33,100",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "R.M.S卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H084335CKBH/",
-    "price": "NT$ 36,000",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "R.M.S卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H084335CKBG/",
-    "price": "NT$ 36,000",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "R.M.S卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H084335CKAT/",
-    "price": "NT$ 36,000",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "R.M.S卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/r.m.s卡夾-H084335CKAD/",
-    "price": "NT$ 36,000",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 20 手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-20-手拿包-H088215CKAB/",
-    "price": "NT$ 39,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 20手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087929CKAB/",
-    "price": "NT$ 39,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 20手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087917CKAA/",
-    "price": "NT$ 39,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H087139CKAB/",
-    "price": "NT$ 53,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H087138CKAA/",
-    "price": "NT$ 53,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 20手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087136CKAB/",
-    "price": "NT$ 39,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 20手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087136CKAA/",
-    "price": "NT$ 39,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 20手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087135CKAB/",
-    "price": "NT$ 39,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 20手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087135CKAA/",
-    "price": "NT$ 39,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 20手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H086640CKAE/",
-    "price": "NT$ 39,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086639CKAF/",
-    "price": "NT$ 53,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086639CKAE/",
-    "price": "NT$ 53,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086373CKAB/",
-    "price": "NT$ 53,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Fourbi 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086373CKAA/",
-    "price": "NT$ 53,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Bearn鑰匙包",
-    "url": "https://www.hermes.com/tw/zh/product/bearn鑰匙包-H047748CK3Q/",
-    "price": "NT$ 53,800",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Bearn鑰匙包",
-    "url": "https://www.hermes.com/tw/zh/product/bearn鑰匙包-H047744CKQ0/",
-    "price": "NT$ 51,000",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Bearn皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/bearn皮夾-H039078CK1A/",
-    "price": "NT$ 164,300",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Bearn迷你皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/bearn迷你皮夾-H084818CKP0/",
-    "price": "NT$ 102,400",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Bearn皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/bearn皮夾-H084830CKP0/",
-    "price": "NT$ 142,900",
-    "timestamp": "2026-04-26T04:37:56.812818",
-    "weekday": "Sunday",
-    "hour": 4
-  },
-  {
-    "name": "Equipier肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/equipier肩背包-H086060CK89/",
-    "price": "NT$ 423,700",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Equipier肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/equipier肩背包-H086060CK37/",
-    "price": "NT$ 423,700",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Kelly depeches 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/kelly-depeches-25手拿包-H078397CK7U/",
-    "price": "NT$ 366,600",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Bolide郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/bolide郵差包-H086959CK34/",
-    "price": "NT$ 319,000",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Hermès Messenger 57肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/hermes-messenger-57肩背包-H086248CK37/",
-    "price": "NT$ 485,600",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Sac a depeches 21郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK37/",
-    "price": "NT$ 292,800",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Cab'H手提包",
-    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H085072CK34/",
-    "price": "NT$ 276,100",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Steve light junior郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/steve-light-junior郵差包-H082119CK2D/",
-    "price": "NT$ 240,400",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Cab'H手提包",
-    "url": "https://www.hermes.com/tw/zh/product/cab-h手提包-H084929CK18/",
-    "price": "NT$ 245,200",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Sac a depeches 21郵差包",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK8F/",
-    "price": "NT$ 292,800",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Sac a depeches light 1-36公事包",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-light-1-36公事包-H085721CKH0/",
-    "price": "NT$ 376,100",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Harnacheur肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/harnacheur肩背包-H086453CKAA/",
-    "price": "NT$ 330,900",
-    "timestamp": "2026-04-26T09:12:35.144787",
-    "weekday": "Sunday",
-    "hour": 9
-  },
-  {
-    "name": "Constance To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H085822CCAG085/",
-    "price": "NT$ 311,800",
-    "timestamp": "2026-04-26T10:08:51.047903",
-    "weekday": "Sunday",
-    "hour": 10
-  },
-  {
-    "name": "Constance To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CK89/",
-    "price": "NT$ 261,900",
-    "timestamp": "2026-04-26T10:08:51.047903",
-    "weekday": "Sunday",
-    "hour": 10
-  },
-  {
-    "name": "Constance To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CK18/",
-    "price": "NT$ 261,900",
-    "timestamp": "2026-04-26T10:08:51.047903",
-    "weekday": "Sunday",
-    "hour": 10
-  },
-  {
-    "name": "Constance To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CC7A/",
-    "price": "NT$ 261,900",
-    "timestamp": "2026-04-26T10:08:51.047903",
-    "weekday": "Sunday",
-    "hour": 10
-  },
-  {
-    "name": "Calvi Duo短卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/calvi-duo短卡夾-H083035CK18/",
-    "price": "NT$ 23,300",
-    "timestamp": "2026-04-26T10:08:51.047903",
-    "weekday": "Sunday",
-    "hour": 10
-  },
-  {
-    "name": "Calvi Duo短卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/calvi-duo短卡夾-H083035CK37/",
-    "price": "NT$ 23,300",
-    "timestamp": "2026-04-26T10:08:51.047903",
-    "weekday": "Sunday",
-    "hour": 10
-  },
-  {
-    "name": "Calvi Duo短卡夾",
-    "url": "https://www.hermes.com/tw/zh/product/calvi-duo短卡夾-H083035CK89/",
-    "price": "NT$ 23,300",
-    "timestamp": "2026-04-26T10:08:51.047903",
-    "weekday": "Sunday",
-    "hour": 10
-  },
-  {
-    "name": "Macaron To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/macaron-to-go皮夾-H087361CK37/",
-    "price": "NT$ 135,700",
-    "timestamp": "2026-04-26T10:08:51.047903",
-    "weekday": "Sunday",
-    "hour": 10
-  },
-  {
     "name": "Macaron To Go皮夾",
     "url": "https://www.hermes.com/tw/zh/product/macaron-to-go皮夾-H087361CK18/",
     "price": "NT$ 135,700",
@@ -3998,5 +3390,613 @@
     "timestamp": "2026-04-28T04:02:05.572269",
     "weekday": "Tuesday",
     "hour": 4
+  },
+  {
+    "name": "Sanglonsææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/sanglonsææ¿å-H086955CC89/",
+    "price": "NT$ 321,400",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Equipierè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/equipierè©èå-H086060CK89/",
+    "price": "NT$ 423,700",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Herbag Zip 20ææå",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-20ææå-H086430CKAI/",
+    "price": "NT$ 105,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Garden Party 30ææå",
+    "url": "https://www.hermes.com/tw/zh/product/garden-party-30ææå-H069573CKDL/",
+    "price": "NT$ 108,600",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Lassoie HermÃ¨sè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/lassoie-hermesè©èå-H087076CKAB/",
+    "price": "NT$ 154,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Lassoie HermÃ¨sè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/lassoie-hermesè©èå-H087076CKAE/",
+    "price": "NT$ 154,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Roulisè¿·ä½ è©èå",
+    "url": "https://www.hermes.com/tw/zh/product/roulisè¿·ä½ è©èå-H079195CKN4/",
+    "price": "NT$ 333,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Halzanè¿·ä½ è©èå",
+    "url": "https://www.hermes.com/tw/zh/product/halzanè¿·ä½ è©èå-H069523CKAB/",
+    "price": "NT$ 214,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Evelyne 23 Poche IIIè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-23-poche-iiiè©èå-H087941CKD2/",
+    "price": "NT$ 140,500",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Equipierè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/equipierè©èå-H086060CK37/",
+    "price": "NT$ 423,700",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Kelly depeches 25ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/kelly-depeches-25ææ¿å-H078397CK7U/",
+    "price": "NT$ 366,600",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Herbag Zip 31å£è¢ææå",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31å£è¢ææå-H087943CKAB/",
+    "price": "NT$ 145,200",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Halzanè¿·ä½ è©èå",
+    "url": "https://www.hermes.com/tw/zh/product/halzanè¿·ä½ è©èå-H069523CKBY/",
+    "price": "NT$ 214,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Roulisè¿·ä½ è©èå",
+    "url": "https://www.hermes.com/tw/zh/product/roulisè¿·ä½ è©èå-H079195CKP0/",
+    "price": "NT$ 333,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Sanglonsææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/sanglonsææ¿å-H086962CK0G/",
+    "price": "NT$ 233,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Herbag Zip 31å£è¢ææå",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31å£è¢ææå-H087943CCAA/",
+    "price": "NT$ 145,200",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Bolideéµå·®å",
+    "url": "https://www.hermes.com/tw/zh/product/bolideéµå·®å-H086959CK34/",
+    "price": "NT$ 319,000",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "HermÃ¨s Messenger 57è©èå",
+    "url": "https://www.hermes.com/tw/zh/product/hermes-messenger-57è©èå-H086248CK37/",
+    "price": "NT$ 485,600",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Sac a depeches 21éµå·®å",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21éµå·®å-H085470CK37/",
+    "price": "NT$ 292,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Cab'Hææå",
+    "url": "https://www.hermes.com/tw/zh/product/cab-hææå-H085072CK34/",
+    "price": "NT$ 276,100",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Steve light junioréµå·®å",
+    "url": "https://www.hermes.com/tw/zh/product/steve-light-junioréµå·®å-H082119CK2D/",
+    "price": "NT$ 240,400",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Cab'Hææå",
+    "url": "https://www.hermes.com/tw/zh/product/cab-hææå-H084929CK18/",
+    "price": "NT$ 245,200",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Sac a depeches 21éµå·®å",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21éµå·®å-H085470CK8F/",
+    "price": "NT$ 292,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Sac a depeches light 1-36å¬äºå",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-light-1-36å¬äºå-H085721CKH0/",
+    "price": "NT$ 376,100",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "En Pisteææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/en-pisteææ¿å-H084948CP89/",
+    "price": "NT$ 252,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Poche Cliquetisè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/poche-cliquetisè©èå-H086915CK89/",
+    "price": "NT$ 266,600",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Le Petit Sacææå",
+    "url": "https://www.hermes.com/tw/zh/product/le-petit-sacææå-H087967CC28/",
+    "price": "NT$ 209,500",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Le Petit Sacææå",
+    "url": "https://www.hermes.com/tw/zh/product/le-petit-sacææå-H087967CKI2/",
+    "price": "NT$ 209,500",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Constance To Goç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/constance-to-goç®å¤¾-H085822CCAG085/",
+    "price": "NT$ 311,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Constance To Goç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/constance-to-goç®å¤¾-H080125CK89/",
+    "price": "NT$ 261,900",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Constance To Goç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/constance-to-goç®å¤¾-H080125CK18/",
+    "price": "NT$ 261,900",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Constance To Goç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/constance-to-goç®å¤¾-H080125CC7A/",
+    "price": "NT$ 261,900",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Calvi Duoç­å¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/calvi-duoç­å¡å¤¾-H083035CK18/",
+    "price": "NT$ 23,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Calvi Duoç­å¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/calvi-duoç­å¡å¤¾-H083035CK37/",
+    "price": "NT$ 23,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Calvi Duoç­å¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/calvi-duoç­å¡å¤¾-H083035CK89/",
+    "price": "NT$ 23,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Macaron To Goç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/macaron-to-goç®å¤¾-H087361CK37/",
+    "price": "NT$ 135,700",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Macaron To Goç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/macaron-to-goç®å¤¾-H087361CK18/",
+    "price": "NT$ 135,700",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Macaron To Goç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/macaron-to-goç®å¤¾-H087361CCQ0/",
+    "price": "NT$ 135,700",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Macaronç­å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/macaronç­å¤¾-H087357CK37/",
+    "price": "NT$ 119,100",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Macaronç­å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/macaronç­å¤¾-H087357CK18/",
+    "price": "NT$ 119,100",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Bastiaé¶é¢å",
+    "url": "https://www.hermes.com/tw/zh/product/bastiaé¶é¢å-H041054CK18/",
+    "price": "NT$ 11,400",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Bastiaé¶é¢å",
+    "url": "https://www.hermes.com/tw/zh/product/bastiaé¶é¢å-H041054CK37/",
+    "price": "NT$ 11,400",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Calviå¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/calviå¡å¤¾-H044164CK18/",
+    "price": "NT$ 16,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Calviå¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/calviå¡å¤¾-H044164CK89/",
+    "price": "NT$ 16,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "HermÃ¨snapå¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/hermesnapå¡å¤¾-H087066CKAG/",
+    "price": "NT$ 59,100",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "HermÃ¨snapå¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/hermesnapå¡å¤¾-H087066CKAF/",
+    "price": "NT$ 59,100",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "HermÃ¨snapå¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/hermesnapå¡å¤¾-H087066CKAE/",
+    "price": "NT$ 59,100",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Silk'Inç­å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087116CKAB/",
+    "price": "NT$ 49,600",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Silk'Inç­å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087114CKAC/",
+    "price": "NT$ 49,600",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Silk'In Classiqueé·å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/silk-in-classiqueé·å¤¾-H085859CKAA/",
+    "price": "NT$ 71,900",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Silk'Inç­å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087115CKAB/",
+    "price": "NT$ 49,600",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Silk'Inç­å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087114CKAB/",
+    "price": "NT$ 49,600",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "R.M.Så¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H088008CK89/",
+    "price": "NT$ 33,100",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "R.M.Så¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H084335CKBH/",
+    "price": "NT$ 36,000",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "R.M.Så¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H084335CKBG/",
+    "price": "NT$ 36,000",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "R.M.Så¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H084335CKAT/",
+    "price": "NT$ 36,000",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "R.M.Så¡å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H084335CKAD/",
+    "price": "NT$ 36,000",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 20 ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20-ææ¿å-H088215CKAB/",
+    "price": "NT$ 39,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 20ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20ææ¿å-H087929CKAB/",
+    "price": "NT$ 39,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 20ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20ææ¿å-H087917CKAA/",
+    "price": "NT$ 39,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 25ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-25ææ¿å-H087139CKAB/",
+    "price": "NT$ 53,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 25ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-25ææ¿å-H087138CKAA/",
+    "price": "NT$ 53,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 20ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20ææ¿å-H087136CKAB/",
+    "price": "NT$ 39,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 20ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20ææ¿å-H087136CKAA/",
+    "price": "NT$ 39,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 20ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20ææ¿å-H087135CKAB/",
+    "price": "NT$ 39,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 20ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20ææ¿å-H087135CKAA/",
+    "price": "NT$ 39,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 20ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20ææ¿å-H086640CKAE/",
+    "price": "NT$ 39,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 25ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-25ææ¿å-H086639CKAF/",
+    "price": "NT$ 53,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 25ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-25ææ¿å-H086639CKAE/",
+    "price": "NT$ 53,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 25ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-25ææ¿å-H086373CKAB/",
+    "price": "NT$ 53,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Fourbi 25ææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-25ææ¿å-H086373CKAA/",
+    "price": "NT$ 53,800",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Bearné°åå",
+    "url": "https://www.hermes.com/tw/zh/product/bearné°åå-H047744CKQ0/",
+    "price": "NT$ 51,000",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Bearnç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/bearnç®å¤¾-H039078CK1A/",
+    "price": "NT$ 164,300",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Bearnè¿·ä½ ç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/bearnè¿·ä½ ç®å¤¾-H084818CKP0/",
+    "price": "NT$ 102,400",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Bearnç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/bearnç®å¤¾-H084830CKP0/",
+    "price": "NT$ 142,900",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
+  },
+  {
+    "name": "Bearnç®å¤¾",
+    "url": "https://www.hermes.com/tw/zh/product/bearnç®å¤¾-H084830CCP0/",
+    "price": "NT$ 142,900",
+    "timestamp": "2026-04-28T09:08:00.008581",
+    "weekday": "Tuesday",
+    "hour": 9
   }
 ]
