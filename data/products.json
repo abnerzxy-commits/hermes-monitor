@@ -1,211 +1,11 @@
 {
-  "c0dd4ada2353": {
-    "id": "c0dd4ada2353",
-    "name": "Sanglonsææ¿å",
-    "url": "https://www.hermes.com/tw/zh/product/sanglonsææ¿å-H086955CC89/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/086955CC89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 321,400",
-    "first_seen": "2026-04-29T23:34:37.466418"
-  },
-  "a4cba447de7f": {
-    "id": "a4cba447de7f",
-    "name": "Equipierè©èå",
-    "url": "https://www.hermes.com/tw/zh/product/equipierè©èå-H086060CK89/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/086060CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 423,700",
-    "first_seen": "2026-04-29T23:34:37.466430"
-  },
-  "b581d0e2a69a": {
-    "id": "b581d0e2a69a",
-    "name": "Herbag Zip 20ææå",
-    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-20ææå-H086430CKAI/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/086430CKAI_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 105,300",
-    "first_seen": "2026-04-29T23:34:37.466434"
-  },
-  "61966acaa9e7": {
-    "id": "61966acaa9e7",
-    "name": "Garden Party 30ææå",
-    "url": "https://www.hermes.com/tw/zh/product/garden-party-30ææå-H069573CKDL/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/069573CKDL_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 108,600",
-    "first_seen": "2026-04-29T23:34:37.466437"
-  },
-  "d7be2d21e9aa": {
-    "id": "d7be2d21e9aa",
-    "name": "Lassoie HermÃ¨sè©èå",
-    "url": "https://www.hermes.com/tw/zh/product/lassoie-hermesè©èå-H087076CKAB/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/087076CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 154,800",
-    "first_seen": "2026-04-29T23:34:37.466440"
-  },
-  "def6c9277d31": {
-    "id": "def6c9277d31",
-    "name": "Lassoie HermÃ¨sè©èå",
-    "url": "https://www.hermes.com/tw/zh/product/lassoie-hermesè©èå-H087076CKAE/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/087076CKAE_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 154,800",
-    "first_seen": "2026-04-29T23:34:37.466443"
-  },
-  "e0b2db148358": {
-    "id": "e0b2db148358",
-    "name": "Roulisè¿·ä½ è©èå",
-    "url": "https://www.hermes.com/tw/zh/product/roulisè¿·ä½ è©èå-H079195CKN4/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/079195CKN4_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 333,300",
-    "first_seen": "2026-04-29T23:34:37.466445"
-  },
-  "395b3fd07d9a": {
-    "id": "395b3fd07d9a",
-    "name": "Halzanè¿·ä½ è©èå",
-    "url": "https://www.hermes.com/tw/zh/product/halzanè¿·ä½ è©èå-H069523CKAB/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/069523CKAB_front_1?size=3000,3000&extend=300,300,300,300&align=0,0",
-    "price": "NT$ 214,300",
-    "first_seen": "2026-04-29T23:34:37.466447"
-  },
-  "7f801f77187d": {
-    "id": "7f801f77187d",
-    "name": "Evelyne 23 Poche IIIè©èå",
-    "url": "https://www.hermes.com/tw/zh/product/evelyne-23-poche-iiiè©èå-H087941CKD2/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/087941CKD2_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 140,500",
-    "first_seen": "2026-04-29T23:34:37.466450"
-  },
-  "a906ce599431": {
-    "id": "a906ce599431",
-    "name": "Equipierè©èå",
-    "url": "https://www.hermes.com/tw/zh/product/equipierè©èå-H086060CK37/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/086060CK37_worn_9?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 423,700",
-    "first_seen": "2026-04-29T23:34:37.466452"
-  },
-  "ac3b2a6f960f": {
-    "id": "ac3b2a6f960f",
-    "name": "Kelly depeches 25ææ¿å",
-    "url": "https://www.hermes.com/tw/zh/product/kelly-depeches-25ææ¿å-H078397CK7U/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/078397CK7U_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 366,600",
-    "first_seen": "2026-04-29T23:34:37.466454"
-  },
-  "e6732021e3e3": {
-    "id": "e6732021e3e3",
-    "name": "Herbag Zip 31å£è¢ææå",
-    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31å£è¢ææå-H087943CKAB/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/087943CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 145,200",
-    "first_seen": "2026-04-29T23:34:37.466457"
-  },
-  "4b82e92b3d7f": {
-    "id": "4b82e92b3d7f",
-    "name": "Halzanè¿·ä½ è©èå",
-    "url": "https://www.hermes.com/tw/zh/product/halzanè¿·ä½ è©èå-H069523CKBY/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/069523CKBY_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 214,300",
-    "first_seen": "2026-04-29T23:34:37.466459"
-  },
-  "d7a257deb371": {
-    "id": "d7a257deb371",
-    "name": "Roulisè¿·ä½ è©èå",
-    "url": "https://www.hermes.com/tw/zh/product/roulisè¿·ä½ è©èå-H079195CKP0/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/079195CKP0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 333,300",
-    "first_seen": "2026-04-29T23:34:37.466461"
-  },
-  "02ffa95bc8ce": {
-    "id": "02ffa95bc8ce",
-    "name": "Sanglonsææ¿å",
-    "url": "https://www.hermes.com/tw/zh/product/sanglonsææ¿å-H086962CK0G/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/086962CK0G_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 233,300",
-    "first_seen": "2026-04-29T23:34:37.466464"
-  },
-  "026436deff8d": {
-    "id": "026436deff8d",
-    "name": "Herbag Zip 31å£è¢ææå",
-    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31å£è¢ææå-H087943CCAA/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/087943CCAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 145,200",
-    "first_seen": "2026-04-29T23:34:37.466466"
-  },
-  "632294f17336": {
-    "id": "632294f17336",
-    "name": "Bolideéµå·®å",
-    "url": "https://www.hermes.com/tw/zh/product/bolideéµå·®å-H086959CK34/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/086959CK34_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 319,000",
-    "first_seen": "2026-04-29T23:34:37.466468"
-  },
-  "51d55ad0082b": {
-    "id": "51d55ad0082b",
-    "name": "HermÃ¨s Messenger 57è©èå",
-    "url": "https://www.hermes.com/tw/zh/product/hermes-messenger-57è©èå-H086248CK37/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/086248CK37_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 485,600",
-    "first_seen": "2026-04-29T23:34:37.466471"
-  },
-  "d95f4527de0c": {
-    "id": "d95f4527de0c",
-    "name": "Sac a depeches 21éµå·®å",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21éµå·®å-H085470CK37/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/085470CK37_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 292,800",
-    "first_seen": "2026-04-29T23:34:37.466473"
-  },
-  "fa86899e8b12": {
-    "id": "fa86899e8b12",
-    "name": "Cab'Hææå",
-    "url": "https://www.hermes.com/tw/zh/product/cab-hææå-H085072CK34/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/085072CK34_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 276,100",
-    "first_seen": "2026-04-29T23:34:37.466475"
-  },
-  "694cd549c18d": {
-    "id": "694cd549c18d",
-    "name": "Steve light junioréµå·®å",
-    "url": "https://www.hermes.com/tw/zh/product/steve-light-junioréµå·®å-H082119CK2D/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/082119CK2D_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 240,400",
-    "first_seen": "2026-04-29T23:34:37.466478"
-  },
-  "d7a08a7381b6": {
-    "id": "d7a08a7381b6",
-    "name": "Cab'Hææå",
-    "url": "https://www.hermes.com/tw/zh/product/cab-hææå-H084929CK18/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/084929CK18_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 245,200",
-    "first_seen": "2026-04-29T23:34:37.466480"
-  },
-  "7a436df37912": {
-    "id": "7a436df37912",
-    "name": "Sac a depeches 21éµå·®å",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21éµå·®å-H085470CK8F/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/085470CK8F_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 292,800",
-    "first_seen": "2026-04-29T23:34:37.466482"
-  },
-  "5e88fe26107e": {
-    "id": "5e88fe26107e",
-    "name": "Sac a depeches light 1-36å¬äºå",
-    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-light-1-36å¬äºå-H085721CKH0/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/085721CKH0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 376,100",
-    "first_seen": "2026-04-29T23:34:37.466484"
-  },
-  "26ea14b72917": {
-    "id": "26ea14b72917",
-    "name": "En Pisteææ¿å",
-    "url": "https://www.hermes.com/tw/zh/product/en-pisteææ¿å-H084948CP89/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/084948CP89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 252,300",
-    "first_seen": "2026-04-29T23:34:37.466487"
-  },
-  "d74c35fa49cf": {
-    "id": "d74c35fa49cf",
-    "name": "Poche Cliquetisè©èå",
-    "url": "https://www.hermes.com/tw/zh/product/poche-cliquetisè©èå-H086915CK89/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/086915CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 266,600",
-    "first_seen": "2026-04-29T23:34:37.466489"
+  "7d5dd778f603": {
+    "id": "7d5dd778f603",
+    "name": "Le Petit Sacææå",
+    "url": "https://www.hermes.com/tw/zh/product/le-petit-sacææå-H087967CKI2/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087967CKI2_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 209,500",
+    "first_seen": "2026-04-30T01:21:52.752446"
   },
   "59d0c1cc4adb": {
     "id": "59d0c1cc4adb",
@@ -213,15 +13,127 @@
     "url": "https://www.hermes.com/tw/zh/product/le-petit-sacææå-H087967CC28/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087967CC28_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 209,500",
-    "first_seen": "2026-04-29T23:34:37.466491"
+    "first_seen": "2026-04-30T01:21:52.752458"
   },
-  "7d5dd778f603": {
-    "id": "7d5dd778f603",
-    "name": "Le Petit Sacææå",
-    "url": "https://www.hermes.com/tw/zh/product/le-petit-sacææå-H087967CKI2/",
-    "image": "https://assets.hermes.com/is/image/hermesproduct/087967CKI2_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
-    "price": "NT$ 209,500",
-    "first_seen": "2026-04-29T23:34:37.466493"
+  "026436deff8d": {
+    "id": "026436deff8d",
+    "name": "Herbag Zip 31å£è¢ææå",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31å£è¢ææå-H087943CCAA/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087943CCAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 145,200",
+    "first_seen": "2026-04-30T01:21:52.752461"
+  },
+  "def6c9277d31": {
+    "id": "def6c9277d31",
+    "name": "Lassoie HermÃ¨sè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/lassoie-hermesè©èå-H087076CKAE/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087076CKAE_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 154,800",
+    "first_seen": "2026-04-30T01:21:52.752464"
+  },
+  "d7be2d21e9aa": {
+    "id": "d7be2d21e9aa",
+    "name": "Lassoie HermÃ¨sè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/lassoie-hermesè©èå-H087076CKAB/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087076CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 154,800",
+    "first_seen": "2026-04-30T01:21:52.752466"
+  },
+  "02ffa95bc8ce": {
+    "id": "02ffa95bc8ce",
+    "name": "Sanglonsææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/sanglonsææ¿å-H086962CK0G/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086962CK0G_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 233,300",
+    "first_seen": "2026-04-30T01:21:52.752469"
+  },
+  "c0dd4ada2353": {
+    "id": "c0dd4ada2353",
+    "name": "Sanglonsææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/sanglonsææ¿å-H086955CC89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086955CC89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 321,400",
+    "first_seen": "2026-04-30T01:21:52.752471"
+  },
+  "b581d0e2a69a": {
+    "id": "b581d0e2a69a",
+    "name": "Herbag Zip 20ææå",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-20ææå-H086430CKAI/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086430CKAI_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 105,300",
+    "first_seen": "2026-04-30T01:21:52.752474"
+  },
+  "61966acaa9e7": {
+    "id": "61966acaa9e7",
+    "name": "Garden Party 30ææå",
+    "url": "https://www.hermes.com/tw/zh/product/garden-party-30ææå-H069573CKDL/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069573CKDL_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 108,600",
+    "first_seen": "2026-04-30T01:21:52.752476"
+  },
+  "e6732021e3e3": {
+    "id": "e6732021e3e3",
+    "name": "Herbag Zip 31å£è¢ææå",
+    "url": "https://www.hermes.com/tw/zh/product/herbag-zip-31å£è¢ææå-H087943CKAB/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087943CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 145,200",
+    "first_seen": "2026-04-30T01:21:52.752479"
+  },
+  "7f801f77187d": {
+    "id": "7f801f77187d",
+    "name": "Evelyne 23 Poche IIIè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/evelyne-23-poche-iiiè©èå-H087941CKD2/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/087941CKD2_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 140,500",
+    "first_seen": "2026-04-30T01:21:52.752481"
+  },
+  "e0b2db148358": {
+    "id": "e0b2db148358",
+    "name": "Roulisè¿·ä½ è©èå",
+    "url": "https://www.hermes.com/tw/zh/product/roulisè¿·ä½ è©èå-H079195CKN4/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/079195CKN4_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 333,300",
+    "first_seen": "2026-04-30T01:21:52.752483"
+  },
+  "395b3fd07d9a": {
+    "id": "395b3fd07d9a",
+    "name": "Halzanè¿·ä½ è©èå",
+    "url": "https://www.hermes.com/tw/zh/product/halzanè¿·ä½ è©èå-H069523CKAB/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069523CKAB_front_1?size=3000,3000&extend=300,300,300,300&align=0,0",
+    "price": "NT$ 214,300",
+    "first_seen": "2026-04-30T01:21:52.752486"
+  },
+  "d7a257deb371": {
+    "id": "d7a257deb371",
+    "name": "Roulisè¿·ä½ è©èå",
+    "url": "https://www.hermes.com/tw/zh/product/roulisè¿·ä½ è©èå-H079195CKP0/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/079195CKP0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 333,300",
+    "first_seen": "2026-04-30T01:21:52.752488"
+  },
+  "4b82e92b3d7f": {
+    "id": "4b82e92b3d7f",
+    "name": "Halzanè¿·ä½ è©èå",
+    "url": "https://www.hermes.com/tw/zh/product/halzanè¿·ä½ è©èå-H069523CKBY/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/069523CKBY_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 214,300",
+    "first_seen": "2026-04-30T01:21:52.752491"
+  },
+  "26ea14b72917": {
+    "id": "26ea14b72917",
+    "name": "En Pisteææ¿å",
+    "url": "https://www.hermes.com/tw/zh/product/en-pisteææ¿å-H084948CP89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/084948CP89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 252,300",
+    "first_seen": "2026-04-30T01:21:52.752493"
+  },
+  "d74c35fa49cf": {
+    "id": "d74c35fa49cf",
+    "name": "Poche Cliquetisè©èå",
+    "url": "https://www.hermes.com/tw/zh/product/poche-cliquetisè©èå-H086915CK89/",
+    "image": "https://assets.hermes.com/is/image/hermesproduct/086915CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
+    "price": "NT$ 266,600",
+    "first_seen": "2026-04-30T01:21:52.752495"
   },
   "818d936492bf": {
     "id": "818d936492bf",
@@ -229,7 +141,7 @@
     "url": "https://www.hermes.com/tw/zh/product/constance-to-goç®å¤¾-H085822CCAG085/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/085822CCAG_front_wm_2?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 311,800",
-    "first_seen": "2026-04-29T23:34:37.466496"
+    "first_seen": "2026-04-30T01:21:52.752498"
   },
   "95bce2576145": {
     "id": "95bce2576145",
@@ -237,7 +149,7 @@
     "url": "https://www.hermes.com/tw/zh/product/constance-to-goç®å¤¾-H080125CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/080125CK89_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 261,900",
-    "first_seen": "2026-04-29T23:34:37.466498"
+    "first_seen": "2026-04-30T01:21:52.752501"
   },
   "cb1b18ce64e4": {
     "id": "cb1b18ce64e4",
@@ -245,7 +157,7 @@
     "url": "https://www.hermes.com/tw/zh/product/constance-to-goç®å¤¾-H080125CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/080125CK18_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 261,900",
-    "first_seen": "2026-04-29T23:34:37.466500"
+    "first_seen": "2026-04-30T01:21:52.752503"
   },
   "9028ee01c44b": {
     "id": "9028ee01c44b",
@@ -253,7 +165,7 @@
     "url": "https://www.hermes.com/tw/zh/product/constance-to-goç®å¤¾-H080125CC7A/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/080125CC7A_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 261,900",
-    "first_seen": "2026-04-29T23:34:37.466502"
+    "first_seen": "2026-04-30T01:21:52.752505"
   },
   "e581424e61c8": {
     "id": "e581424e61c8",
@@ -261,7 +173,7 @@
     "url": "https://www.hermes.com/tw/zh/product/calvi-duoç­å¡å¤¾-H083035CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/083035CK89_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 23,300",
-    "first_seen": "2026-04-29T23:34:37.466505"
+    "first_seen": "2026-04-30T01:21:52.752508"
   },
   "8ca00cbcaae3": {
     "id": "8ca00cbcaae3",
@@ -269,7 +181,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaron-to-goç®å¤¾-H087361CK37/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087361CK37_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 135,700",
-    "first_seen": "2026-04-29T23:34:37.466507"
+    "first_seen": "2026-04-30T01:21:52.752510"
   },
   "2c493acdeee7": {
     "id": "2c493acdeee7",
@@ -277,7 +189,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaron-to-goç®å¤¾-H087361CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087361CK18_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 135,700",
-    "first_seen": "2026-04-29T23:34:37.466509"
+    "first_seen": "2026-04-30T01:21:52.752512"
   },
   "dabf4bdea595": {
     "id": "dabf4bdea595",
@@ -285,7 +197,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaron-to-goç®å¤¾-H087361CCQ0/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087361CCQ0_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 135,700",
-    "first_seen": "2026-04-29T23:34:37.466511"
+    "first_seen": "2026-04-30T01:21:52.752514"
   },
   "47e94e2c3701": {
     "id": "47e94e2c3701",
@@ -293,7 +205,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaronç­å¤¾-H087357CK37/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087357CK37_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 119,100",
-    "first_seen": "2026-04-29T23:34:37.466513"
+    "first_seen": "2026-04-30T01:21:52.752517"
   },
   "d169bbcb698c": {
     "id": "d169bbcb698c",
@@ -301,7 +213,7 @@
     "url": "https://www.hermes.com/tw/zh/product/macaronç­å¤¾-H087357CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087357CK18_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 119,100",
-    "first_seen": "2026-04-29T23:34:37.466515"
+    "first_seen": "2026-04-30T01:21:52.752519"
   },
   "8956a59e4a9b": {
     "id": "8956a59e4a9b",
@@ -309,7 +221,7 @@
     "url": "https://www.hermes.com/tw/zh/product/bastiaé¶é¢å-H041054CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/041054CK18_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 11,400",
-    "first_seen": "2026-04-29T23:34:37.466518"
+    "first_seen": "2026-04-30T01:21:52.752521"
   },
   "c73e66b717a4": {
     "id": "c73e66b717a4",
@@ -317,7 +229,7 @@
     "url": "https://www.hermes.com/tw/zh/product/bastiaé¶é¢å-H041054CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/041054CK89_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 11,400",
-    "first_seen": "2026-04-29T23:34:37.466520"
+    "first_seen": "2026-04-30T01:21:52.752524"
   },
   "bb440a4c3a0c": {
     "id": "bb440a4c3a0c",
@@ -325,7 +237,7 @@
     "url": "https://www.hermes.com/tw/zh/product/calviå¡å¤¾-H044164CK18/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/044164CK18_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 16,800",
-    "first_seen": "2026-04-29T23:34:37.466522"
+    "first_seen": "2026-04-30T01:21:52.752526"
   },
   "53252a105ab9": {
     "id": "53252a105ab9",
@@ -333,7 +245,7 @@
     "url": "https://www.hermes.com/tw/zh/product/hermesnapå¡å¤¾-H087066CKAG/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087066CKAG_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 59,100",
-    "first_seen": "2026-04-29T23:34:37.466524"
+    "first_seen": "2026-04-30T01:21:52.752528"
   },
   "84e0e96fbab8": {
     "id": "84e0e96fbab8",
@@ -341,7 +253,7 @@
     "url": "https://www.hermes.com/tw/zh/product/hermesnapå¡å¤¾-H087066CKAF/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087066CKAF_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 59,100",
-    "first_seen": "2026-04-29T23:34:37.466527"
+    "first_seen": "2026-04-30T01:21:52.752531"
   },
   "fff3f93821d2": {
     "id": "fff3f93821d2",
@@ -349,7 +261,7 @@
     "url": "https://www.hermes.com/tw/zh/product/hermesnapå¡å¤¾-H087066CKAE/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087066CKAE_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 59,100",
-    "first_seen": "2026-04-29T23:34:37.466529"
+    "first_seen": "2026-04-30T01:21:52.752533"
   },
   "926d91dad70f": {
     "id": "926d91dad70f",
@@ -357,7 +269,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087539CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087539CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 46,700",
-    "first_seen": "2026-04-29T23:34:37.466531"
+    "first_seen": "2026-04-30T01:21:52.752535"
   },
   "82d24841b641": {
     "id": "82d24841b641",
@@ -365,7 +277,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087539CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087539CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 46,700",
-    "first_seen": "2026-04-29T23:34:37.466533"
+    "first_seen": "2026-04-30T01:21:52.752538"
   },
   "a44f66de85aa": {
     "id": "a44f66de85aa",
@@ -373,7 +285,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087538CKAC/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087538CKAC_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 46,700",
-    "first_seen": "2026-04-29T23:34:37.466535"
+    "first_seen": "2026-04-30T01:21:52.752540"
   },
   "2d75c0f8c83e": {
     "id": "2d75c0f8c83e",
@@ -381,7 +293,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç¶å¸é·å¤¾-H069645CKAX/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/069645CKAX_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 71,900",
-    "first_seen": "2026-04-29T23:34:37.466537"
+    "first_seen": "2026-04-30T01:21:52.752542"
   },
   "f02ec6aa10e2": {
     "id": "f02ec6aa10e2",
@@ -389,7 +301,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H067389CKAM/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/067389CKAM_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 46,700",
-    "first_seen": "2026-04-29T23:34:37.466539"
+    "first_seen": "2026-04-30T01:21:52.752563"
   },
   "39da90549c10": {
     "id": "39da90549c10",
@@ -397,7 +309,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç¶å¸é·å¤¾-H069645CKAW/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/069645CKAW_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 71,900",
-    "first_seen": "2026-04-29T23:34:37.466541"
+    "first_seen": "2026-04-30T01:21:52.752570"
   },
   "645e3012a1ec": {
     "id": "645e3012a1ec",
@@ -405,7 +317,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H067389CKAN/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/067389CKAN_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 46,700",
-    "first_seen": "2026-04-29T23:34:37.466543"
+    "first_seen": "2026-04-30T01:21:52.752574"
   },
   "3f438e16b72d": {
     "id": "3f438e16b72d",
@@ -413,7 +325,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087116CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087116CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 49,600",
-    "first_seen": "2026-04-29T23:34:37.466546"
+    "first_seen": "2026-04-30T01:21:52.752577"
   },
   "d65b5fc7242a": {
     "id": "d65b5fc7242a",
@@ -421,7 +333,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in-classiqueé·å¤¾-H087537CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087537CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 76,200",
-    "first_seen": "2026-04-29T23:34:37.466548"
+    "first_seen": "2026-04-30T01:21:52.752582"
   },
   "020ed7ca9d76": {
     "id": "020ed7ca9d76",
@@ -429,7 +341,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087114CKAC/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087114CKAC_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 49,600",
-    "first_seen": "2026-04-29T23:34:37.466550"
+    "first_seen": "2026-04-30T01:21:52.752587"
   },
   "d98c867b57e6": {
     "id": "d98c867b57e6",
@@ -437,7 +349,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in-classiqueé·å¤¾-H085241CKAD/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/085241CKAD_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 76,200",
-    "first_seen": "2026-04-29T23:34:37.466552"
+    "first_seen": "2026-04-30T01:21:52.752591"
   },
   "b016028e176a": {
     "id": "b016028e176a",
@@ -445,7 +357,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in-classiqueé·å¤¾-H085859CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/085859CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 71,900",
-    "first_seen": "2026-04-29T23:34:37.466554"
+    "first_seen": "2026-04-30T01:21:52.752594"
   },
   "8c494ed6d0c5": {
     "id": "8c494ed6d0c5",
@@ -453,7 +365,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-iné¶é¢å-H067390CKAM/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/067390CKAM_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 28,800",
-    "first_seen": "2026-04-29T23:34:37.466557"
+    "first_seen": "2026-04-30T01:21:52.752596"
   },
   "55c1778fa07c": {
     "id": "55c1778fa07c",
@@ -461,7 +373,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H087115CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087115CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 49,600",
-    "first_seen": "2026-04-29T23:34:37.466559"
+    "first_seen": "2026-04-30T01:21:52.752599"
   },
   "1ea1ba42fad7": {
     "id": "1ea1ba42fad7",
@@ -469,7 +381,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in-classiqueé·å¤¾-H085239CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/085239CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 76,200",
-    "first_seen": "2026-04-29T23:34:37.466561"
+    "first_seen": "2026-04-30T01:21:52.752601"
   },
   "a791776d2a53": {
     "id": "a791776d2a53",
@@ -477,7 +389,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in-classiqueé·å¤¾-H086366CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/086366CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 76,200",
-    "first_seen": "2026-04-29T23:34:37.466563"
+    "first_seen": "2026-04-30T01:21:52.752603"
   },
   "6dc2be1a18e2": {
     "id": "6dc2be1a18e2",
@@ -485,7 +397,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H086387CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/086387CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 49,600",
-    "first_seen": "2026-04-29T23:34:37.466565"
+    "first_seen": "2026-04-30T01:21:52.752606"
   },
   "44899f084b3d": {
     "id": "44899f084b3d",
@@ -493,7 +405,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H084266CKAJ/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084266CKAJ_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 46,700",
-    "first_seen": "2026-04-29T23:34:37.466567"
+    "first_seen": "2026-04-30T01:21:52.752608"
   },
   "83f6f375dd7a": {
     "id": "83f6f375dd7a",
@@ -501,7 +413,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in-classiqueé·å¤¾-H084387CKAH/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084387CKAH_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 71,900",
-    "first_seen": "2026-04-29T23:34:37.466570"
+    "first_seen": "2026-04-30T01:21:52.752611"
   },
   "82098d959463": {
     "id": "82098d959463",
@@ -509,7 +421,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-inç­å¤¾-H084266CKAI/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084266CKAI_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 46,700",
-    "first_seen": "2026-04-29T23:34:37.466572"
+    "first_seen": "2026-04-30T01:21:52.752613"
   },
   "76f7129fdcc4": {
     "id": "76f7129fdcc4",
@@ -517,7 +429,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in-classiqueé·å¤¾-H084387CKAI/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084387CKAI_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 71,900",
-    "first_seen": "2026-04-29T23:34:37.466574"
+    "first_seen": "2026-04-30T01:21:52.752615"
   },
   "f52282169051": {
     "id": "f52282169051",
@@ -525,7 +437,7 @@
     "url": "https://www.hermes.com/tw/zh/product/silk-in-classiqueé·å¤¾-H084387CKAD/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084387CKAD_worn_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 71,900",
-    "first_seen": "2026-04-29T23:34:37.466576"
+    "first_seen": "2026-04-30T01:21:52.752618"
   },
   "06d4c2cbbbd2": {
     "id": "06d4c2cbbbd2",
@@ -533,7 +445,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H088008CK89/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/088008CK89_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 33,100",
-    "first_seen": "2026-04-29T23:34:37.466578"
+    "first_seen": "2026-04-30T01:21:52.752620"
   },
   "d9fdc1345e48": {
     "id": "d9fdc1345e48",
@@ -541,7 +453,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H084335CKBH/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084335CKBH_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 36,000",
-    "first_seen": "2026-04-29T23:34:37.466581"
+    "first_seen": "2026-04-30T01:21:52.752623"
   },
   "38a4f21a38a2": {
     "id": "38a4f21a38a2",
@@ -549,7 +461,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H084335CKBG/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084335CKBG_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 36,000",
-    "first_seen": "2026-04-29T23:34:37.466583"
+    "first_seen": "2026-04-30T01:21:52.752625"
   },
   "354ffab40d13": {
     "id": "354ffab40d13",
@@ -557,7 +469,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H084335CKAT/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084335CKAT_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 36,000",
-    "first_seen": "2026-04-29T23:34:37.466585"
+    "first_seen": "2026-04-30T01:21:52.752627"
   },
   "39400181d4ba": {
     "id": "39400181d4ba",
@@ -565,7 +477,7 @@
     "url": "https://www.hermes.com/tw/zh/product/r.m.så¡å¤¾-H084335CKAD/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/084335CKAD_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 36,000",
-    "first_seen": "2026-04-29T23:34:37.466587"
+    "first_seen": "2026-04-30T01:21:52.752630"
   },
   "da1ae441b993": {
     "id": "da1ae441b993",
@@ -573,7 +485,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20-ææ¿å-H088215CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/088215CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-29T23:34:37.466589"
+    "first_seen": "2026-04-30T01:21:52.752632"
   },
   "641543c0e876": {
     "id": "641543c0e876",
@@ -581,7 +493,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20ææ¿å-H087929CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087929CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-29T23:34:37.466591"
+    "first_seen": "2026-04-30T01:21:52.752635"
   },
   "2adcfd203c6f": {
     "id": "2adcfd203c6f",
@@ -589,7 +501,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-20ææ¿å-H087917CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087917CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 39,300",
-    "first_seen": "2026-04-29T23:34:37.466593"
+    "first_seen": "2026-04-30T01:21:52.752637"
   },
   "635f26386769": {
     "id": "635f26386769",
@@ -597,7 +509,7 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-25ææ¿å-H087139CKAB/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087139CKAB_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 53,800",
-    "first_seen": "2026-04-29T23:34:37.466595"
+    "first_seen": "2026-04-30T01:21:52.752640"
   },
   "c0500d2d7990": {
     "id": "c0500d2d7990",
@@ -605,6 +517,6 @@
     "url": "https://www.hermes.com/tw/zh/product/fourbi-25ææ¿å-H087138CKAA/",
     "image": "https://assets.hermes.com/is/image/hermesproduct/087138CKAA_front_wm_1?size=3000,3000&extend=0,0,0,0&align=0,0",
     "price": "NT$ 53,800",
-    "first_seen": "2026-04-29T23:34:37.466598"
+    "first_seen": "2026-04-30T01:21:52.752642"
   }
 }
