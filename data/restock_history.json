@@ -1,13 +1,5 @@
 [
   {
-    "name": "Macaron To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/macaron-to-go皮夾-H087361CCQ0/",
-    "price": "NT$ 135,700",
-    "timestamp": "2026-04-27T06:29:34.551382",
-    "weekday": "Monday",
-    "hour": 6
-  },
-  {
     "name": "Macaron短夾",
     "url": "https://www.hermes.com/tw/zh/product/macaron短夾-H087357CK37/",
     "price": "NT$ 119,100",
@@ -3998,5 +3990,13 @@
     "sku": "H087136CKAA",
     "type": "new",
     "timestamp": "2026-05-02T14:58:04.762Z"
+  },
+  {
+    "name": "Fourbi 20手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087135CKAA/",
+    "price": "NT$ 39,300",
+    "sku": "H087135CKAA",
+    "type": "new",
+    "timestamp": "2026-05-02T15:08:13.906Z"
   }
 ]
