@@ -1,22 +1,6 @@
 [
   {
     "name": "Fourbi 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086639CKAF/",
-    "price": "NT$ 53,800",
-    "timestamp": "2026-04-27T06:29:34.551382",
-    "weekday": "Monday",
-    "hour": 6
-  },
-  {
-    "name": "Fourbi 25手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086639CKAE/",
-    "price": "NT$ 53,800",
-    "timestamp": "2026-04-27T06:29:34.551382",
-    "weekday": "Monday",
-    "hour": 6
-  },
-  {
-    "name": "Fourbi 25手拿包",
     "url": "https://www.hermes.com/tw/zh/product/fourbi-25手拿包-H086373CKAB/",
     "price": "NT$ 53,800",
     "timestamp": "2026-04-27T06:29:34.551382",
@@ -3998,5 +3982,21 @@
     "sku": "H087136CKAB",
     "type": "new",
     "timestamp": "2026-05-02T22:01:47.086Z"
+  },
+  {
+    "name": "Bolide郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/bolide郵差包-H086959CK34/",
+    "price": "NT$ 319,000",
+    "sku": "H086959CK34",
+    "type": "new",
+    "timestamp": "2026-05-02T22:11:56.445Z"
+  },
+  {
+    "name": "Fourbi 20手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087135CKAB/",
+    "price": "NT$ 39,300",
+    "sku": "H087135CKAB",
+    "type": "new",
+    "timestamp": "2026-05-02T22:11:56.445Z"
   }
 ]
