@@ -1,29 +1,5 @@
 [
   {
-    "name": "Roulis迷你肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/roulis迷你肩背包-H079195CKN4/",
-    "price": "NT$ 333,300",
-    "timestamp": "2026-04-27T18:58:35.380126",
-    "weekday": "Monday",
-    "hour": 18
-  },
-  {
-    "name": "Halzan迷你肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/halzan迷你肩背包-H069523CKAB/",
-    "price": "NT$ 214,300",
-    "timestamp": "2026-04-27T18:58:35.380126",
-    "weekday": "Monday",
-    "hour": 18
-  },
-  {
-    "name": "Roulis迷你肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/roulis迷你肩背包-H079195CKP0/",
-    "price": "NT$ 333,300",
-    "timestamp": "2026-04-27T18:58:35.380126",
-    "weekday": "Monday",
-    "hour": 18
-  },
-  {
     "name": "Halzan迷你肩背包",
     "url": "https://www.hermes.com/tw/zh/product/halzan迷你肩背包-H069523CKBY/",
     "price": "NT$ 214,300",
@@ -3998,5 +3974,29 @@
     "sku": "H086915CK89",
     "type": "new",
     "timestamp": "2026-05-03T04:04:43.006Z"
+  },
+  {
+    "name": "Bolide郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/bolide郵差包-H086959CK34/",
+    "price": "NT$ 319,000",
+    "sku": "H086959CK34",
+    "type": "new",
+    "timestamp": "2026-05-03T04:14:50.264Z"
+  },
+  {
+    "name": "Sac a depeches 21郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK8F/",
+    "price": "NT$ 292,800",
+    "sku": "H085470CK8F",
+    "type": "new",
+    "timestamp": "2026-05-03T04:14:50.264Z"
+  },
+  {
+    "name": "Kelly depeches 25手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/kelly-depeches-25手拿包-H078397CK37/",
+    "price": "NT$ 366,600",
+    "sku": "H078397CK37",
+    "type": "new",
+    "timestamp": "2026-05-03T04:14:50.264Z"
   }
 ]
