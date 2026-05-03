@@ -1,13 +1,5 @@
 [
   {
-    "name": "Evelyne 23 Poche III肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/evelyne-23-poche-iii肩背包-H087941CKD2/",
-    "price": "NT$ 140,500",
-    "timestamp": "2026-04-27T18:58:35.380126",
-    "weekday": "Monday",
-    "hour": 18
-  },
-  {
     "name": "Roulis迷你肩背包",
     "url": "https://www.hermes.com/tw/zh/product/roulis迷你肩背包-H079195CKN4/",
     "price": "NT$ 333,300",
@@ -3998,5 +3990,13 @@
     "sku": "H087135CKAA",
     "type": "new",
     "timestamp": "2026-05-03T03:24:25.823Z"
+  },
+  {
+    "name": "Poche Cliquetis肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/poche-cliquetis肩背包-H086915CK89/",
+    "price": "NT$ 266,600",
+    "sku": "H086915CK89",
+    "type": "new",
+    "timestamp": "2026-05-03T04:04:43.006Z"
   }
 ]
