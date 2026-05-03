@@ -1,29 +1,5 @@
 [
   {
-    "name": "Halzan迷你肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/halzan迷你肩背包-H069523CKBY/",
-    "price": "NT$ 214,300",
-    "timestamp": "2026-04-27T18:58:35.380126",
-    "weekday": "Monday",
-    "hour": 18
-  },
-  {
-    "name": "En Piste手拿包",
-    "url": "https://www.hermes.com/tw/zh/product/en-piste手拿包-H084948CP89/",
-    "price": "NT$ 252,300",
-    "timestamp": "2026-04-27T18:58:35.380126",
-    "weekday": "Monday",
-    "hour": 18
-  },
-  {
-    "name": "Poche Cliquetis肩背包",
-    "url": "https://www.hermes.com/tw/zh/product/poche-cliquetis肩背包-H086915CK89/",
-    "price": "NT$ 266,600",
-    "timestamp": "2026-04-27T18:58:35.380126",
-    "weekday": "Monday",
-    "hour": 18
-  },
-  {
     "name": "Constance To Go皮夾",
     "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H085822CCAG085/",
     "price": "NT$ 311,800",
@@ -3998,5 +3974,29 @@
     "sku": "H078397CK37",
     "type": "new",
     "timestamp": "2026-05-03T04:14:50.264Z"
+  },
+  {
+    "name": "Kelly depeches 25手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/kelly-depeches-25手拿包-H078397CK7U/",
+    "price": "NT$ 366,600",
+    "sku": "H078397CK7U",
+    "type": "new",
+    "timestamp": "2026-05-03T04:24:57.791Z"
+  },
+  {
+    "name": "Sac a depeches 21郵差包",
+    "url": "https://www.hermes.com/tw/zh/product/sac-a-depeches-21郵差包-H085470CK37/",
+    "price": "NT$ 292,800",
+    "sku": "H085470CK37",
+    "type": "new",
+    "timestamp": "2026-05-03T04:24:57.791Z"
+  },
+  {
+    "name": "Fourbi 20手拿包",
+    "url": "https://www.hermes.com/tw/zh/product/fourbi-20手拿包-H087135CKAB/",
+    "price": "NT$ 39,300",
+    "sku": "H087135CKAB",
+    "type": "new",
+    "timestamp": "2026-05-03T04:24:57.791Z"
   }
 ]
