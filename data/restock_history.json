@@ -1,14 +1,6 @@
 [
   {
     "name": "Constance To Go皮夾",
-    "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H085822CCAG085/",
-    "price": "NT$ 311,800",
-    "timestamp": "2026-04-27T20:08:18.678117",
-    "weekday": "Monday",
-    "hour": 20
-  },
-  {
-    "name": "Constance To Go皮夾",
     "url": "https://www.hermes.com/tw/zh/product/constance-to-go皮夾-H080125CK89/",
     "price": "NT$ 261,900",
     "timestamp": "2026-04-27T20:08:18.678117",
@@ -3998,5 +3990,13 @@
     "sku": "H087135CKAB",
     "type": "new",
     "timestamp": "2026-05-03T04:24:57.791Z"
+  },
+  {
+    "name": "Poche Cliquetis肩背包",
+    "url": "https://www.hermes.com/tw/zh/product/poche-cliquetis肩背包-H086915CK18/",
+    "price": "NT$ 266,600",
+    "sku": "H086915CK18",
+    "type": "new",
+    "timestamp": "2026-05-03T04:35:05.572Z"
   }
 ]
